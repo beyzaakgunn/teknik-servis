@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kullanıcı gizliliği" />
+  <meta property="og:title" content="Gizlilik Politikası - Beyaz Eşya Servisi" />
+  <meta property="og:description" content="Kullanıcı gizliliği" />
+  <title>Gizlilik Politikası - Beyaz Eşya Servisi</title>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const service = params.get("service");
+  
+    if (service) {
+      const titleText = `${service} Servisi | Aynı Gün Teknik Destek`;
+      const descText = `${service} için garantisiz cihazlara yerinde tamir, bakım ve arıza servis hizmeti. Hemen servis al, uzman çözümle tanış.`;
+  
+      document.title = titleText;
+  
+      const descTag = document.querySelector('meta[name="description"]');
+      if (descTag) descTag.setAttribute("content", descText);
+  
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogTitle) ogTitle.setAttribute("content", titleText);
+      if (ogDesc) ogDesc.setAttribute("content", descText);
+    }
+  </script>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+</head>
+<body>
+  <header>
+    <style>
+      nav a, .dropdown-content a, .phone-link {
+        text-decoration: none;
+        color: rgb(51, 51, 51);
+        padding: 8px 12px;
+        transition: background-color 0.2s ease;
+        display: inline-block;
+      }
+      nav a:hover,
+      .dropdown-content a:hover,
+      .phone-link:hover {
+        background-color: rgb(221, 221, 221);
+        border-radius: 4px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 18px;
+        color: rgb(51, 51, 51);
+        text-decoration: none;
+        gap: 8px;
+      }
+      .logo-img {
+        height: 30px;
+        width: auto;
+      }
+
+      nav {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        background-color: rgb(245, 245, 245);
+        padding: 15px 30px;
+        font-family: sans-serif;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgb(255, 255, 255);
+        min-width: 200px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        z-index: 100;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .dropdown-content a {
+        display: block;
+        color: rgb(0, 0, 0);
+      }
+    </style>
+    <div class="header-inner">
+      <nav>
+        <a href="index.html" class="logo">
+          <img src="assets/logo.png" alt="logo" class="logo-img">
+          Beyaz Eşya Teknik Servisi
+        </a>
+  
+        <div class="nav-links">
+          <a href="index.html">Ana Sayfa</a>
+          <div class="dropdown">
+            <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
+            <div class="dropdown-content">
+              <a href="hizmet.html?service=Beyaz+Eşya+Servisi">Beyaz Eşya Servisi</a>
+              <a href="hizmet.html?service=Buzdolabı">Buzdolabı</a>
+              <a href="hizmet.html?service=Çamaşır+Makinesi">Çamaşır Makinesi</a>
+              <a href="hizmet.html?service=Bulaşık+Makinesi">Bulaşık Makinesi</a>
+              <a href="hizmet.html?service=Fırın">Fırın</a>
+              <a href="hizmet.html?service=Klima">Klima</a>
+              <a href="hizmet.html?service=Kombi">Kombi</a>
+              <a href="hizmet.html?service=Televizyon">Televizyon</a>
+            </div>
+          </div>
+          <a href="hakkimizda.html">Hakkımızda</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="tel:05321234567" class="phone-link">0532 123 45 67</a>
+        </div>
+</nav>
+    </div>
+  </header>
+  <main>
+    <h1>Gizlilik Politikası</h1>
+    <p>Web sitemizi ziyaret ettiğinizde, hiçbir kişisel bilginiz tarafımızca kaydedilmez veya üçüncü taraflarla paylaşılmaz. Tarayıcı çerezleri ya da kullanıcı takibi uygulanmaz. Yalnızca garantisi bitmiş cihazlar için bilgi verilir.</p>
+  </main>
+  <section class="customer-comments" style="max-width:700px;margin:40px auto 0;padding:24px 16px;background:#f8f8f8;border-radius:8px;box-shadow:0 2px 8px #0001;">
+    <h2 style="text-align:center;margin-bottom:20px;">Müşteri Yorumları</h2>
+    <ul style="list-style:none;padding:0;">
+      <li style="margin-bottom:16px;">"Servis çok hızlı ve güvenilirdi, teşekkürler!"</li>
+      <li style="margin-bottom:16px;">"Uygun fiyat ve kaliteli hizmet aldım."</li>
+      <li style="margin-bottom:16px;">"Teknisyenler çok ilgili ve çözüm odaklıydı."</li>
+      <li style="margin-bottom:16px;">"Arızalı makinem aynı gün tamir edildi."</li>
+      <li style="margin-bottom:16px;">"Herkese tavsiye ederim, memnun kaldım."</li>
+      <li style="margin-bottom:16px;">"İletişim çok kolaydı, hemen geri dönüş sağladılar."</li>
+      <li style="margin-bottom:16px;">"Parça değişimi hızlı ve sorunsuz gerçekleşti."</li>
+      <li style="margin-bottom:16px;">"Temiz ve titiz bir çalışma yapıldı."</li>
+      <li style="margin-bottom:16px;">"Beklediğimden daha iyi bir hizmet aldım."</li>
+      <li style="margin-bottom:16px;">"Güvenilir ve profesyonel bir ekip."</li>
+      <li style="margin-bottom:16px;">"Sorunum kısa sürede çözüldü, teşekkürler."</li>
+      <li style="margin-bottom:16px;">"Tekrar bir sorun yaşarsam yine tercih ederim."</li>
+    </ul>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+        <a href="iletisim.html">İletişim</a>
+        <a href="gizlilik.html">Gizlilik Politikası</a>
+        <a href="kvkk.html">KVKK</a>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-info">
+        <p><strong>Yetkili servis değiliz.</strong> Sadece garantisi bitmiş cihazlara hizmet sunmaktayız.</p>
+        <p class="copyright">&copy; 2025 Beyaz Eşya Servisi. Tüm hakları saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
