@@ -86,7 +86,7 @@
         align-items: center;
         font-weight: 700;
         font-size: 1.25em;
-        color: #1976d2;
+        color: #0b2a5a;
         text-decoration: none;
         gap: 10px;
         letter-spacing: 0.5px;
@@ -264,7 +264,7 @@
         }
       }
     </style>
-    <h1>Hizmetlerimiz</h1>
+    <h1 style="color: #0b4a8a;">Hizmetlerimiz</h1>
     <br>
     <p>Beyaz Eşya Teknik Servisi olarak, buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, klima, kombi ve televizyon gibi garantisi bitmiş ev aletleriniz için yerinde tamir, bakım ve arıza tespiti hizmetleri sunuyoruz. Deneyimli teknisyen kadromuzla hızlı, güvenilir ve ekonomik çözümler üretiyor, cihazlarınızı en kısa sürede sorunsuz şekilde çalışır hale getiriyoruz.</p>
     <section class="services-section">
@@ -413,6 +413,90 @@
           <div class="comment-text">Herkese tavsiye ederim, memnun kaldım.</div>
         </div>
       </div>
+      <div class="comment-card">
+        <div class="comment-avatar">B</div>
+        <div class="comment-content">
+          <div class="comment-name">Burak Y.</div>
+          <div class="comment-text">Çok kısa sürede geldiler, sorunum çözüldü.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">S</div>
+        <div class="comment-content">
+          <div class="comment-name">Seda N.</div>
+          <div class="comment-text">Güler yüzlü ve profesyonel ekip, teşekkürler.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">K</div>
+        <div class="comment-content">
+          <div class="comment-name">Kemal R.</div>
+          <div class="comment-text">Fiyatlar makul, hizmet kaliteli.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">D</div>
+        <div class="comment-content">
+          <div class="comment-name">Derya U.</div>
+          <div class="comment-text">Sorunsuz bir servis deneyimi yaşadım.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">O</div>
+        <div class="comment-content">
+          <div class="comment-name">Onur C.</div>
+          <div class="comment-text">Teknik destek çok hızlıydı, memnun kaldım.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">F</div>
+        <div class="comment-content">
+          <div class="comment-name">Fatma L.</div>
+          <div class="comment-text">Cihazım ilk günkü gibi çalışıyor, teşekkürler.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">T</div>
+        <div class="comment-content">
+          <div class="comment-name">Tuncay P.</div>
+          <div class="comment-text">İşlerini titizlikle yapıyorlar, tavsiye ederim.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">G</div>
+        <div class="comment-content">
+          <div class="comment-name">Gizem S.</div>
+          <div class="comment-text">Randevu saatine tam zamanında geldiler.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">Y</div>
+        <div class="comment-content">
+          <div class="comment-name">Yusuf Z.</div>
+          <div class="comment-text">Her arızada ilk tercihim burası olacak.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">P</div>
+        <div class="comment-content">
+          <div class="comment-name">Pelin M.</div>
+          <div class="comment-text">Açıklayıcı bilgi verdiler, güven verdiler.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">C</div>
+        <div class="comment-content">
+          <div class="comment-name">Cemal E.</div>
+          <div class="comment-text">Yedek parça temini çok hızlıydı.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">N</div>
+        <div class="comment-content">
+          <div class="comment-name">Nurgül T.</div>
+          <div class="comment-text">İlgili ve çözüm odaklı bir ekip.</div>
+        </div>
+      </div>
     </div>
     <style>
       #customer-comments-section {
@@ -434,6 +518,9 @@
         display: flex;
         flex-direction: column;
         gap: 18px;
+        max-height: 520px; /* Show about 5 comments, adjust as needed */
+        overflow-y: auto;
+        padding-right: 8px;
       }
       .comment-card {
         display: flex;
