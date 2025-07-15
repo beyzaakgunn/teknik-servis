@@ -162,21 +162,87 @@
       .phone-link:hover svg {
         fill: #fff;
       }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 1100;
+      }
+      .hamburger span {
+        display: block;
+        width: 28px;
+        height: 4px;
+        margin: 4px 0;
+        background: #1976d2;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
       @media (max-width: 800px) {
         .header-inner {
-          flex-direction: column;
-          align-items: stretch;
-          padding: 0 8px;
-          height: auto;
+          flex-direction: row;
         }
         .nav-links {
+          display: none;
+          position: absolute;
+          top: 68px;
+          right: 0;
+          background: #fff;
           flex-direction: column;
-          gap: 6px;
+          width: 220px;
+          box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);
+          border-radius: 0 0 12px 12px;
+          padding: 12px 0;
+          z-index: 1099;
+          align-items: center;
         }
-        .phone-link {
-          margin-left: 0;
+        .nav-links.open {
+          display: flex;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .dropdown {
           width: 100%;
-          justify-content: center;
+          text-align: center;
+        }
+        .dropdown-content {
+          position: static;
+          min-width: unset;
+          width: 100%;
+          box-shadow: none;
+          border-radius: 0 0 12px 12px;
+          margin-top: 0;
+          opacity: 1;
+          transform: none;
+          pointer-events: auto;
+          background: #f8fafd;
+          padding: 0;
+        }
+        .dropdown-content a {
+          text-align: center;
+          padding: 12px 0;
+          width: 100%;
+          display: block;
+          font-size: 1.08em;
+        }
+        .call-now-navbar {
+          margin: 12px auto 8px auto !important;
+          display: block !important;
+          text-align: center !important;
+          width: 70% !important;
+          max-width: 180px;
+          font-size: 1em !important;
+          padding: 10px 0 !important;
+          align-self: center !important;
         }
       }
     </style>
@@ -186,8 +252,13 @@
           <img src="logo.png" alt="logo" class="logo-img">
           Beyaz Eşya Teknik Servisi
         </a>
+        <button class="hamburger" id="hamburger-menu" aria-label="Menüyü Aç/Kapat">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <div style="display: flex; align-items: center;">
-          <div class="nav-links">
+          <div class="nav-links" id="main-nav-links">
             <a href="index.html">Ana Sayfa</a>
             <div class="dropdown">
               <a href="hizmetlerimiz.html" class="active">Hizmetlerimiz</a>
@@ -204,11 +275,8 @@
             </div>
             <a href="hakkimizda.html">Hakkımızda</a>
             <a href="iletisim.html">İletişim</a>
+            <a href="tel:05321234567" class="phone-link call-now-navbar">Bizi Arayın</a>
           </div>
-          <a href="tel:05321234567" class="phone-link" id="navbar-phone-link">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 01.95-.24c1.04.28 2.16.44 3.32.44a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.16.16 2.28.44 3.32a1 1 0 01-.24.95l-2.2 2.2z"></path></svg>
-            Bizi Arayın
-          </a>
         </div>
       </div>
     </nav>
@@ -676,6 +744,12 @@
           }
         }
       });
+
+    // Hamburger menu toggle for mobile
+    document.getElementById('hamburger-menu').addEventListener('click', function() {
+      var navLinks = document.getElementById('main-nav-links');
+      navLinks.classList.toggle('open');
+    });
   </script>
 </body>
 </html>
