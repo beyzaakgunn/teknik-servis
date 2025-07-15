@@ -39,43 +39,54 @@
 <body>
   <header>
     <style>
+      nav {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        background: #e3eafc;
+        padding: 16px 36px;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        border-radius: 14px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+        margin: 18px auto 24px auto;
+        max-width: 1100px;
+      }
       nav a, .dropdown-content a, .phone-link {
         text-decoration: none;
-        color: rgb(51, 51, 51);
-        padding: 8px 12px;
-        transition: background-color 0.2s ease;
+        color: #222;
+        padding: 10px 16px;
+        transition: background 0.18s, color 0.18s, box-shadow 0.18s;
         display: inline-block;
+        font-weight: 500;
+        border-radius: 6px;
+        position: relative;
+      }
+      nav a.active, .footer-links a.active {
+        background: #e3eafc;
+        color: #1976d2;
+        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
       }
       nav a:hover,
       .dropdown-content a:hover,
       .phone-link:hover {
-        background-color: rgb(221, 221, 221);
-        border-radius: 4px;
+        background: #e3eafc;
+        color: #1976d2;
+        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
       }
-
       .logo {
         display: flex;
         align-items: center;
         font-weight: bold;
-        font-size: 18px;
-        color: rgb(51, 51, 51);
+        font-size: 20px;
+        color: #1976d2;
         text-decoration: none;
-        gap: 8px;
+        gap: 10px;
+        letter-spacing: 0.5px;
       }
       .logo-img {
-        height: 30px;
+        height: 34px;
         width: auto;
       }
-
-      nav {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-        background-color: rgb(245, 245, 245);
-        padding: 15px 30px;
-        font-family: sans-serif;
-      }
-
       .dropdown {
         position: relative;
         display: inline-block;
@@ -83,17 +94,38 @@
       .dropdown-content {
         display: none;
         position: absolute;
-        background-color: rgb(255, 255, 255);
-        min-width: 200px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        background: #fff;
+        min-width: 210px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.13);
         z-index: 100;
+        border-radius: 8px;
+        margin-top: 4px;
       }
       .dropdown:hover .dropdown-content {
         display: block;
       }
       .dropdown-content a {
         display: block;
-        color: rgb(0, 0, 0);
+        color: #222;
+        font-weight: 400;
+        padding: 10px 18px;
+        border-radius: 0;
+      }
+      .dropdown-content a:hover {
+        background: #e3eafc;
+        color: #1976d2;
+      }
+      @media (max-width: 800px) {
+        nav {
+          flex-direction: column;
+          gap: 10px;
+          padding: 12px 8px;
+          max-width: 98vw;
+        }
+        .nav-links {
+          flex-direction: column;
+          gap: 6px;
+        }
       }
     </style>
     <div class="header-inner">
@@ -133,32 +165,195 @@
       <h2 id="hizmetler-baslik">Hizmet</h2>
     </section>
   </main>
-  <section class="customer-comments" style="max-width:700px;margin:40px auto 0;padding:24px 16px;background:#f8f8f8;border-radius:8px;box-shadow:0 2px 8px #0001;">
-    <h2 style="text-align:center;margin-bottom:20px;">Müşteri Yorumları</h2>
-    <ul style="list-style:none;padding:0;">
-      <li style="margin-bottom:16px;">"Servis çok hızlı ve güvenilirdi, teşekkürler!"</li>
-      <li style="margin-bottom:16px;">"Uygun fiyat ve kaliteli hizmet aldım."</li>
-      <li style="margin-bottom:16px;">"Teknisyenler çok ilgili ve çözüm odaklıydı."</li>
-      <li style="margin-bottom:16px;">"Arızalı makinem aynı gün tamir edildi."</li>
-      <li style="margin-bottom:16px;">"Herkese tavsiye ederim, memnun kaldım."</li>
-      <li style="margin-bottom:16px;">"İletişim çok kolaydı, hemen geri dönüş sağladılar."</li>
-      <li style="margin-bottom:16px;">"Parça değişimi hızlı ve sorunsuz gerçekleşti."</li>
-      <li style="margin-bottom:16px;">"Temiz ve titiz bir çalışma yapıldı."</li>
-      <li style="margin-bottom:16px;">"Beklediğimden daha iyi bir hizmet aldım."</li>
-      <li style="margin-bottom:16px;">"Güvenilir ve profesyonel bir ekip."</li>
-      <li style="margin-bottom:16px;">"Sorunum kısa sürede çözüldü, teşekkürler."</li>
-      <li style="margin-bottom:16px;">"Tekrar bir sorun yaşarsam yine tercih ederim."</li>
-    </ul>
+  <section id="customer-comments-section">
+    <h2 class="comments-title">Müşteri Yorumları</h2>
+    <div id="comments-list">
+      <div class="comment-card">
+        <div class="comment-avatar">A</div>
+        <div class="comment-content">
+          <div class="comment-name">Ayşe K.</div>
+          <div class="comment-text">Servis çok hızlı ve güvenilirdi, teşekkürler!</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">M</div>
+        <div class="comment-content">
+          <div class="comment-name">Mehmet T.</div>
+          <div class="comment-text">Uygun fiyat ve kaliteli hizmet aldım.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">Z</div>
+        <div class="comment-content">
+          <div class="comment-name">Zeynep B.</div>
+          <div class="comment-text">Teknisyenler çok ilgili ve çözüm odaklıydı.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">A</div>
+        <div class="comment-content">
+          <div class="comment-name">Ali S.</div>
+          <div class="comment-text">Arızalı makinem aynı gün tamir edildi.</div>
+        </div>
+      </div>
+      <div class="comment-card">
+        <div class="comment-avatar">E</div>
+        <div class="comment-content">
+          <div class="comment-name">Elif D.</div>
+          <div class="comment-text">Herkese tavsiye ederim, memnun kaldım.</div>
+        </div>
+      </div>
+    </div>
+    <style>
+      #customer-comments-section {
+        max-width: 700px;
+        margin: 40px auto 0;
+        padding: 24px 16px 32px 16px;
+        background: #e3eafc;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        font-family: 'Segoe UI', Arial, sans-serif;
+      }
+      .comments-title {
+        text-align: center;
+        margin-bottom: 24px;
+        font-size: 1.6em;
+        color: #333;
+      }
+      #comments-list {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .comment-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 1px 4px #0001;
+        padding: 14px 16px;
+        animation: fadeIn 0.4s;
+      }
+      .comment-avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #e3e3e3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #1976d2;
+        font-size: 1.2em;
+        flex-shrink: 0;
+      }
+      .comment-content {
+        flex: 1;
+      }
+      .comment-name {
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 2px;
+      }
+      .comment-text {
+        color: #444;
+        margin-bottom: 0;
+        word-break: break-word;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
   </section>
   <footer class="site-footer">
+    <style>
+      .site-footer {
+        background: rgb(247, 247, 250);
+        color: rgb(34, 34, 34);
+        padding: 24px 0 0 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin-top: 32px;
+        border-top: 1px solid rgb(224, 224, 224);
+      }
+      .footer-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        align-items: center;
+      }
+      .footer-top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        width: 100%;
+      }
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        width: 100%;
+      }
+      .footer-links a {
+        color: rgb(34, 34, 34);
+        text-decoration: none;
+        font-size: 1em;
+        transition: color 0.2s;
+        opacity: 0.85;
+        padding: 2px 6px;
+      }
+      .footer-links a:hover {
+        color: rgb(25, 118, 210);
+        opacity: 1;
+      }
+      .footer-divider {
+        border-top: 1px solid rgb(224, 224, 224);
+        margin: 12px 0 0 0;
+        width: 100%;
+      }
+      .footer-info {
+        text-align: center;
+        font-size: 0.97em;
+        color: rgb(85, 85, 85);
+        margin: 10px 0 0 0;
+        width: 100%;
+      }
+      .footer-info strong {
+        color: rgb(25, 118, 210);
+      }
+      .copyright {
+        margin-top: 4px;
+        font-size: 0.93em;
+        color: rgb(136, 136, 136);
+      }
+      @media (max-width: 700px) {
+        .footer-content, .footer-top {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+        .footer-links {
+          gap: 8px;
+        }
+      }
+    </style>
     <div class="footer-content">
-      <div class="footer-links">
-        <a href="index.html">Ana Sayfa</a>
-        <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
-        <a href="hakkimizda.html">Hakkımızda</a>
-        <a href="iletisim.html">İletişim</a>
-        <a href="gizlilik.html">Gizlilik Politikası</a>
-        <a href="kvkk.html">KVKK</a>
+      <div class="footer-top">
+        <div class="footer-links">
+          <a href="index.html">Ana Sayfa</a>
+          <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
+          <a href="hakkimizda.html">Hakkımızda</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="gizlilik.html">Gizlilik Politikası</a>
+          <a href="kvkk.html">KVKK</a>
+        </div>
       </div>
       <div class="footer-divider"></div>
       <div class="footer-info">
