@@ -38,6 +38,11 @@
         padding: 0;
         margin: 0;
         font-family: 'Segoe UI', Arial, sans-serif;
+        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.04);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
       }
       .header-inner {
         max-width: 1200px;
@@ -45,9 +50,14 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 32px;
+        padding: 0 32px 0 8px;
         height: 68px;
         width: 100%;
+      }
+      .nav-links {
+        display: flex;
+        gap: 16px;
+        align-items: center;
       }
       nav a, .dropdown-content a, .phone-link {
         text-decoration: none;
@@ -58,11 +68,6 @@
         font-weight: 500;
         border-radius: 6px;
         position: relative;
-      }
-      .nav-links {
-        display: flex;
-        gap: 16px;
-        align-items: center;
       }
       nav a.active, .footer-links a.active {
         background: #e3eafc;
@@ -128,17 +133,31 @@
       }
       .phone-link {
         margin-left: 28px;
-      }
-      .phone-link svg {
-        width: 18px;
-        height: 18px;
-        fill: #1976d2;
-        margin-right: 2px;
-      }
-      .phone-link:hover {
         background: #1976d2;
         color: #fff !important;
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 12px 22px;
         box-shadow: 0 2px 12px rgba(25, 118, 210, 0.13);
+        font-size: 1.08em;
+        letter-spacing: 0.5px;
+        transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.12s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .phone-link svg {
+        width: 20px;
+        height: 20px;
+        fill: #fff;
+        margin-right: 4px;
+        transition: fill 0.18s;
+      }
+      .phone-link:hover {
+        background: #1251a3;
+        color: #fff !important;
+        box-shadow: 0 4px 18px rgba(25, 118, 210, 0.18);
+        transform: translateY(-2px) scale(1.04);
       }
       .phone-link:hover svg {
         fill: #fff;
@@ -161,40 +180,38 @@
         }
       }
     </style>
-    <div class="header-inner">
-      <nav>
-        <div class="header-inner">
-          <a href="index.html" class="logo">
-            <img src="logo.png" alt="logo" class="logo-img">
-            Beyaz Eşya Teknik Servisi
-          </a>
-          <div style="display: flex; align-items: center;">
-            <div class="nav-links">
-              <a href="index.html">Ana Sayfa</a>
-              <div class="dropdown">
-                <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
-                <div class="dropdown-content">
-                  <a href="hizmet.html?service=Beyaz+Eşya+Servisi">Beyaz Eşya Servisi</a>
-                  <a href="hizmet.html?service=Buzdolabı">Buzdolabı</a>
-                  <a href="hizmet.html?service=Çamaşır+Makinesi">Çamaşır Makinesi</a>
-                  <a href="hizmet.html?service=Bulaşık+Makinesi">Bulaşık Makinesi</a>
-                  <a href="hizmet.html?service=Fırın">Fırın</a>
-                  <a href="hizmet.html?service=Klima">Klima</a>
-                  <a href="hizmet.html?service=Kombi">Kombi</a>
-                  <a href="hizmet.html?service=Televizyon">Televizyon</a>
-                </div>
+    <nav>
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <img src="logo.png" alt="logo" class="logo-img">
+          Beyaz Eşya Teknik Servisi
+        </a>
+        <div style="display: flex; align-items: center;">
+          <div class="nav-links">
+            <a href="index.html">Ana Sayfa</a>
+            <div class="dropdown">
+              <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
+              <div class="dropdown-content">
+                <a href="hizmet.html?service=Beyaz+Eşya+Servisi">Beyaz Eşya Servisi</a>
+                <a href="hizmet.html?service=Buzdolabı">Buzdolabı</a>
+                <a href="hizmet.html?service=Çamaşır+Makinesi">Çamaşır Makinesi</a>
+                <a href="hizmet.html?service=Bulaşık+Makinesi">Bulaşık Makinesi</a>
+                <a href="hizmet.html?service=Fırın">Fırın</a>
+                <a href="hizmet.html?service=Klima">Klima</a>
+                <a href="hizmet.html?service=Kombi">Kombi</a>
+                <a href="hizmet.html?service=Televizyon">Televizyon</a>
               </div>
-              <a href="hakkimizda.html">Hakkımızda</a>
-              <a href="iletisim.html">İletişim</a>
             </div>
-            <a href="tel:05321234567" class="phone-link" id="navbar-phone-link">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 01.95-.24c1.04.28 2.16.44 3.32.44a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.16.16 2.28.44 3.32a1 1 0 01-.24.95l-2.2 2.2z"></path></svg>
-              Bizi Arayın
-            </a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <a href="iletisim.html" class="active">İletişim</a>
           </div>
+          <a href="tel:05321234567" class="phone-link" id="navbar-phone-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 01.95-.24c1.04.28 2.16.44 3.32.44a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.16.16 2.28.44 3.32a1 1 0 01-.24.95l-2.2 2.2z"></path></svg>
+            Bizi Arayın
+          </a>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   </header>
   <main>
     <style>
@@ -205,6 +222,7 @@
         background: #f8fafd;
         border-radius: 14px;
         box-shadow: 0 2px 12px rgba(25, 118, 210, 0.04);
+        padding-top: 68px;
       }
       main h1 {
         font-size: 2.2em;
