@@ -165,11 +165,61 @@
     </div>
   </header>
   <main>
+    <style>
+      main {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 32px 18px 18px 18px;
+        background: #f8fafd;
+        border-radius: 14px;
+        box-shadow: 0 2px 12px rgba(25, 118, 210, 0.04);
+      }
+      main h1, main h2 {
+        font-size: 2.2em;
+        font-weight: 800;
+        color: #1976d2;
+        margin-bottom: 22px;
+        letter-spacing: 0.5px;
+        text-align: center;
+        text-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
+      }
+      main p {
+        font-size: 1.18em;
+        line-height: 1.7;
+        color: #2a2a2a;
+        background: #fff;
+        border-left: 4px solid #e3eafc;
+        border-radius: 7px;
+        padding: 16px 18px;
+        margin-bottom: 18px;
+        box-shadow: 0 1px 6px rgba(25, 118, 210, 0.04);
+        transition: box-shadow 0.2s;
+      }
+      main p strong {
+        color: #1976d2;
+      }
+      main p:hover {
+        box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+      }
+      @media (max-width: 800px) {
+        main {
+          padding: 14px 2vw 10px 2vw;
+        }
+        main h1, main h2 {
+          font-size: 1.3em;
+        }
+        main p {
+          font-size: 1em;
+          padding: 12px 8px;
+        }
+      }
+    </style>
     <section>
       <h2 id="hizmetler-baslik">Hizmet</h2>
+      <br>
     </section>
+    <section id="service-content" style="max-width:1300px;margin:32px auto 0 auto;"></section>
   </main>
-  <div id="service-content" style="max-width:700px;margin:32px auto 0 auto;"></div>
   <section id="customer-comments-section">
     <h2 class="comments-title">Müşteri Yorumları</h2>
     <div id="comments-list">

@@ -150,9 +150,60 @@
     </div>
   </header>
   <main>
+    <style>
+      main {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 32px 18px 18px 18px;
+        background: #f8fafd;
+        border-radius: 14px;
+        box-shadow: 0 2px 12px rgba(25, 118, 210, 0.04);
+      }
+      main h1 {
+        font-size: 2.2em;
+        font-weight: 800;
+        color: #1976d2;
+        margin-bottom: 22px;
+        letter-spacing: 0.5px;
+        text-align: center;
+        text-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
+      }
+      main p {
+        font-size: 1.18em;
+        line-height: 1.7;
+        color: #2a2a2a;
+        background: #fff;
+        border-left: 4px solid #e3eafc;
+        border-radius: 7px;
+        padding: 16px 18px;
+        margin-bottom: 18px;
+        box-shadow: 0 1px 6px rgba(25, 118, 210, 0.04);
+        transition: box-shadow 0.2s;
+      }
+      main p strong {
+        color: #1976d2;
+      }
+      main p:hover {
+        box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+      }
+      @media (max-width: 800px) {
+        main {
+          padding: 14px 2vw 10px 2vw;
+        }
+        main h1 {
+          font-size: 1.3em;
+        }
+        main p {
+          font-size: 1em;
+          padding: 12px 8px;
+        }
+      }
+    </style>
+    <h1>Hizmetlerimiz</h1>
+    <br>
     <p>Beyaz Eşya Teknik Servisi olarak, buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, klima, kombi ve televizyon gibi garantisi bitmiş ev aletleriniz için yerinde tamir, bakım ve arıza tespiti hizmetleri sunuyoruz. Deneyimli teknisyen kadromuzla hızlı, güvenilir ve ekonomik çözümler üretiyor, cihazlarınızı en kısa sürede sorunsuz şekilde çalışır hale getiriyoruz.</p>
     <section class="services-section">
-      <h1 class="services-title">Hizmetlerimiz</h1>
+      
       <div class="services-grid">
         <a class="service-card" href="hizmet.html?service=Beyaz+Eşya+Servisi">
           <div class="service-name">Beyaz Eşya Servisi</div>
