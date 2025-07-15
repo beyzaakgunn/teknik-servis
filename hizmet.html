@@ -6,33 +6,40 @@
   <meta id="meta-description" name="description" content="" />
   <title id="dynamic-title">Hizmet</title>
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const service = params.get("service");
+    document.addEventListener("DOMContentLoaded", function () {
+      const params = new URLSearchParams(window.location.search);
+      const service = params.get("service");
   
-    if (service) {
-      const titleText = `${service} Servisi | Beyaz Eşya Servisi`;
-      const descText = `${service} için garantisiz cihazlara tamir, bakım ve arıza servisi. Yerinde teknik destek, hızlı çözüm, uygun fiyat.`;
-
-      document.title = titleText;
-
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute("content", descText);
+      const serviceContents = {
+        "Buzdolabı": `<p>Buzdolabınız soğutmuyorsa, sesli çalışıyorsa veya su sızdırıyorsa yerinde servisimizle hızlı ve garantisiz müdahale sağlıyoruz. Gıda güvenliğinizi riske atmadan, uzman teknisyenlerimizle sorunu kalıcı şekilde çözüyoruz.</p>`,
+        "Çamaşır Makinesi": `<p>Makineniz su almıyor, dönmüyor ya da sıkmıyorsa uzman ekibimizle yerinde bakım ve onarım sağlıyoruz. Yıkama performansını geri kazandırmak için garantisi bitmiş cihazlara özel çözümler üretiyoruz.</p>`,
+        "Bulaşık Makinesi": `<p>Yıkama performansında düşüş, su boşaltmama ya da sesli çalışma gibi problemler için uzman müdahale sağlıyoruz. Uygun fiyatlarla garantisiz bulaşık makinesi servis hizmeti sunuyoruz.</p>`,
+        "Fırın": `<p>Fırın ısınmıyor, sıcaklık dalgalanıyor ya da kontrol paneli çalışmıyorsa ankastre ve solo fırınlara uzman müdahale sunuyoruz. Yemeklerinizin lezzeti bozulmasın diye hızlıca çözüm üretiyoruz.</p>`,
+        "Klima": `<p>Soğutmuyor, kötü koku yayıyor ya da çalışmıyorsa klimaya yerinde müdahale ediyoruz. Yaz aylarında ferahlık için cihazınızı sorunsuz hale getiriyoruz.</p>`,
+        "Kombi": `<p>Petekler ısınmıyor, su gelmiyor ya da ateşleme yapmıyorsa uzman teknisyenlerimizle müdahale ediyoruz. Kış gelmeden kombi sorunlarınızı çözmek için yanınızdayız.</p>`,
+        "Televizyon": `<p>Görüntü gelmiyor, ses yok ya da televizyon açılmıyorsa cihazınızı yerinde kontrol ederek uygun müdahaleyi sağlıyoruz. Ekran keyfiniz yarım kalmasın.</p>`
+      };
   
-      const hizmetBaslik = document.getElementById("hizmet-baslik");
-      if (hizmetBaslik) hizmetBaslik.innerText = service;
+      if (service) {
+        const titleText = `${service} Servisi | Beyaz Eşya Servisi`;
+        const descText = `${service} için garantisiz cihazlara tamir, bakım ve arıza servisi. Yerinde teknik destek, hızlı çözüm, uygun fiyat.`;
   
-      const hizmetAciklama = document.getElementById("hizmet-aciklama");
-      if (hizmetAciklama)
-        hizmetAciklama.innerText = `${service} cihazları için tamir, bakım ve arıza giderme hizmeti sunuyoruz.`;
-      
-      const hizmetIcerik = document.getElementById("hizmet-icerik");
-      if (hizmetIcerik)
-        hizmetIcerik.innerText = `${service} cihazınız arızalandığında uzman teknisyenlerimiz yerinde servis imkanı ile çözüm sunar. Uygun fiyat ve hızlı servis anlayışı ile müşteri memnuniyetini ön planda tutuyoruz.`;
+        document.title = titleText;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute("content", descText);
   
-      const hizmetlerBaslik = document.getElementById("hizmetler-baslik");
-      if (hizmetlerBaslik)
-        hizmetlerBaslik.innerText = `${service} Hizmetleri`;
-    }
+        const hizmetBaslik = document.getElementById("hizmet-baslik");
+        const hizmetlerBaslik = document.getElementById("hizmetler-baslik");
+        const serviceContent = document.getElementById("service-content");
+  
+        if (hizmetBaslik) hizmetBaslik.innerText = service;
+        if (hizmetlerBaslik) hizmetlerBaslik.innerText = `${service} Hizmetleri`;
+  
+  
+        const icerik = serviceContents[service] || `<p>${service} cihazınız arızalandığında uzman teknisyenlerimiz yerinde servis imkanı ile çözüm sunar. Uygun fiyat ve hızlı servis anlayışı ile müşteri memnuniyetini ön planda tutuyoruz.</p>`;
+        if (serviceContent) serviceContent.innerHTML = icerik;
+      }
+    });
   </script>
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 </head>
@@ -159,12 +166,10 @@
   </header>
   <main>
     <section>
-      <h1 id="hizmet-baslik">Hizmet</h1>
-      <p id="hizmet-aciklama">Açıklama yükleniyor...</p>
-      <p id="hizmet-icerik">İçerik yükleniyor...</p>
       <h2 id="hizmetler-baslik">Hizmet</h2>
     </section>
   </main>
+  <div id="service-content" style="max-width:700px;margin:32px auto 0 auto;"></div>
   <section id="customer-comments-section">
     <h2 class="comments-title">Müşteri Yorumları</h2>
     <div id="comments-list">
