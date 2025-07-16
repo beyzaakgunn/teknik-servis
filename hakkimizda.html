@@ -275,7 +275,7 @@
             </div>
             <a href="hakkimizda.html" class="active">Hakkımızda</a>
             <a href="iletisim.html">İletişim</a>
-            <a href="tel:05321234567" class="phone-link call-now-navbar">Bizi Arayın</a>
+            <a href="tel:05551112233" class="phone-link call-now-navbar">Bizi Arayın</a>
           </div>
         </div>
       </div>
@@ -300,6 +300,63 @@
         letter-spacing: 0.5px;
         text-align: center;
         text-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
+      }
+      .main-action-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 18px;
+        gap: 0;
+      }
+      .main-action-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 24px;
+        width: 100%;
+      }
+      main h3 {
+        font-size: 1.6em;
+        font-weight: 700;
+        color: #0b4a8a;
+        margin: 0;
+        letter-spacing: 0.2px;
+        text-align: center;
+      }
+      .call-now-btn {
+        display: block;
+        font-size: 2em;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        padding: 16px 0;
+        width: 440px;
+        max-width: 98vw;
+        background: linear-gradient(90deg, #7effa9 0%, #38f9d7 50%, #79bcff 100%);
+        color: #fff;
+        border: none;
+        border-radius: 32px;
+        box-shadow: 0 8px 32px rgba(25, 118, 210, 0.18), 0 0 16px 2px rgba(67, 233, 123, 0.10);
+        cursor: pointer;
+        margin: 0 auto 0 auto;
+        transition: background 0.18s, box-shadow 0.18s, transform 0.12s, filter 0.18s;
+        text-align: center;
+        text-decoration: none;
+        filter: brightness(1.03) saturate(1.1);
+      }
+      .call-now-btn:hover {
+        background: #0b4a8a;
+        box-shadow: 0 6px 24px rgba(25, 118, 210, 0.18);
+        transform: translateY(-2px) scale(1.04);
+      }
+      @media (max-width: 600px) {
+        .call-now-btn {
+          font-size: 1.1em;
+          padding: 10px 0;
+          width: 95vw;
+          border-radius: 18px;
+        }
       }
       main p {
         font-size: 1.18em;
@@ -332,7 +389,13 @@
         }
       }
     </style>
-    <h1 style="color: #0b4a8a;">Hakkımızda</h1>
+    <h1 style="color: #0b4a8a; border-bottom:2px solid #e3eafc; padding-bottom:10px; margin-bottom:22px;">Hakkımızda</h1>
+    <div class="main-action-row">
+      <div class="main-action-title">
+        <h3>Teknik Servise İhtiyacınız mı var?</h3>
+      </div>
+      <a href="tel:05551112233" class="call-now-btn">BİZİ ARAYIN</a>
+    </div>
     <br>
     <p>Beyaz Eşya Teknik Servisi, garantisi bitmiş beyaz eşya cihazları için yerinde, hızlı ve güvenilir teknik destek sunmak amacıyla kurulmuştur. Müşteri memnuniyetini ön planda tutan hizmet anlayışımızla, yıllardır yüzlerce haneye çözümler sunduk. Uzman teknisyen kadromuz, buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, klima, kombi ve televizyon gibi evlerde en sık kullanılan cihazların bakım ve onarımı konusunda deneyimlidir. Arıza tespiti, parça değişimi, temizlik ve periyodik bakım gibi işlemler profesyonel ekiplerimiz tarafından titizlikle gerçekleştirilir. Her biri alanında eğitimli ekip arkadaşlarımız, teknolojiyi ve yenilikleri yakından takip eder. Amacımız, cihazlarınızı en kısa sürede sorunsuz şekilde çalışır hale getirirken, sizin konforunuzu ve zamanınızı da korumaktır. Beyaz eşyalarınızda yaşadığınız her sorunda yanınızda olmak için buradayız. Güvenilir hizmet, uygun fiyat politikası ve kalıcı çözümler ile sizi yormadan işlerimizi tamamlıyoruz. Hedefimiz, sadece arızayı gidermek değil, aynı zamanda güvenilir bir teknik servis partneri olarak uzun vadeli memnuniyet sağlamaktır.</p>
   </main>
