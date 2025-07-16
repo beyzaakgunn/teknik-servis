@@ -6,6 +6,102 @@
   <meta name="description" content="İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz." />
   <meta property="og:title" content="Beyaz Eşya Teknik Servisi" />
   <meta property="og:description" content="Garantisi bitmiş beyaz eşyalar için yerinde teknik servis, hızlı müdahale, uzman ekip ve güvenilir çözümler sunuyoruz. Aynı gün içinde kaliteli servis hizmetiyle tanışın." />
+  <!-- Open Graph & Twitter Card -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://beyazesyaservisi.com/" />
+  <meta property="og:image" content="https://beyazesyaservisi.com/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Beyaz Eşya Teknik Servisi" />
+  <meta name="twitter:description" content="İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz." />
+  <meta name="twitter:image" content="https://beyazesyaservisi.com/logo.png" />
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json" id="local-business-schema">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Beyaz Eşya Teknik Servisi",
+    "image": "https://beyazesyaservisi.com/logo.png",
+    "telephone": "+905551112233",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "İstanbul",
+      "addressCountry": "TR"
+    },
+    "url": "https://beyazesyaservisi.com/",
+    "priceRange": "₺₺",
+    "description": "İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Ana Sayfa",
+        "item": "https://beyazesyaservisi.com/"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Servis süresi ne kadar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aynı gün içinde servis hizmeti sunuyoruz."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hangi cihazlara servis veriyorsunuz?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, klima, kombi ve televizyon gibi beyaz eşyalara servis veriyoruz."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Beyaz Eşya Teknik Servisi",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "17"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": "Ayşe K.",
+        "reviewBody": "Servis çok hızlı ve güvenilirdi, teşekkürler!",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": "Mehmet T.",
+        "reviewBody": "Uygun fiyat ve kaliteli hizmet aldım.",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": "Zeynep B.",
+        "reviewBody": "Teknisyenler çok ilgili ve çözüm odaklıydı.",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+      }
+    ]
+  }
+  </script>
   <title>Beyaz Eşya Teknik Servisi | Aynı Gün Destek</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.ico">
@@ -26,6 +122,14 @@
       const ogDesc = document.querySelector('meta[property="og:description"]');
       if (ogTitle) ogTitle.setAttribute("content", titleText);
       if (ogDesc) ogDesc.setAttribute("content", descText);
+      // Dynamically update LocalBusiness schema name/description for service pages
+      const localBusinessSchema = document.getElementById('local-business-schema');
+      if (localBusinessSchema) {
+        let schema = JSON.parse(localBusinessSchema.textContent);
+        schema.name = `${service} Servisi`;
+        schema.description = `${service} için garantisiz cihazlara yerinde tamir, bakım ve arıza servis hizmeti.`;
+        localBusinessSchema.textContent = JSON.stringify(schema, null, 2);
+      }
     }
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
