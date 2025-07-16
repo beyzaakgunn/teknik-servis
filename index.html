@@ -6,7 +6,6 @@
   <meta name="description" content="İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz." />
   <meta property="og:title" content="Beyaz Eşya Teknik Servisi" />
   <meta property="og:description" content="Garantisi bitmiş beyaz eşyalar için yerinde teknik servis, hızlı müdahale, uzman ekip ve güvenilir çözümler sunuyoruz. Aynı gün içinde kaliteli servis hizmetiyle tanışın." />
-  <!-- Open Graph & Twitter Card -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://beyazesyaservisi.com/" />
   <meta property="og:image" content="https://beyazesyaservisi.com/logo.png" />
@@ -14,7 +13,6 @@
   <meta name="twitter:title" content="Beyaz Eşya Teknik Servisi" />
   <meta name="twitter:description" content="İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz." />
   <meta name="twitter:image" content="https://beyazesyaservisi.com/logo.png" />
-  <!-- Schema.org Structured Data -->
   <script type="application/ld+json" id="local-business-schema">
   {
     "@context": "https://schema.org",
@@ -104,8 +102,10 @@
   </script>
   <title>Beyaz Eşya Teknik Servisi | Aynı Gün Destek</title>
   <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.ico">
   <script>
     const params = new URLSearchParams(window.location.search);
     const service = params.get("service");
@@ -123,7 +123,6 @@
       const ogDesc = document.querySelector('meta[property="og:description"]');
       if (ogTitle) ogTitle.setAttribute("content", titleText);
       if (ogDesc) ogDesc.setAttribute("content", descText);
-      // Dynamically update LocalBusiness schema name/description for service pages
       const localBusinessSchema = document.getElementById('local-business-schema');
       if (localBusinessSchema) {
         let schema = JSON.parse(localBusinessSchema.textContent);
@@ -168,7 +167,7 @@
       }
       nav a, .dropdown-content a, .phone-link {
         text-decoration: none;
-        color: #111; /* CONTRAST: very dark text for nav links */
+        color: #111; 
         padding: 10px 16px;
         transition: background 0.18s, color 0.18s, box-shadow 0.18s;
         display: inline-block;
@@ -178,7 +177,7 @@
       }
       nav a.active, .footer-links a.active {
         background: #e3eafc;
-        color: #0b2a5a; /* CONTRAST: dark blue for active */
+        color: #0b2a5a; 
         box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
       }
       nav a:hover,
@@ -193,7 +192,7 @@
         align-items: center;
         font-weight: 700;
         font-size: 1.25em;
-        color: #0b2a5a; /* CONTRAST: dark blue for logo */
+        color: #0b2a5a; 
         text-decoration: none;
         gap: 10px;
         letter-spacing: 0.5px;
@@ -229,7 +228,7 @@
       }
       .dropdown-content a {
         display: block;
-        color: #111; /* CONTRAST: very dark text for dropdown */
+        color: #111; 
         font-weight: 400;
         padding: 10px 18px;
         border-radius: 0;
@@ -262,7 +261,7 @@
         transition: fill 0.18s;
       }
       .phone-link:hover {
-        background: #0b2a5a; /* CONTRAST: dark blue for hover */
+        background: #0b2a5a; 
         color: #fff !important;
         box-shadow: 0 4px 18px rgba(25, 118, 210, 0.18);
         transform: translateY(-2px) scale(1.04);
@@ -672,7 +671,6 @@
           <div class="comment-text">İlgili ve çözüm odaklı bir ekip.</div>
         </div>
       </div>
-      <!-- 12 new customer comments end here -->
     </div>
     <style>
       #customer-comments-section {
@@ -695,7 +693,7 @@
         display: flex;
         flex-direction: column;
         gap: 18px;
-        max-height: 520px; /* Show about 5 comments, adjust as needed */
+        max-height: 520px;
         overflow-y: auto;
         padding-right: 8px;
       }
@@ -749,6 +747,7 @@
         padding: 24px 0 0 0;
         font-family: 'Segoe UI', Arial, sans-serif;
         margin-top: 32px;
+        margin-bottom: 32px;
         border-top: 1px solid rgb(224, 224, 224);
       }
       .footer-content {
@@ -842,15 +841,13 @@
     </section>
   </footer>
   <script>
-    // Dynamically fetch phone number from iletisim.html and update the navbar phone link
     fetch('iletisim.html')
       .then(response => response.text())
       .then(html => {
-        // Try to find a phone number in the HTML (simple regex for Turkish mobile numbers)
         const match = html.match(/(?:\+90\s?)?0?5\d{2}[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}/);
         if (match) {
           const phone = match[0].replace(/\D/g, '');
-          const formatted = '+90' + phone.slice(-10); // Always use +90 and last 10 digits
+          const formatted = '+90' + phone.slice(-10);
           const link = document.getElementById('navbar-phone-link');
           if (link) {
             link.setAttribute('href', 'tel:' + formatted);
@@ -859,13 +856,11 @@
         }
       });
 
-    // Hamburger menu toggle for mobile
     document.getElementById('hamburger-menu').addEventListener('click', function() {
       var navLinks = document.getElementById('main-nav-links');
       navLinks.classList.toggle('open');
     });
 
-    // Fetch config.json and set social media links in the footer
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
