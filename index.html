@@ -27,6 +27,7 @@
       if (ogDesc) ogDesc.setAttribute("content", descText);
     }
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <header>
@@ -728,6 +729,11 @@
         <p class="copyright">&copy; 2025 Beyaz Eşya Servisi. Tüm hakları saklıdır.</p>
       </div>
     </div>
+    <section class="footer-socials-custom" style="margin: 10px 0; text-align: center;">
+      <a id="footer-facebook" href="#" aria-label="Facebook" target="_blank" style="margin: 0 8px; color: #4267B2;"><i class="fab fa-facebook-f fa-lg"></i></a>
+      <a id="footer-instagram" href="#" aria-label="Instagram" target="_blank" style="margin: 0 8px; color: #E1306C;"><i class="fab fa-instagram fa-lg"></i></a>
+      <a id="footer-twitter" href="#" aria-label="Twitter" target="_blank" style="margin: 0 8px; color: #1DA1F2;"><i class="fab fa-twitter fa-lg"></i></a>
+    </section>
   </footer>
   <script>
     // Dynamically fetch phone number from iletisim.html and update the navbar phone link
@@ -752,6 +758,18 @@
       var navLinks = document.getElementById('main-nav-links');
       navLinks.classList.toggle('open');
     });
+
+    // Fetch config.json and set social media links in the footer
+    fetch('config.json')
+      .then(response => response.json())
+      .then(config => {
+        if (config.email) {
+          const username = config.email.split('@')[0];
+          document.getElementById('footer-facebook').href = 'https://facebook.com/' + username;
+          document.getElementById('footer-instagram').href = 'https://instagram.com/' + username;
+          document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
+        }
+      });
   </script>
 </body>
 </html>
