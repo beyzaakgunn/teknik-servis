@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta id="meta-description" name="description" content="" />
-  <title id="dynamic-title">Hizmet</title>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="description" content="İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz." />
+  <meta property="og:title" content="Beyaz Eşya Teknik Servisi" />
+  <meta property="og:description" content="Garantisi bitmiş beyaz eşyalar için yerinde teknik servis, hızlı müdahale, uzman ekip ve güvenilir çözümler sunuyoruz. Aynı gün içinde kaliteli servis hizmetiyle tanışın." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://beyazesyaservisi.com/hizmet.html" />
+  <meta property="og:url" content="https://beyazesyaservisi.com/" />
   <meta property="og:image" content="https://beyazesyaservisi.com/logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Hizmet - Beyaz Eşya Teknik Servisi" />
-  <meta name="twitter:description" content="Garantisi bitmiş beyaz eşyalar için teknik servis hizmeti." />
+  <meta name="twitter:title" content="Beyaz Eşya Teknik Servisi" />
+  <meta name="twitter:description" content="İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz." />
   <meta name="twitter:image" content="https://beyazesyaservisi.com/logo.png" />
   <script type="application/ld+json" id="local-business-schema">
   {
@@ -32,7 +30,7 @@
     "description": "İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz."
   }
   </script>
-  <script type="application/ld+json" id="breadcrumb-schema">
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -42,26 +40,80 @@
         "position": 1,
         "name": "Ana Sayfa",
         "item": "https://beyazesyaservisi.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Hizmetlerimiz",
-        "item": "https://beyazesyaservisi.com/hizmetlerimiz.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Hizmet",
-        "item": "https://beyazesyaservisi.com/hizmet.html"
       }
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Servis süresi ne kadar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aynı gün içinde servis hizmeti sunuyoruz."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hangi cihazlara servis veriyorsunuz?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, klima, kombi ve televizyon gibi beyaz eşyalara servis veriyoruz."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Beyaz Eşya Teknik Servisi",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "17"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": "Ayşe K.",
+        "reviewBody": "Servis çok hızlı ve güvenilirdi, teşekkürler!",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": "Mehmet T.",
+        "reviewBody": "Uygun fiyat ve kaliteli hizmet aldım.",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": "Zeynep B.",
+        "reviewBody": "Teknisyenler çok ilgili ve çözüm odaklıydı.",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+      }
+    ]
+  }
+  </script>
+  <title>Beyaz Eşya Teknik Servisi | Aynı Gün Destek</title>
   <script>
     const params = new URLSearchParams(window.location.search);
     const service = params.get("service");
     if (service) {
+      const titleText = `${service} Servisi | Aynı Gün Teknik Destek`;
+      const descText = `${service} için garantisiz cihazlara yerinde tamir, bakım ve arıza servis hizmeti. Hemen servis al, uzman çözümle tanış.`;
+      document.title = titleText;
+      const descTag = document.querySelector('meta[name="description"]');
+      if (descTag) descTag.setAttribute("content", descText);
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogTitle) ogTitle.setAttribute("content", titleText);
+      if (ogDesc) ogDesc.setAttribute("content", descText);
       const localBusinessSchema = document.getElementById('local-business-schema');
       if (localBusinessSchema) {
         let schema = JSON.parse(localBusinessSchema.textContent);
@@ -69,17 +121,27 @@
         schema.description = `${service} için garantisiz cihazlara yerinde tamir, bakım ve arıza servis hizmeti.`;
         localBusinessSchema.textContent = JSON.stringify(schema, null, 2);
       }
-      const breadcrumbSchema = document.getElementById('breadcrumb-schema');
-      if (breadcrumbSchema) {
-        let schema = JSON.parse(breadcrumbSchema.textContent);
-        schema.itemListElement[2].name = service;
-        schema.itemListElement[2].item = `https://beyazesyaservisi.com/hizmet.html?service=${encodeURIComponent(service)}`;
-        breadcrumbSchema.textContent = JSON.stringify(schema, null, 2);
-      }
     }
   </script>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1 0 auto;
+    }
+    .site-footer {
+      flex-shrink: 0;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -155,7 +217,7 @@
       .dropdown-content {
         display: none;
         position: absolute;
-        background: #fff; 
+        background: #fff;
         min-width: 210px;
         box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);
         z-index: 100;
@@ -165,6 +227,7 @@
         transform: translateY(8px);
         pointer-events: none;
         transition: opacity 0.18s, transform 0.18s;
+        left: 0;
       }
       .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content {
         display: block;
@@ -174,7 +237,7 @@
       }
       .dropdown-content a {
         display: block;
-        color: #111;
+        color: #111; 
         font-weight: 400;
         padding: 10px 18px;
         border-radius: 0;
@@ -207,7 +270,7 @@
         transition: fill 0.18s;
       }
       .phone-link:hover {
-        background: #0b2a5a;
+        background: #0b2a5a; 
         color: #fff !important;
         box-shadow: 0 4px 18px rgba(25, 118, 210, 0.18);
         transform: translateY(-2px) scale(1.04);
@@ -240,9 +303,6 @@
         transition: 0.3s;
       }
       @media (max-width: 800px) {
-        .header-inner {
-          flex-direction: row;
-        }
         .nav-links {
           display: none;
           position: absolute;
@@ -262,6 +322,9 @@
         }
         .hamburger {
           display: flex;
+        }
+        .header-inner {
+          flex-direction: row;
         }
         .dropdown {
           width: 100%;
@@ -341,7 +404,7 @@
         const match = html.match(/(?:\+90\s?)?0?5\d{2}[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}/);
         if (match) {
           const phone = match[0].replace(/\D/g, '');
-          const formatted = '+90' + phone.slice(-10); 
+          const formatted = '+90' + phone.slice(-10);
           const link = document.getElementById('navbar-phone-link');
           if (link) {
             link.setAttribute('href', 'tel:' + formatted);
@@ -349,10 +412,22 @@
           }
         }
       });
+
     document.getElementById('hamburger-menu').addEventListener('click', function() {
       var navLinks = document.getElementById('main-nav-links');
       navLinks.classList.toggle('open');
     });
+
+    fetch('config.json')
+      .then(response => response.json())
+      .then(config => {
+        if (config.email) {
+          const username = config.email.split('@')[0];
+          document.getElementById('footer-facebook').href = 'https://facebook.com/' + username;
+          document.getElementById('footer-instagram').href = 'https://instagram.com/' + username;
+          document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
+        }
+      });
   </script>
   <main>
     <style>
@@ -427,7 +502,7 @@
         padding: 16px 0;
         width: 440px;
         max-width: 98vw;
-        background: linear-gradient(90deg, #1976d2 0%, #1251a3 100%); 
+        background: linear-gradient(90deg, #7effa9 0%, #38f9d7 50%, #79bcff 100%);
         color: #fff;
         border: none;
         border-radius: 32px;
@@ -440,7 +515,7 @@
         filter: brightness(1.03) saturate(1.1);
       }
       .call-now-btn:hover {
-        background: #0b2a5a;
+        background: #0b4a8a;
         box-shadow: 0 6px 24px rgba(25, 118, 210, 0.18);
         transform: translateY(-2px) scale(1.04);
       }
@@ -514,7 +589,7 @@
             Makinenin filtresi düzenli olarak temizlenmeli.<br>
             Bulaşıkların konumu su akışını etkilememeli.<br><br>
             Tüm bu adımları takip ederek bulaşık makinelerinizin performansını artırabilirsiniz. Yapılan incelemelere göre, çoğu kullanıcı bu önlemlerle tablet erime sorununu %80 oranında çözmektedir. Doğru adımları uygulayarak siz de bulaşık makinenizin verimliliğini artırabilir, beyaz eşyalarınızı uzun ömürlü hale getirebilirsiniz. Unutmayın, beyaz eşya servisi gibi profesyonel destek almanız gereken durumlar olabilir.<br><br>
-            Eğer yukarıdaki adımlara rağmen sorun devam ediyorsa, uzman bir teknisyen çağırmak en mantıklısı olacaktır. Bu aşamada, bulaşık makinelerinin bakımı ve onarımı konusunda uzman olan <strong>Elektronik Ev Aletleri Teknik Servisi</strong>’ne başvurabilirsiniz. Gerekli bakım ve onarımlar için profesyonel destek almak, sorunların giderilmesini hızlandırır. Söz konusu bulaşık makineleri olduğunda, doğru bakım çok önemlidir.<br><br>
+            Eğer yukarıdaki adımlara rağmen sorun devam ediyorsa, uzman bir teknisyen çağırmak en mantıklısı olacaktır. Bu aşamada, bulaşık makinelerinin bakımı ve onarımı konusunda uzman olan <strong>Elektronik Ev Aletleri Teknik Servisi</strong>\'ne başvurabilirsiniz. Gerekli bakım ve onarımlar için profesyonel destek almak, sorunların giderilmesini hızlandırır. Söz konusu bulaşık makineleri olduğunda, doğru bakım çok önemlidir.<br><br>
             <strong>Sonuç olarak</strong>, bulaşık makinesi tabletlerinin erimemesi her ne kadar can sıkıcı bir durum olsa da, çoğu zaman basit kontrollerle çözülebilir. Bu nedenle, makinelerinizi düzenli olarak kontrol etmeyi ve bakım yaptırmayı ihmal etmeyin. Unutmayın, sağlıklı çalışan bir makine için düzenli kontroller ve uygun bakım şarttır.<br><br>
             <strong>Fırın İç Camı Nasıl Temizlenir</strong><br><br>
             Fırın iç camının temizliği, mutfaktaki hijyen açısından büyük önem taşır. Size göstereceğim bu yöntemle, fırınınızın iç camını etkili bir şekilde temizleyebilirsiniz. İlk olarak, fırınınızı kapatın ve soğumasını bekleyin. Bu adım hem güvenliğiniz hem de temizleme işlemi açısından önemlidir. Daha sonra, fırın iç camının etrafını inceleyin ve kirli alanları belirleyin. Temizlik için çeşitli malzemeler kullanmak mümkündür. Bu aşamada, sirke ve karbonat en etkili iki temizlik maddesidir. Sirke, yağ ve kirlerin çözülmesine yardımcı olurken, karbonat, lekeleri çıkarmanıza destek sağlar. Bu malzemelerle doğal ve sağlıklı bir temizlik gerçekleştirmiş olursunuz.<br><br>
@@ -829,12 +904,12 @@
   <footer class="site-footer">
     <style>
       .site-footer {
-        background: #e3eafc; 
+        background: rgb(247, 247, 250);
         color: #111;
         padding: 24px 0 0 0;
         font-family: 'Segoe UI', Arial, sans-serif;
         margin-top: 32px;
-        border-top: 1px solid #b6d0f7;
+        border-top: 1px solid rgb(224, 224, 224);
       }
       .footer-content {
         max-width: 1100px;
@@ -861,11 +936,11 @@
         width: 100%;
       }
       .footer-links a {
-        color: #111; 
+        color: #0a357a;
         text-decoration: none;
         font-size: 1em;
         transition: color 0.2s;
-        opacity: 0.85;
+        opacity: 0.95;
         padding: 2px 6px;
       }
       .footer-links a:hover {
@@ -873,19 +948,19 @@
         opacity: 1;
       }
       .footer-divider {
-        border-top: 1px solid #b6d0f7;
+        border-top: 1px solid rgb(224, 224, 224);
         margin: 12px 0 0 0;
         width: 100%;
       }
       .footer-info {
         text-align: center;
         font-size: 0.97em;
-        color: #181818;
+        color: #444;
         margin: 10px 0 0 0;
         width: 100%;
       }
       .footer-info strong {
-        color: #0b2a5a;
+        color: #0a357a;
       }
       .copyright {
         margin-top: 4px;

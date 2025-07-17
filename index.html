@@ -13,9 +13,8 @@
   <meta name="twitter:title" content="Beyaz Eşya Teknik Servisi" />
   <meta name="twitter:description" content="İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz." />
   <meta name="twitter:image" content="https://beyazesyaservisi.com/logo.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  
   <script type="application/ld+json" id="local-business-schema">
+    
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -103,11 +102,6 @@
   }
   </script>
   <title>Beyaz Eşya Teknik Servisi | Aynı Gün Destek</title>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.ico">
   <script>
     const params = new URLSearchParams(window.location.search);
     const service = params.get("service");
@@ -135,6 +129,24 @@
     }
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1 0 auto;
+    }
+    .site-footer {
+      flex-shrink: 0;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -488,13 +500,6 @@
         letter-spacing: 0.2px;
         text-align: center;
       }
-      .main-action-phone-icon {
-        width: 32px;
-        height: 32px;
-        fill: #1976d2;
-        display: inline-block;
-        vertical-align: middle;
-      }
       .call-now-btn {
         display: block;
         font-size: 2em;
@@ -749,7 +754,6 @@
         padding: 24px 0 0 0;
         font-family: 'Segoe UI', Arial, sans-serif;
         margin-top: 32px;
-        margin-bottom: 32px;
         border-top: 1px solid rgb(224, 224, 224);
       }
       .footer-content {
