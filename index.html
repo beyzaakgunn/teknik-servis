@@ -530,14 +530,22 @@
         });
     </script>
     <style>
+      /* main arka planı kaldırıldı */
       main {
         max-width: 1300px;
         margin: 0 auto;
         padding: 32px 18px 18px 18px;
+        /* background: #f8fafd; */
+        /* border-radius: 14px; */
+        /* box-shadow: 0 2px 12px rgba(25, 118, 210, 0.04); */
+        padding-top: 68px;
+      }
+      .main-bg {
         background: #f8fafd;
         border-radius: 14px;
         box-shadow: 0 2px 12px rgba(25, 118, 210, 0.04);
-        padding-top: 68px;
+        padding: 32px 18px 18px 18px;
+        margin-top: 48px;
       }
       main h1 {
         font-size: 2.2em;
@@ -573,6 +581,9 @@
         main {
           padding: 14px 2vw 10px 2vw;
         }
+        .main-bg {
+          padding: 14px 2vw 10px 2vw;
+        }
         main h1 {
           font-size: 1.3em;
         }
@@ -583,6 +594,7 @@
       }
     </style>
     
+    <div class="main-bg">
     <!-- Neden Bizi Tercih Etmelisiniz Bölümü Başlangıç -->
     <section class="neden-biz-section-modern">
       <h2 class="neden-biz-title-modern">Neden Bizi Tercih Etmelisiniz?</h2>
@@ -643,7 +655,7 @@
         margin-left: auto;
         margin-right: auto;
         padding-top: 32px;
-        margin-top: 80px;
+        margin-top: 0px;
       }
       .neden-biz-title-modern {
         text-align: center;
@@ -737,6 +749,7 @@
         }
       }
     </style>
+    </div>
   </main>
   
   <section id="customer-comments-section">
