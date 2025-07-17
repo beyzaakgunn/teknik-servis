@@ -14,7 +14,6 @@
   <meta name="twitter:description" content="İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz." />
   <meta name="twitter:image" content="https://beyazesyaservisi.com/logo.png" />
   <script type="application/ld+json" id="local-business-schema">
-    
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -105,16 +104,12 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const service = params.get("service");
-  
     if (service) {
       const titleText = `${service} Servisi | Aynı Gün Teknik Destek`;
       const descText = `${service} için garantisiz cihazlara yerinde tamir, bakım ve arıza servis hizmeti. Hemen servis al, uzman çözümle tanış.`;
-  
       document.title = titleText;
-  
       const descTag = document.querySelector('meta[name="description"]');
       if (descTag) descTag.setAttribute("content", descText);
-  
       const ogTitle = document.querySelector('meta[property="og:title"]');
       const ogDesc = document.querySelector('meta[property="og:description"]');
       if (ogTitle) ogTitle.setAttribute("content", titleText);
@@ -367,7 +362,6 @@
         }
       }
     </style>
-    
       <nav>
         <div class="header-inner">
           <a href="index.html" class="logo">
