@@ -26,7 +26,6 @@
       if (ogDesc) ogDesc.setAttribute("content", descText);
     }
   </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://beyazesyaservisi.com/gizlilik.html" />
   <meta property="og:image" content="https://beyazesyaservisi.com/logo.png" />
@@ -337,7 +336,7 @@
             </div>
             <a href="hakkimizda.html">Hakkımızda</a>
             <a href="iletisim.html">İletişim</a>
-            <a href="tel:05551112233" class="phone-link call-now-navbar">Bizi Arayın</a>
+            <a href="#" id="navbar-phone-link" class="phone-link call-now-navbar">Bizi Arayın</a>
           </div>
         </div>
       </div>
@@ -394,8 +393,7 @@
         }
       }
     </style>
-    <h1 style="color: #0b4a8a; border-bottom:2px solid #e3eafc; padding-bottom:10px; margin-bottom:22px;">Gizlilik Politikası</h1>
-    <br>
+   <h1 style="color: #0b4a8a; border-bottom:2px solid #e3eafc; padding-bottom:10px; margin-bottom:22px;">Gizlilik Politikası</h1>
     <p>
       Web sitemizi ziyaret ettiğinizde hiçbir kişisel bilginiz tarafımızca toplanmaz, kaydedilmez ve üçüncü taraflarla kesinlikle paylaşılmaz. Kullanıcı gizliliğine büyük önem veriyor, ziyaretçilerimizin dijital güvenliğini önceliklerimiz arasında görüyoruz. Sitemizde herhangi bir kullanıcı takibi, reklam amaçlı veri toplama ya da analiz hizmeti kullanılmaz. Ayrıca tarayıcı çerezleri (cookies) ya da izleme teknolojileri vasıtasıyla kullanıcı davranışlarını izlemiyoruz. Tüm içeriklerimiz yalnızca garantisi bitmiş cihazlara yönelik bilgilendirme ve destek amaçlı hazırlanmıştır. Bu doğrultuda, kimlik veya konum bilgileri gibi kişisel veriler hiçbir aşamada işlenmez. Web sitemizi gönül rahatlığıyla ziyaret edebilir, hizmetlerimiz hakkında bilgi alabilirsiniz.
     </p>
@@ -684,30 +682,58 @@
       </div>
     </div>
     <section class="footer-socials-custom" style="margin: 10px 0; text-align: center;">
-      <a id="footer-facebook" href="#" aria-label="Facebook" target="_blank" style="margin: 0 8px; color: #4267B2;"><i class="fab fa-facebook-f fa-lg"></i></a>
-      <a id="footer-instagram" href="#" aria-label="Instagram" target="_blank" style="margin: 0 8px; color: #E1306C;"><i class="fab fa-instagram fa-lg"></i></a>
-      <a id="footer-twitter" href="#" aria-label="Twitter" target="_blank" style="margin: 0 8px; color: #1DA1F2;"><i class="fab fa-twitter fa-lg"></i></a>
+      <a id="footer-facebook" href="#" aria-label="Facebook" target="_blank" class="footer-social-icon" style="color: #4267B2;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
+      </a>
+      <a id="footer-instagram" href="#" aria-label="Instagram" target="_blank" class="footer-social-icon" style="color: #E1306C;">
+        <svg width="28" height="28" viewBox="0 0 448 448" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="ig-gradient" cx="30%" cy="107%" r="150%" fx="30%" fy="107%">
+                <stop offset="0%" stop-color="#fdf497"/>
+                <stop offset="5%" stop-color="#fdf497"/>
+                <stop offset="45%" stop-color="#fd5949"/>
+                <stop offset="60%" stop-color="#d6249f"/>
+                <stop offset="90%" stop-color="#285AEB"/>
+              </radialGradient>
+            </defs>
+            <rect width="448" height="448" rx="100" fill="url(#ig-gradient)"/>
+            <path d="M224 109.3c-63.3 0-114.7 51.4-114.7 114.7S160.7 338.7 224 338.7 338.7 287.3 338.7 224 287.3 109.3 224 109.3zm0 186.6c-39.7 0-71.9-32.2-71.9-71.9s32.2-71.9 71.9-71.9 71.9 32.2 71.9 71.9-32.2 71.9-71.9 71.9zm146.4-187.2c0 14.9-12.1 27-27 27s-27-12.1-27-27 12.1-27 27-27 27 12.1 27 27z" fill="#fff"/>
+            <circle cx="224" cy="224" r="58.7" fill="#fff"/>
+          </svg>
+      </a>
+      <a id="footer-twitter" href="#" aria-label="Twitter" target="_blank" class="footer-social-icon" style="color: #1DA1F2;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.916 4.916 0 0 0-8.38 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.857 3.17 0 2.188 1.115 4.117 2.823 5.254a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.21-.005-.423-.015-.633A9.936 9.936 0 0 0 24 4.557z"/></svg>
+      </a>
     </section>
+    <style>
+      .footer-socials-custom {
+        margin: 10px 0;
+        text-align: center;
+      }
+      .footer-social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: transparent;
+        transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
+        margin: 0 8px;
+        font-size: 1em;
+        text-decoration: none;
+      }
+      .footer-social-icon:hover {
+        background: #e3eafc;
+        box-shadow: 0 2px 8px #0001;
+        transform: scale(1.08);
+      }
+      .footer-social-icon svg {
+        display: block;
+      }
+    </style>
   </footer>
   <script>
-
-    fetch('iletisim.html')
-      .then(response => response.text())
-      .then(html => {
-
-        const match = html.match(/(?:\+90\s?)?0?5\d{2}[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}/);
-        if (match) {
-          const phone = match[0].replace(/\D/g, '');
-          const formatted = '+90' + phone.slice(-10); 
-          const link = document.querySelector('.call-now-navbar'); 
-          if (link) {
-            link.setAttribute('href', 'tel:' + formatted);
-            link.setAttribute('aria-label', 'Telefon: ' + match[0]);
-          }
-        }
-      });
-
-  
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
@@ -717,13 +743,42 @@
           document.getElementById('footer-instagram').href = 'https://instagram.com/' + username;
           document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
         }
+        if (config.telefon) {
+          const phone = config.telefon.replace(/[^\d+]/g, '');
+          const phoneFab = document.getElementById('floating-phone-btn');
+          if (phoneFab) {
+            phoneFab.setAttribute('href', 'tel:' + phone);
+            phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+          }
+        }
       });
-
-
-    document.getElementById('hamburger-menu').addEventListener('click', function() {
-      var navLinks = document.getElementById('main-nav-links');
-      navLinks.classList.toggle('open');
-    });
   </script>
+  <!-- Sağ alt köşe telefon simgesi -->
+  <a id="floating-phone-btn" href="#" style="display: flex; align-items: center; justify-content: center; position: fixed; right: 24px; bottom: 24px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 2000; font-size: 2.1em; transition: background 0.18s, box-shadow 0.18s; text-decoration: none;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+  </a>
+  <style>
+    #floating-phone-btn:hover {
+      background: #128c4b;
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(37, 211, 102, 0.22);
+      transform: scale(1.07);
+    }
+    @media (max-width: 700px) {
+      #floating-phone-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5em;
+        right: 14px;
+        bottom: 14px;
+      }
+    }
+  </style>
+  <script>
+document.getElementById('hamburger-menu').addEventListener('click', function() {
+  var navLinks = document.getElementById('main-nav-links');
+  navLinks.classList.toggle('open');
+});
+</script>
 </body>
 </html>
