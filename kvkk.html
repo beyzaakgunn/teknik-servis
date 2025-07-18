@@ -749,6 +749,11 @@
         }
         if (config.telefon) {
           const phone = config.telefon.replace(/[^\d+]/g, '');
+          const link = document.getElementById('navbar-phone-link');
+          if (link) {
+            link.setAttribute('href', 'tel:' + phone);
+            link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+          }
           const phoneFab = document.getElementById('floating-phone-btn');
           if (phoneFab) {
             phoneFab.setAttribute('href', 'tel:' + phone);
