@@ -440,11 +440,11 @@
     <h1 style="color: #0b4a8a; border-bottom:2px solid #e3eafc; padding-bottom:10px; margin-bottom:22px;">İletişim</h1>
     <h2 style="font-size:1.3em; color:#1976d2; margin-bottom:10px;">Firma Bilgileri</h2>
     <p>
-      <strong>Firma adı:</strong> <span id="firma-adi-alani">Yükleniyor...</span><br>
-      <strong>Firma adresi:</strong> <span id="firma-adres-alani">Yükleniyor...</span><br>
+      <strong>Firma adı:</strong> <span>Beyaz Eşya Teknik Servisi</span><br>
+      <strong>Firma adresi:</strong> <span>Örnek Mahallesi, Servis Sokak No:12, İstanbul</span><br>
     </p>
-    <div id="telefon-buton-alani" style="text-align:center; margin-top: 12px; min-height:48px;">
-      <a href="tel:05551112233" id="telefon-buton" aria-label="Telefon ile ara: 0555 111 22 33" style="display:inline-block; padding:12px 28px; background:#1976d2; color:#fff; border-radius:8px; text-decoration:none; font-weight:600; font-size:1.13em; margin:10px auto 18px auto; box-shadow:0 2px 12px rgba(25, 118, 210, 0.13);">Bizi Arayın: 0555 111 22 33</a>
+    <div style="text-align:center; margin-top: 12px; min-height:48px;">
+      <a href="tel:05551112233" aria-label="Telefon ile ara: 0555 111 22 33" style="display:inline-block; padding:12px 28px; background:#1976d2; color:#fff; border-radius:8px; text-decoration:none; font-weight:600; font-size:1.13em; margin:10px auto 18px auto; box-shadow:0 2px 12px rgba(25, 118, 210, 0.13);">Bizi Arayın: 0555 111 22 33</a>
     </div>
   </main>
   <section id="customer-comments-section">
@@ -783,41 +783,11 @@
     </style>
   </footer>
   <script>
-    fetch('config.json')
-      .then(response => response.json())
-      .then(config => {
-        if (config.firmaAdi) {
-          document.getElementById('firma-adi-alani').textContent = config.firmaAdi;
-        }
-        if (config.adres) {
-          document.getElementById('firma-adres-alani').textContent = config.adres;
-        }
-        if (config.email) {
-          const username = config.email.split('@')[0];
-          document.getElementById('footer-facebook').href = 'https://facebook.com/' + username;
-          document.getElementById('footer-instagram').href = 'https://instagram.com/' + username;
-          document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
-        }
-        if (config.telefon) {
-          const telefon = config.telefon;
-          let gosterim = telefon.replace(/^\+?90?/, ''); 
-          gosterim = gosterim.replace(/[^0-9]/g, ''); 
-          if (gosterim.length === 10) gosterim = '0' + gosterim;
-          if (gosterim.length === 11) {
-            gosterim = gosterim.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3');
-          }
-          const buton = document.getElementById('telefon-buton');
-          buton.textContent = 'Bizi Arayın: ' + gosterim;
-          buton.href = 'tel:' + telefon.replace(/\s+/g, '');
-        }
-      });
+    document.getElementById('hamburger-menu').addEventListener('click', function() {
+      var navLinks = document.getElementById('main-nav-links');
+      navLinks.classList.toggle('open');
+    });
   </script>
-  <script>
-document.getElementById('hamburger-menu').addEventListener('click', function() {
-  var navLinks = document.getElementById('main-nav-links');
-  navLinks.classList.toggle('open');
-});
-</script>
   <!-- Sağ alt köşe telefon simgesi -->
   <a id="floating-phone-btn" href="#" aria-label="Telefon ile ara: 0555 111 22 33" style="display: flex; align-items: center; justify-content: center; position: fixed; right: 24px; bottom: 24px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 2000; font-size: 2.1em; transition: background 0.18s, box-shadow 0.18s; text-decoration: none;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
