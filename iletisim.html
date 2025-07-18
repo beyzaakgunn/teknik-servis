@@ -440,11 +440,11 @@
     <h1 style="color: #0b4a8a; border-bottom:2px solid #e3eafc; padding-bottom:10px; margin-bottom:22px;">İletişim</h1>
     <h2 style="font-size:1.3em; color:#1976d2; margin-bottom:10px;">Firma Bilgileri</h2>
     <p>
-      <strong>Firma adı:</strong> <span>Beyaz Eşya Teknik Servisi</span><br>
-      <strong>Firma adresi:</strong> <span>Örnek Mahallesi, Servis Sokak No:12, İstanbul</span><br>
+      <strong>Firma adı:</strong> <span id="firma-adi-alani">Yükleniyor...</span><br>
+      <strong>Firma adresi:</strong> <span id="firma-adres-alani">Yükleniyor...</span><br>
     </p>
     <div style="text-align:center; margin-top: 12px; min-height:48px;">
-      <a href="tel:05551112233" aria-label="Telefon ile ara: 0555 111 22 33" style="display:inline-block; padding:12px 28px; background:#1976d2; color:#fff; border-radius:8px; text-decoration:none; font-weight:600; font-size:1.13em; margin:10px auto 18px auto; box-shadow:0 2px 12px rgba(25, 118, 210, 0.13);">Bizi Arayın: 0555 111 22 33</a>
+      <a href="#" id="telefon-buton" aria-label="Telefon ile ara: ..." style="display:inline-block; padding:12px 28px; background:#1976d2; color:#fff; border-radius:8px; text-decoration:none; font-weight:600; font-size:1.13em; margin:10px auto 18px auto; box-shadow:0 2px 12px rgba(25, 118, 210, 0.13);">Bizi Arayın: Yükleniyor...</a>
     </div>
   </main>
   <section id="customer-comments-section">
@@ -783,6 +783,62 @@
     </style>
   </footer>
   <script>
+    // İletişim bilgilerini config.json'dan dinamik olarak çek
+    fetch('config.json')
+      .then(response => response.json())
+      .then(config => {
+        if (config.firmaAdi) {
+          document.getElementById('firma-adi-alani').textContent = config.firmaAdi;
+        }
+        if (config.adres) {
+          document.getElementById('firma-adres-alani').textContent = config.adres;
+        }
+        if (config.telefon) {
+          const telefon = config.telefon;
+          let gosterim = telefon.replace(/^\+?90?/, '');
+          gosterim = gosterim.replace(/[^0-9]/g, '');
+          if (gosterim.length === 10) gosterim = '0' + gosterim;
+          if (gosterim.length === 11) {
+            gosterim = gosterim.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3');
+          }
+          const buton = document.getElementById('telefon-buton');
+          buton.textContent = 'Bizi Arayın: ' + gosterim;
+          buton.href = 'tel:' + telefon.replace(/\s+/g, '');
+          buton.setAttribute('aria-label', 'Telefon ile ara: ' + gosterim);
+          // Sağ alt köşe butonunu da güncelle
+          const fab = document.getElementById('floating-phone-btn');
+          if (fab) {
+            fab.href = 'tel:' + telefon.replace(/\s+/g, '');
+            fab.setAttribute('aria-label', 'Telefon ile ara: ' + gosterim);
+          }
+          // Navbar'daki Bizi Arayın butonunu da güncelle
+          const navPhone = document.getElementById('navbar-phone-link');
+          if (navPhone) {
+            navPhone.href = 'tel:' + telefon.replace(/\s+/g, '');
+            navPhone.setAttribute('aria-label', 'Telefon ile ara: ' + gosterim);
+          }
+        }
+      })
+      .catch(() => {
+        document.getElementById('firma-adi-alani').textContent = 'Bilinmiyor';
+        document.getElementById('firma-adres-alani').textContent = 'Bilinmiyor';
+        const buton = document.getElementById('telefon-buton');
+        buton.textContent = 'Bizi Arayın: Bilinmiyor';
+        buton.href = '#';
+        buton.setAttribute('aria-label', 'Telefon ile ara: Bilinmiyor');
+        // Sağ alt köşe butonunu da güncelle
+        const fab = document.getElementById('floating-phone-btn');
+        if (fab) {
+          fab.href = '#';
+          fab.setAttribute('aria-label', 'Telefon ile ara: Bilinmiyor');
+        }
+        // Navbar'daki Bizi Arayın butonunu da güncelle
+        const navPhone = document.getElementById('navbar-phone-link');
+        if (navPhone) {
+          navPhone.href = '#';
+          navPhone.setAttribute('aria-label', 'Telefon ile ara: Bilinmiyor');
+        }
+      });
     document.getElementById('hamburger-menu').addEventListener('click', function() {
       var navLinks = document.getElementById('main-nav-links');
       navLinks.classList.toggle('open');
