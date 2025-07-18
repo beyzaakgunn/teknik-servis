@@ -436,13 +436,11 @@
     </style>
     <h1 style="color: #0b4a8a; border-bottom:2px solid #e3eafc; padding-bottom:10px; margin-bottom:22px;">İletişim</h1>
     <p>
-      <strong>Sadece garantisi sona ermiş beyaz eşya cihazlarına hizmet vermekteyiz. Firmamız yetkili servis değildir.</strong> 
-Yetkili servis kapsamında olmayan, garanti süresi dolmuş cihazlarınız için yerinde teknik servis, bakım ve arıza onarım hizmeti sunuyoruz. 
-Deneyimli ekibimizle hızlı müdahale, şeffaf fiyatlandırma ve müşteri memnuniyeti odaklı çözümler için bizimle iletişime geçebilirsiniz. <br>
-      <strong>Telefon:</strong> <a href="#" id="contact-phone-link">+90 555 111 22 33</a><br>
-      <strong>Adres:</strong> Örnek Mah. Örnek Cad. No:1, İstanbul<br>
-      <strong>E-posta:</strong> <a href="mailto:info@beyazesyaservisi.com">info@beyazesyaservisi.com</a>
-      </p>
+      <strong>Firma adı:</strong> <span id="firma-adi-alani"></span><br>
+      <strong>Firma adresi:</strong> <span id="firma-adres-alani"></span><br>
+    </p>
+
+    <div id="telefon-buton-alani" style="text-align:center; margin-top: 12px;"></div>
   </main>
   <section id="customer-comments-section">
     <h2 class="comments-title">Müşteri Yorumları</h2>
@@ -783,6 +781,12 @@ Deneyimli ekibimizle hızlı müdahale, şeffaf fiyatlandırma ve müşteri memn
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
+        if (config.firmaAdi) {
+          document.getElementById('firma-adi-alani').textContent = config.firmaAdi;
+        }
+        if (config.adres) {
+          document.getElementById('firma-adres-alani').textContent = config.adres;
+        }
         if (config.email) {
           const username = config.email.split('@')[0];
           document.getElementById('footer-facebook').href = 'https://facebook.com/' + username;
@@ -790,17 +794,33 @@ Deneyimli ekibimizle hızlı müdahale, şeffaf fiyatlandırma ve müşteri memn
           document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
         }
         if (config.telefon) {
-          const phone = config.telefon.replace(/[^\d+]/g, '');
-          const link = document.getElementById('navbar-phone-link');
-          if (link) {
-            link.setAttribute('href', 'tel:' + phone);
-            link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+          const telefon = config.telefon;
+          let gosterim = telefon.replace(/^\+?90?/, ''); 
+          gosterim = gosterim.replace(/[^0-9]/g, ''); 
+          if (gosterim.length === 10) gosterim = '0' + gosterim;
+          if (gosterim.length === 11) {
+            gosterim = gosterim.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3');
           }
-          const phoneFab = document.getElementById('floating-phone-btn');
-          if (phoneFab) {
-            phoneFab.setAttribute('href', 'tel:' + phone);
-            phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
-          }
+          const buton = document.createElement('a');
+          buton.href = 'tel:' + telefon.replace(/\s+/g, '');
+          buton.textContent = 'Bizi Arayın: ' + gosterim;
+          buton.style.display = 'inline-block';
+          buton.style.padding = '12px 28px';
+          buton.style.background = '#1976d2';
+          buton.style.color = '#fff';
+          buton.style.borderRadius = '8px';
+          buton.style.textDecoration = 'none';
+          buton.style.fontWeight = '600';
+          buton.style.fontSize = '1.13em';
+          buton.style.margin = '10px auto 18px auto';
+          buton.style.boxShadow = '0 2px 12px rgba(25, 118, 210, 0.13)';
+          buton.onmouseover = function() {
+            buton.style.background = '#0b2a5a';
+          };
+          buton.onmouseout = function() {
+            buton.style.background = '#1976d2';
+          };
+          document.getElementById('telefon-buton-alani').appendChild(buton);
         }
       });
   </script>
