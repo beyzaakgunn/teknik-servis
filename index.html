@@ -493,28 +493,53 @@
       }
       .ara-btn {
         margin-top: 36px;
-        background: #1976d2;
+        background: linear-gradient(90deg, #1976d2 0%, #25d366 100%);
         color: #fff;
-        font-size: 1.18em;
-        font-weight: 700;
+        font-size: 1.25em;
+        font-weight: 800;
         border: none;
-        border-radius: 12px;
-        padding: 18px 48px;
+        border-radius: 16px;
+        padding: 22px 56px;
         cursor: pointer;
-        transition: background 0.18s, transform 0.12s;
-        box-shadow: 0 2px 12px rgba(25, 118, 210, 0.13);
+        transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
+        box-shadow: 0 4px 24px rgba(25, 118, 210, 0.18), 0 0 0 0 #25d366;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 14px;
+        position: relative;
+        overflow: hidden;
+      }
+      .ara-btn::after {
+        content: '';
+        position: absolute;
+        left: -75%;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(120deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 100%);
+        animation: shine 2.2s infinite linear;
       }
       .ara-btn:hover {
-        background: #0b2a5a;
-        transform: scale(1.04);
+        background: linear-gradient(90deg, #25d366 0%, #1976d2 100%);
+        color: #fff;
+        box-shadow: 0 8px 32px #25d36655, 0 0 0 0 #1976d2;
+        transform: scale(1.07);
       }
-      .ara-btn svg {
-        width: 22px;
-        height: 22px;
-        fill: #fff;
+      .ara-btn:active {
+        background: linear-gradient(90deg, #1976d2 0%, #25d366 100%);
+        box-shadow: 0 2px 8px #1976d2aa;
+        transform: scale(0.98);
+      }
+      @keyframes shine {
+        0% { left: -75%; }
+        100% { left: 130%; }
+      }
+      @media (max-width: 900px) {
+        .ara-btn {
+          font-size: 1.05em;
+          padding: 14px 18px;
+          border-radius: 12px;
+        }
       }
     </style>
     <div class="tanitim-full">
