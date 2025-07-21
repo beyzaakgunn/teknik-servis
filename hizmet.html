@@ -431,6 +431,10 @@
         if (isMobile()) {
           if (!dropdownContent.classList.contains('open')) {
             e.preventDefault();
+            // Diğer açık dropdownları kapat (isteğe bağlı)
+            document.querySelectorAll('.dropdown-content.open').forEach(function(el) {
+              el.classList.remove('open');
+            });
             dropdownContent.classList.add('open');
           } // else: ikinci tıklamada linke gitmesine izin veriyoruz
         }
