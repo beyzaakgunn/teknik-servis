@@ -339,10 +339,7 @@
           width: 100%;
           text-align: center;
         }
-        /* HİZMETLERİMİZ dropdown mobilde kapalı */
-        .dropdown-content {
-          display: none !important;
-        }
+
         .dropdown-content a {
           text-align: center;
           padding: 12px 0;
@@ -359,6 +356,39 @@
           font-size: 1em !important;
           padding: 10px 0 !important;
           align-self: center !important;
+        }
+      }
+      @media (max-width: 800px) {
+        .dropdown-content {
+          display: block !important;
+          opacity: 1 !important;
+          pointer-events: auto !important;
+          position: static !important;
+          background: #fff;
+          box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);
+          border-radius: 0 0 14px 14px;
+          margin-top: 2px;
+          padding: 6px 0 10px 0;
+          transform: none;
+          border-top: 1.5px solid #e3eafc;
+          transition: box-shadow 0.18s, background 0.18s;
+        }
+        .dropdown-content a {
+          text-align: center;
+          padding: 11px 0;
+          width: 100%;
+          display: block;
+          font-size: 0.97em;
+          color: #0b2a5a;
+          border-bottom: 1px solid #f0f4fa;
+          transition: background 0.18s, color 0.18s;
+        }
+        .dropdown-content a:last-child {
+          border-bottom: none;
+        }
+        .dropdown-content a:hover {
+          background: #e3eafc;
+          color: #1976d2;
         }
       }
     </style>
