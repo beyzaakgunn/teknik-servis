@@ -438,7 +438,6 @@
       }
     </style>
     <h1 style="color: #0b4a8a; border-bottom:2px solid #e3eafc; padding-bottom:10px; margin-bottom:22px;">İletişim</h1>
-    <h2 style="font-size:1.3em; color:#1976d2; margin-bottom:10px;">Firma Bilgileri</h2>
     <p>
       <strong>Firma adı:</strong> <span id="firma-adi-alani">Yükleniyor...</span><br>
       <strong>Firma adresi:</strong> <span id="firma-adres-alani">Yükleniyor...</span><br>
@@ -783,61 +782,69 @@
     </style>
   </footer>
   <script>
+    function updateContactInfo({ firmaAdi, adres, telefon }) {
+      if (firmaAdi) {
+        document.getElementById('firma-adi-alani').textContent = firmaAdi;
+      }
+      if (adres) {
+        document.getElementById('firma-adres-alani').textContent = adres;
+      }
+      if (telefon) {
+        let gosterim = telefon.replace(/[^0-9]/g, '');
+        if (gosterim.length === 10) gosterim = '0' + gosterim;
+        if (gosterim.length === 11) {
+          gosterim = gosterim.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
+        }
+
+        const buton = document.getElementById('telefon-buton');
+        if (buton) {
+          buton.textContent = 'Bizi Arayın: ' + gosterim;
+          buton.href = 'tel:' + telefon.replace(/\s+/g, '');
+          buton.setAttribute('aria-label', 'Telefon ile ara: ' + gosterim);
+        }
+     
+        const fab = document.getElementById('floating-phone-btn');
+        if (fab) {
+          fab.href = 'tel:' + telefon.replace(/\s+/g, '');
+          fab.setAttribute('aria-label', 'Telefon ile ara: ' + gosterim);
+        }
+
+        const navPhone = document.getElementById('navbar-phone-link');
+        if (navPhone) {
+          navPhone.href = 'tel:' + telefon.replace(/\s+/g, '');
+          navPhone.setAttribute('aria-label', 'Telefon ile ara: ' + gosterim);
+        }
+      }
+    }
+   
+    function setContactInfoUnknown() {
+      document.getElementById('firma-adi-alani').textContent = 'Bilinmiyor';
+      document.getElementById('firma-adres-alani').textContent = 'Bilinmiyor';
+      const buton = document.getElementById('telefon-buton');
+      if (buton) {
+        buton.textContent = 'Bizi Arayın: Bilinmiyor';
+        buton.href = '#';
+        buton.setAttribute('aria-label', 'Telefon ile ara: Bilinmiyor');
+      }
+      const fab = document.getElementById('floating-phone-btn');
+      if (fab) {
+        fab.href = '#';
+        fab.setAttribute('aria-label', 'Telefon ile ara: Bilinmiyor');
+      }
+      const navPhone = document.getElementById('navbar-phone-link');
+      if (navPhone) {
+        navPhone.href = '#';
+        navPhone.setAttribute('aria-label', 'Telefon ile ara: Bilinmiyor');
+      }
+    }
     // İletişim bilgilerini config.json'dan dinamik olarak çek
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
-        if (config.firmaAdi) {
-          document.getElementById('firma-adi-alani').textContent = config.firmaAdi;
-        }
-        if (config.adres) {
-          document.getElementById('firma-adres-alani').textContent = config.adres;
-        }
-        if (config.telefon) {
-          const telefon = config.telefon;
-          let gosterim = telefon.replace(/^\+?90?/, '');
-          gosterim = gosterim.replace(/[^0-9]/g, '');
-          if (gosterim.length === 10) gosterim = '0' + gosterim;
-          if (gosterim.length === 11) {
-            gosterim = gosterim.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3');
-          }
-          const buton = document.getElementById('telefon-buton');
-          buton.textContent = 'Bizi Arayın: ' + gosterim;
-          buton.href = 'tel:' + telefon.replace(/\s+/g, '');
-          buton.setAttribute('aria-label', 'Telefon ile ara: ' + gosterim);
-          // Sağ alt köşe butonunu da güncelle
-          const fab = document.getElementById('floating-phone-btn');
-          if (fab) {
-            fab.href = 'tel:' + telefon.replace(/\s+/g, '');
-            fab.setAttribute('aria-label', 'Telefon ile ara: ' + gosterim);
-          }
-          // Navbar'daki Bizi Arayın butonunu da güncelle
-          const navPhone = document.getElementById('navbar-phone-link');
-          if (navPhone) {
-            navPhone.href = 'tel:' + telefon.replace(/\s+/g, '');
-            navPhone.setAttribute('aria-label', 'Telefon ile ara: ' + gosterim);
-          }
-        }
+        updateContactInfo(config);
       })
       .catch(() => {
-        document.getElementById('firma-adi-alani').textContent = 'Bilinmiyor';
-        document.getElementById('firma-adres-alani').textContent = 'Bilinmiyor';
-        const buton = document.getElementById('telefon-buton');
-        buton.textContent = 'Bizi Arayın: Bilinmiyor';
-        buton.href = '#';
-        buton.setAttribute('aria-label', 'Telefon ile ara: Bilinmiyor');
-        // Sağ alt köşe butonunu da güncelle
-        const fab = document.getElementById('floating-phone-btn');
-        if (fab) {
-          fab.href = '#';
-          fab.setAttribute('aria-label', 'Telefon ile ara: Bilinmiyor');
-        }
-        // Navbar'daki Bizi Arayın butonunu da güncelle
-        const navPhone = document.getElementById('navbar-phone-link');
-        if (navPhone) {
-          navPhone.href = '#';
-          navPhone.setAttribute('aria-label', 'Telefon ile ara: Bilinmiyor');
-        }
+        setContactInfoUnknown();
       });
     document.getElementById('hamburger-menu').addEventListener('click', function() {
       var navLinks = document.getElementById('main-nav-links');
