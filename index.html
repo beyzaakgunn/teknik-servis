@@ -1,142 +1,99 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+  <!-- Temel meta ayarları -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz." />
+
+  <!-- Open Graph etiketleri (sosyal medya paylaşımı için) -->
   <meta property="og:title" content="Beyaz Eşya Teknik Servisi" />
   <meta property="og:description" content="Garantisi bitmiş beyaz eşyalar için yerinde teknik servis, hızlı müdahale, uzman ekip ve güvenilir çözümler sunuyoruz. Aynı gün içinde kaliteli servis hizmetiyle tanışın." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://beyaz-esya-servis123.netlify.app/" />
-  <meta property="og:image" content="https://beyaz-esya-servis123.netlify.app/logo.png" />
+  <meta property="og:url" content="https://beyazesyaservisi.com/" />
+  <meta property="og:image" content="https://beyazesyaservisi.com/logo.png" />
+
+  <!-- Favicon ve ikonlar -->
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.ico" />
-  <script type="application/ld+json" id="local-business-schema">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Beyaz Eşya Teknik Servisi",
-    "image": "https://beyaz-esya-servis123.netlify.app/logo.png",
-    "telephone": "+905551112233",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Örnek Mahallesi, Servis Sokak No:12",
-      "addressLocality": "İstanbul",
-      "addressRegion": "İstanbul",
-      "postalCode": "34000",
-      "addressCountry": "TR"
-    },
-    "url": "https://beyaz-esya-servis123.netlify.app/",
-    "priceRange": "₺₺",
-    "description": "İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz."
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Ana Sayfa",
-        "item": "https://beyaz-esya-servis123.netlify.app"
-      }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Servis süresi ne kadar?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Aynı gün içinde servis hizmeti sunuyoruz."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Hangi cihazlara servis veriyorsunuz?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, klima, kombi ve televizyon gibi beyaz eşyalara servis veriyoruz."
-        }
-      }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Beyaz Eşya Teknik Servisi",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Örnek Mahallesi, Servis Sokak No:12",
-      "addressLocality": "İstanbul",
-      "addressRegion": "İstanbul",
-      "postalCode": "34000",
-      "addressCountry": "TR"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "17"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": "Ayşe K.",
-        "reviewBody": "Servis çok hızlı ve güvenilirdi, teşekkürler!",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-      },
-      {
-        "@type": "Review",
-        "author": "Mehmet T.",
-        "reviewBody": "Uygun fiyat ve kaliteli hizmet aldım.",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-      },
-      {
-        "@type": "Review",
-        "author": "Zeynep B.",
-        "reviewBody": "Teknisyenler çok ilgili ve çözüm odaklıydı.",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-      }
-    ]
-  }
-  </script>
+
+  <!-- Sayfa başlığı -->
   <title>Beyaz Eşya Teknik Servisi | Aynı Gün Destek</title>
+
+  <!-- Dinamik yapılandırılmış veri oluşturma (conf.json'dan alınır) -->
+  <script>
+    fetch('/conf.json')
+      .then(res => res.json())
+      .then(config => {
+        // LocalBusiness yapısal veri
+        const localBusinessSchema = {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": config.firmaAdi || "Beyaz Eşya Teknik Servisi",
+          "image": config.domain + "/logo.png",
+          "telephone": config.telefon,
+          "email": config.email,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": config.adres,
+            "addressLocality": "İstanbul",
+            "addressRegion": "İstanbul",
+            "postalCode": "34371",
+            "addressCountry": "TR"
+          },
+          "url": config.domain,
+          "priceRange": "₺₺",
+          "description": "İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz."
+        };
+
+        // Breadcrumb yapısal veri
+        const breadcrumbSchema = {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Ana Sayfa",
+              "item": config.domain
+            }
+          ]
+        };
+
+        // JSON-LD script'lerini ekle
+        [localBusinessSchema, breadcrumbSchema].forEach(schema => {
+          const script = document.createElement('script');
+          script.type = 'application/ld+json';
+          script.textContent = JSON.stringify(schema, null, 2);
+          document.head.appendChild(script);
+        });
+      })
+      .catch(console.error);
+  </script>
+
+  <!-- URL'den gelen service parametresine göre dinamik meta güncelleme -->
   <script>
     const params = new URLSearchParams(window.location.search);
     const service = params.get("service");
-  
+
     if (service) {
       const titleText = `${service} Servisi | Aynı Gün Teknik Destek`;
       const descText = `${service} için garantisiz cihazlara yerinde tamir, bakım ve arıza servis hizmeti. Hemen servis al, uzman çözümle tanış.`;
-  
+
       document.title = titleText;
-  
+
       const descTag = document.querySelector('meta[name="description"]');
       if (descTag) descTag.setAttribute("content", descText);
-  
+
       const ogTitle = document.querySelector('meta[property="og:title"]');
       const ogDesc = document.querySelector('meta[property="og:description"]');
       if (ogTitle) ogTitle.setAttribute("content", titleText);
       if (ogDesc) ogDesc.setAttribute("content", descText);
-      const localBusinessSchema = document.getElementById('local-business-schema');
-      if (localBusinessSchema) {
-        let schema = JSON.parse(localBusinessSchema.textContent);
-        schema.name = `${service} Servisi`;
-        schema.description = `${service} için garantisiz cihazlara yerinde tamir, bakım ve arıza servis hizmeti.`;
-        localBusinessSchema.textContent = JSON.stringify(schema, null, 2);
-      }
     }
   </script>
+
+  <!-- Basit sayfa yerleşimi için CSS -->
   <style>
     html, body {
       height: 100%;
