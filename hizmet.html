@@ -231,9 +231,8 @@
         top: 100%;
       }
       .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content {
-        display: block;
+        display: block !important;
         opacity: 1;
-        transform: translateY(0);
         pointer-events: auto;
       }
       .dropdown-content a {
@@ -332,6 +331,7 @@
           text-align: center;
         }
         .dropdown-content {
+          display: block !important;
           position: static;
           min-width: unset;
           width: 100%;
