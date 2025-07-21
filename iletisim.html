@@ -69,808 +69,772 @@
       }
     ]
   }
-  </script>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    main {
-      flex: 1 0 auto;
-    }
-    .site-footer {
-      flex-shrink: 0;
-    }
-  </style>
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.ico" />
+</script>
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    flex: 1 0 auto;
+  }
+  .site-footer {
+    flex-shrink: 0;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <style>
-      nav {
-        width: 100%;
-        background: #fff;
-        border-bottom: 1.5px solid #e3eafc;
-        padding: 0;
-        margin: 0;
-        font-family: 'Segoe UI', Arial, sans-serif;
-        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.04);
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-      }
+<header>
+  <style>
+    nav {
+      width: 100%;
+      background: #fff;
+      border-bottom: 1.5px solid #e3eafc;
+      padding: 0;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      box-shadow: 0 2px 8px rgba(25, 118, 210, 0.04);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px 0 8px;
+      height: 68px;
+      width: 100%;
+    }
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    nav a, .dropdown-content a, .phone-link {
+      text-decoration: none;
+      color: #111; 
+      padding: 10px 16px;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      display: inline-block;
+      font-weight: 500;
+      border-radius: 6px;
+      position: relative;
+    }
+    nav a.active, .footer-links a.active {
+      background: #e3eafc;
+      color: #0b2a5a; 
+      box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
+    }
+    nav a:hover,
+    .dropdown-content a:hover,
+    .phone-link:hover {
+      background: #e3eafc;
+      color: #0b2a5a;
+      box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.25em;
+      color: #0b2a5a;
+      text-decoration: none;
+      gap: 10px;
+      letter-spacing: 0.5px;
+    }
+    .logo-img {
+      height: 32px;
+      width: auto;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #fff;
+      min-width: 210px;
+      box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);
+      z-index: 100;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.18s, transform 0.18s;
+    }
+    .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .dropdown-content a {
+      display: block;
+      color: #111; 
+      font-weight: 400;
+      padding: 10px 18px;
+      border-radius: 0;
+      font-size: 1.04em;
+    }
+    .dropdown-content a:hover {
+      background: #e3eafc;
+      color: #0b2a5a;
+    }
+    .phone-link {
+      margin-left: 28px;
+      background: #1976d2;
+      color: #fff !important;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 12px 22px;
+      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.13);
+      font-size: 1.08em;
+      letter-spacing: 0.5px;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.12s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .phone-link svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+      margin-right: 4px;
+      transition: fill 0.18s;
+    }
+    .phone-link:hover {
+      background: #0b2a5a;
+      color: #fff !important;
+      box-shadow: 0 4px 18px rgba(25, 118, 210, 0.18);
+      transform: translateY(-2px) scale(1.04);
+    }
+    .phone-link:hover svg {
+      fill: #fff;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1100;
+    }
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 4px;
+      margin: 4px 0;
+      background: #1976d2;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    @media (max-width: 800px) {
       .header-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 32px 0 8px;
-        height: 68px;
-        width: 100%;
+        flex-direction: row;
       }
       .nav-links {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-      }
-      nav a, .dropdown-content a, .phone-link {
-        text-decoration: none;
-        color: #111; 
-        padding: 10px 16px;
-        transition: background 0.18s, color 0.18s, box-shadow 0.18s;
-        display: inline-block;
-        font-weight: 500;
-        border-radius: 6px;
-        position: relative;
-      }
-      nav a.active, .footer-links a.active {
-        background: #e3eafc;
-        color: #0b2a5a; 
-        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
-      }
-      nav a:hover,
-      .dropdown-content a:hover,
-      .phone-link:hover {
-        background: #e3eafc;
-        color: #0b2a5a;
-        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
-      }
-      .logo {
-        display: flex;
-        align-items: center;
-        font-weight: 700;
-        font-size: 1.25em;
-        color: #0b2a5a; 
-        text-decoration: none;
-        gap: 10px;
-        letter-spacing: 0.5px;
-      }
-      .logo-img {
-        height: 32px;
-        width: auto;
-      }
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-      .dropdown-content {
         display: none;
         position: absolute;
+        top: 68px;
+        right: 0;
         background: #fff;
-        min-width: 210px;
+        flex-direction: column;
+        width: 220px;
         box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);
-        z-index: 100;
-        border-radius: 8px;
-        margin-top: 0;
-        transform: translateY(0);
-        pointer-events: none;
-        transition: opacity 0.18s, transform 0.18s;
-      }
-      .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-      .dropdown-content a {
-        display: block;
-        color: #111; 
-        font-weight: 400;
-        padding: 10px 18px;
-        border-radius: 0;
-        font-size: 1.04em;
-      }
-      .dropdown-content a:hover {
-        background: #e3eafc;
-        color: #1976d2;
-      }
-      .phone-link {
-        margin-left: 28px;
-        background: #1976d2;
-        color: #fff !important;
-        font-weight: 600;
-        border-radius: 8px;
-        padding: 12px 22px;
-        box-shadow: 0 2px 12px rgba(25, 118, 210, 0.13);
-        font-size: 1.08em;
-        letter-spacing: 0.5px;
-        transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.12s;
-        display: flex;
+        border-radius: 0 0 12px 12px;
+        padding: 12px 0;
+        z-index: 1099;
         align-items: center;
-        gap: 6px;
       }
-      .phone-link svg {
-        width: 20px;
-        height: 20px;
-        fill: #fff;
-        margin-right: 4px;
-        transition: fill 0.18s;
-      }
-      .phone-link:hover {
-        background: #0b2a5a; 
-        color: #fff !important;
-        box-shadow: 0 4px 18px rgba(25, 118, 210, 0.18);
-        transform: translateY(-2px) scale(1.04);
-      }
-      .phone-link:hover svg {
-        fill: #fff;
+      .nav-links.open {
+        display: flex;
       }
       .hamburger {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 44px;
-        height: 44px;
-        cursor: pointer;
-        background: none;
-        border: none;
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        z-index: 1100;
+        display: flex;
       }
-      .hamburger span {
+      .dropdown {
+        width: 100%;
+        text-align: center;
+      }
+      .dropdown-content {
+        position: static;
+        min-width: unset;
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0 0 12px 12px;
+        margin-top: 0;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        background: #f8fafd;
+        padding: 0;
+      }
+      .dropdown-content a {
+        text-align: center;
+        padding: 12px 0;
+        width: 100%;
         display: block;
-        width: 28px;
-        height: 4px;
-        margin: 4px 0;
-        background: #1976d2;
-        border-radius: 2px;
-        transition: 0.3s;
+        font-size: 1.08em;
       }
-      @media (max-width: 800px) {
-        .header-inner {
-          flex-direction: row;
-        }
-        .nav-links {
-          display: none;
-          position: absolute;
-          top: 68px;
-          right: 0;
-          background: #fff;
-          flex-direction: column;
-          width: 220px;
-          box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);
-          border-radius: 0 0 12px 12px;
-          padding: 12px 0;
-          z-index: 1099;
-          align-items: center;
-        }
-        .nav-links.open {
-          display: flex;
-        }
-        .hamburger {
-          display: flex;
-        }
-        .dropdown {
-          width: 100%;
-          text-align: center;
-        }
-        .dropdown-content {
-          position: static;
-          min-width: unset;
-          width: 100%;
-          box-shadow: none;
-          border-radius: 0 0 12px 12px;
-          margin-top: 0;
-          opacity: 1;
-          transform: none;
-          pointer-events: auto;
-          background: #f8fafd;
-          padding: 0;
-        }
-        .dropdown-content a {
-          text-align: center;
-          padding: 12px 0;
-          width: 100%;
-          display: block;
-          font-size: 1.08em;
-        }
-        .call-now-navbar {
-          margin: 12px auto 8px auto !important;
-          display: block !important;
-          text-align: center !important;
-          width: 70% !important;
-          max-width: 180px;
-          font-size: 1em !important;
-          padding: 10px 0 !important;
-          align-self: center !important;
-        }
-        /* HİZMETLERİMİZ dropdown mobilde kapalı */
-        .dropdown-content {
-          display: none !important;
-        }
+      .call-now-navbar {
+        margin: 12px auto 8px auto !important;
+        display: block !important;
+        text-align: center !important;
+        width: 70% !important;
+        max-width: 180px;
+        font-size: 1em !important;
+        padding: 10px 0 !important;
+        align-self: center !important;
       }
-    </style>
-    <nav>
-      <div class="header-inner">
-        <a href="index.html" class="logo">
-          <img src="logo.png" alt="logo" class="logo-img" width="100" height="100">
-          Beyaz Eşya Teknik Servisi
-        </a>
-        <button class="hamburger" id="hamburger-menu" aria-label="Menüyü Aç/Kapat">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <div style="display: flex; align-items: center;">
-          <div class="nav-links" id="main-nav-links">
-            <a href="index.html">Ana Sayfa</a>
-            <div class="dropdown">
-              <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
-              <div class="dropdown-content">
-                <a href="hizmet.html?service=Beyaz+Eşya+Servisi">Beyaz Eşya Servisi</a>
-                <a href="hizmet.html?service=Buzdolabı">Buzdolabı</a>
-                <a href="hizmet.html?service=Çamaşır+Makinesi">Çamaşır Makinesi</a>
-                <a href="hizmet.html?service=Bulaşık+Makinesi">Bulaşık Makinesi</a>
-                <a href="hizmet.html?service=Fırın">Fırın</a>
-                <a href="hizmet.html?service=Klima">Klima</a>
-                <a href="hizmet.html?service=Kombi">Kombi</a>
-                <a href="hizmet.html?service=Televizyon">Televizyon</a>
-              </div>
+      /* HİZMETLERİMİZ dropdown mobilde kapalı */
+      .dropdown-content {
+        display: none !important;
+      }
+    }
+  </style>
+  <nav>
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="logo" class="logo-img" width="100" height="100">
+        Beyaz Eşya Teknik Servisi
+      </a>
+      <button class="hamburger" id="hamburger-menu" aria-label="Menüyü Aç/Kapat">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div style="display: flex; align-items: center;">
+        <div class="nav-links" id="main-nav-links">
+          <a href="index.html">Ana Sayfa</a>
+          <div class="dropdown">
+            <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
+            <div class="dropdown-content">
+              <a href="hizmet.html?service=Beyaz+Eşya+Servisi">Beyaz Eşya Servisi</a>
+              <a href="hizmet.html?service=Buzdolabı">Buzdolabı</a>
+              <a href="hizmet.html?service=Çamaşır+Makinesi">Çamaşır Makinesi</a>
+              <a href="hizmet.html?service=Bulaşık+Makinesi">Bulaşık Makinesi</a>
+              <a href="hizmet.html?service=Fırın">Fırın</a>
+              <a href="hizmet.html?service=Klima">Klima</a>
+              <a href="hizmet.html?service=Kombi">Kombi</a>
+              <a href="hizmet.html?service=Televizyon">Televizyon</a>
             </div>
-            <a href="hakkimizda.html">Hakkımızda</a>
-            <a href="iletisim.html" class="active">İletişim</a>
-            <a href="#" id="navbar-phone-link" class="phone-link call-now-navbar">Bizi Arayın</a>
           </div>
+          <a href="hakkimizda.html" class="active">Hakkımızda</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="#" id="navbar-phone-link" class="phone-link call-now-navbar">Bizi Arayın</a>
         </div>
       </div>
-    </nav>
-  </header>
-  <main>
-    <style>
+    </div>
+  </nav>
+</header>
+<main>
+  <style>
+    main {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 32px 18px 18px 18px;
+      background: #f8fafd;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.04);
+      padding-top: 68px;
+    }
+    main h1 {
+      font-size: 2.2em;
+      font-weight: 800;
+      color: #1976d2;
+      margin-bottom: 22px;
+      letter-spacing: 0.5px;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
+    }
+    main p {
+      font-size: 1.18em;
+      line-height: 1.7;
+      color: #2a2a2a;
+      background: #fff;
+      border-left: 4px solid #e3eafc;
+      border-radius: 7px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 1px 6px rgba(25, 118, 210, 0.04);
+      transition: box-shadow 0.2s;
+    }
+    main p strong {
+      color: #000000;
+    }
+    main p:hover {
+      box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+    }
+    @media (max-width: 800px) {
       main {
-        max-width: 1300px;
-        margin: 0 auto;
-        padding: 32px 18px 18px 18px;
-        background: #f8fafd;
-        border-radius: 14px;
-        box-shadow: 0 2px 12px rgba(25, 118, 210, 0.04);
-        padding-top: 68px;
+        padding: 14px 2vw 10px 2vw;
       }
       main h1 {
-        font-size: 2.2em;
-        font-weight: 800;
-        color: #1976d2;
-        margin-bottom: 22px;
-        letter-spacing: 0.5px;
-        text-align: center;
-        text-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
+        margin-top: 70px;
+        font-size: 1.3em;
       }
       main p {
-        font-size: 1.18em;
-        line-height: 1.7;
-        color: #2a2a2a;
-        background: #fff;
-        border-left: 4px solid #e3eafc;
-        border-radius: 7px;
-        padding: 16px 18px;
-        margin-bottom: 18px;
-        box-shadow: 0 1px 6px rgba(25, 118, 210, 0.04);
-        transition: box-shadow 0.2s;
-      }
-      main p strong {
-        color: #222222;
-      }
-      main p a {
-        color: #1976d2;
-        text-decoration: underline;
-      }
-      main p:hover {
-        box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
-      }
-      .call-now-btn {
-        display: block;
-        font-size: 2em;
-        font-weight: 800;
-        letter-spacing: 1.5px;
-        padding: 16px 0;
-        width: 440px;
-        max-width: 98vw;
-        background: linear-gradient(90deg, #7effa9 0%, #38f9d7 50%, #79bcff 100%);
-        color: #fff;
-        border: none;
-        border-radius: 32px;
-        box-shadow: 0 8px 32px rgba(25, 118, 210, 0.18), 0 0 16px 2px rgba(67, 233, 123, 0.10);
-        cursor: pointer;
-        margin: 0 auto 0 auto;
-        transition: background 0.18s, box-shadow 0.18s, transform 0.12s, filter 0.18s;
-        text-align: center;
-        text-decoration: none;
-        filter: brightness(1.03) saturate(1.1);
-      }
-      .call-now-btn:hover {
-        background: #0b4a8a;
-        box-shadow: 0 6px 24px rgba(25, 118, 210, 0.18);
-        transform: translateY(-2px) scale(1.04);
-      }
-      @media (max-width: 600px) {
-        .call-now-btn {
-          font-size: 1.1em;
-          padding: 10px 0;
-          width: 95vw;
-          border-radius: 18px;
-        }
-      }
-      @media (max-width: 800px) {
-        main {
-          padding: 14px 2vw 10px 2vw;
-        }
-        main h1 {
-          margin-top: 70px;
-          font-size: 1.3em;
-        }
-        main p {
-          font-size: 1em;
-          padding: 12px 8px;
-        }
-      }
-    </style>
-    <h1 style="color: #0b4a8a; border-bottom:2px solid #e3eafc; padding-bottom:10px; margin-bottom:22px;">İletişim</h1>
-    <p>
-      <strong>Firma adı:</strong> <span id="firma-adi-alani">Yükleniyor...</span><br>
-      <strong>Firma adresi:</strong> <span id="firma-adres-alani">Yükleniyor...</span><br>
-    </p>
-    <div style="text-align:center; margin-top: 12px; min-height:48px;">
-      <a href="#" id="telefon-buton" aria-label="Telefon ile ara: ..." style="display:inline-block; padding:12px 28px; background:#1976d2; color:#fff; border-radius:8px; text-decoration:none; font-weight:600; font-size:1.13em; margin:10px auto 18px auto; box-shadow:0 2px 12px rgba(25, 118, 210, 0.13);">Bizi Arayın: Yükleniyor...</a>
-    </div>
-  </main>
-  <section id="customer-comments-section">
-    <h2 class="comments-title">Müşteri Yorumları</h2>
-    <div id="comments-list">
-      <div class="comment-card">
-        <div class="comment-avatar">A</div>
-        <div class="comment-content">
-          <div class="comment-name">Ayşe K.</div>
-          <div class="comment-text">Servis çok hızlı ve güvenilirdi, teşekkürler!</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">M</div>
-        <div class="comment-content">
-          <div class="comment-name">Mehmet T.</div>
-          <div class="comment-text">Uygun fiyat ve kaliteli hizmet aldım.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">Z</div>
-        <div class="comment-content">
-          <div class="comment-name">Zeynep B.</div>
-          <div class="comment-text">Teknisyenler çok ilgili ve çözüm odaklıydı.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">A</div>
-        <div class="comment-content">
-          <div class="comment-name">Ali S.</div>
-          <div class="comment-text">Arızalı makinem aynı gün tamir edildi.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">E</div>
-        <div class="comment-content">
-          <div class="comment-name">Elif D.</div>
-          <div class="comment-text">Herkese tavsiye ederim, memnun kaldım.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">B</div>
-        <div class="comment-content">
-          <div class="comment-name">Burak Y.</div>
-          <div class="comment-text">Çok kısa sürede geldiler, sorunum çözüldü.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">S</div>
-        <div class="comment-content">
-          <div class="comment-name">Seda N.</div>
-          <div class="comment-text">Güler yüzlü ve profesyonel ekip, teşekkürler.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">K</div>
-        <div class="comment-content">
-          <div class="comment-name">Kemal R.</div>
-          <div class="comment-text">Fiyatlar makul, hizmet kaliteli.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">D</div>
-        <div class="comment-content">
-          <div class="comment-name">Derya U.</div>
-          <div class="comment-text">Sorunsuz bir servis deneyimi yaşadım.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">O</div>
-        <div class="comment-content">
-          <div class="comment-name">Onur C.</div>
-          <div class="comment-text">Teknik destek çok hızlıydı, memnun kaldım.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">F</div>
-        <div class="comment-content">
-          <div class="comment-name">Fatma L.</div>
-          <div class="comment-text">Cihazım ilk günkü gibi çalışıyor, teşekkürler.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">T</div>
-        <div class="comment-content">
-          <div class="comment-name">Tuncay P.</div>
-          <div class="comment-text">İşlerini titizlikle yapıyorlar, tavsiye ederim.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">G</div>
-        <div class="comment-content">
-          <div class="comment-name">Gizem S.</div>
-          <div class="comment-text">Randevu saatine tam zamanında geldiler.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">Y</div>
-        <div class="comment-content">
-          <div class="comment-name">Yusuf Z.</div>
-          <div class="comment-text">Her arızada ilk tercihim burası olacak.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">P</div>
-        <div class="comment-content">
-          <div class="comment-name">Pelin M.</div>
-          <div class="comment-text">Açıklayıcı bilgi verdiler, güven verdiler.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">C</div>
-        <div class="comment-content">
-          <div class="comment-name">Cemal E.</div>
-          <div class="comment-text">Yedek parça temini çok hızlıydı.</div>
-        </div>
-      </div>
-      <div class="comment-card">
-        <div class="comment-avatar">N</div>
-        <div class="comment-content">
-          <div class="comment-name">Nurgül T.</div>
-          <div class="comment-text">İlgili ve çözüm odaklı bir ekip.</div>
-        </div>
-      </div>
-    </div>
-    <style>
-      #customer-comments-section {
-        max-width: 700px;
-        margin: 40px auto 0;
-        padding: 24px 16px 32px 16px;
-        background: #e3eafc;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-        font-family: 'Segoe UI', Arial, sans-serif;
-      }
-      .comments-title {
-        text-align: center;
-        margin-bottom: 24px;
-        font-size: 1.6em;
-        color: #0a357a;
-      }
-      #comments-list {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        max-height: 520px;
-        overflow-y: auto;
-        padding-right: 8px;
-      }
-      .comment-card {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 1px 4px #0001;
-        padding: 14px 16px;
-        animation: fadeIn 0.4s;
-      }
-      .comment-avatar {
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        background: #0a357a;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        color: #fff;
-        font-size: 1.2em;
-        flex-shrink: 0;
-      }
-      .comment-content {
-        flex: 1;
-      }
-      .comment-name {
-        font-weight: 600;
-        color: #111;
-        margin-bottom: 2px;
-      }
-      .comment-text {
-        color: #222;
-        margin-bottom: 0;
-        word-break: break-word;
-      }
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-    </style>
-  </section>
-  <footer class="site-footer">
-    <style>
-      .site-footer {
-        background: rgb(247, 247, 250);
-        color: #111;
-        padding: 24px 0 0 0;
-        font-family: 'Segoe UI', Arial, sans-serif;
-        margin-top: 32px;
-        border-top: 1px solid rgb(224, 224, 224);
-      }
-      .footer-content {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        align-items: center;
-      }
-      .footer-top {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 14px;
-        width: 100%;
-      }
-      .footer-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
-        width: 100%;
-      }
-      .footer-links a {
-        color: #0a357a;
-        text-decoration: none;
         font-size: 1em;
-        transition: color 0.2s;
-        opacity: 0.95;
-        padding: 2px 6px;
+        padding: 12px 8px;
       }
-      .footer-links a:hover {
-        color: #1976d2;
-        opacity: 1;
-      }
-      .footer-divider {
-        border-top: 1px solid rgb(224, 224, 224);
-        margin: 12px 0 0 0;
-        width: 100%;
-      }
-      .footer-info {
-        text-align: center;
-        font-size: 0.97em;
-        color: #444;
-        margin: 10px 0 0 0;
-        width: 100%;
-      }
-      .footer-info strong {
-        color: #0a357a;
-      }
-      .copyright {
-        margin-top: 4px;
-        font-size: 0.93em;
-        color: #444;
-      }
-      @media (max-width: 700px) {
-        .footer-content, .footer-top {
-          flex-direction: column;
-          align-items: center;
-          gap: 10px;
-        }
-        .footer-links {
-          gap: 8px;
-        }
-      }
-    </style>
-    <div class="footer-content">
-      <div class="footer-top">
-        <div class="footer-links">
-          <a href="index.html">Ana Sayfa</a>
-          <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
-          <a href="hakkimizda.html">Hakkımızda</a>
-          <a href="iletisim.html">İletişim</a>
-          <a href="gizlilik.html">Gizlilik Politikası</a>
-          <a href="kvkk.html">KVKK</a>
-        </div>
-      </div>
-      <div class="footer-divider"></div>
-      <div class="footer-info">
-        <p><strong>Yetkili servis değiliz.</strong> Sadece garantisi bitmiş cihazlara hizmet sunmaktayız.</p>
-        <p class="copyright">&copy; 2025 Beyaz Eşya Servisi. Tüm hakları saklıdır.</p>
-      </div>
-    </div>
-    <section class="footer-socials-custom" style="margin: 10px 0; text-align: center;">
-      <a id="footer-facebook" href="#" aria-label="Facebook" target="_blank" class="footer-social-icon" style="color: #4267B2;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
-      </a>
-      <a id="footer-instagram" href="#" aria-label="Instagram" target="_blank" class="footer-social-icon" style="color: #E1306C;">
-        <svg width="28" height="28" viewBox="0 0 448 448" aria-hidden="true" focusable="false">
-            <defs>
-              <radialGradient id="ig-gradient" cx="30%" cy="107%" r="150%" fx="30%" fy="107%">
-                <stop offset="0%" stop-color="#fdf497"/>
-                <stop offset="5%" stop-color="#fdf497"/>
-                <stop offset="45%" stop-color="#fd5949"/>
-                <stop offset="60%" stop-color="#d6249f"/>
-                <stop offset="90%" stop-color="#285AEB"/>
-              </radialGradient>
-            </defs>
-            <rect width="448" height="448" rx="100" fill="url(#ig-gradient)"/>
-            <path d="M224 109.3c-63.3 0-114.7 51.4-114.7 114.7S160.7 338.7 224 338.7 338.7 287.3 338.7 224 287.3 109.3 224 109.3zm0 186.6c-39.7 0-71.9-32.2-71.9-71.9s32.2-71.9 71.9-71.9 71.9 32.2 71.9 71.9-32.2 71.9-71.9 71.9zm146.4-187.2c0 14.9-12.1 27-27 27s-27-12.1-27-27 12.1-27 27-27 27 12.1 27 27z" fill="#fff"/>
-            <circle cx="224" cy="224" r="58.7" fill="#fff"/>
-          </svg>
-      </a>
-      <a id="footer-twitter" href="#" aria-label="Twitter" target="_blank" class="footer-social-icon" style="color: #1DA1F2;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.916 4.916 0 0 0-8.38 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.857 3.17 0 2.188 1.115 4.117 2.823 5.254a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.21-.005-.423-.015-.633A9.936 9.936 0 0 0 24 4.557z"/></svg>
-      </a>
-    </section>
-    <style>
-      .footer-socials-custom {
-        margin: 10px 0;
-        text-align: center;
-      }
-      .footer-social-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background: transparent;
-        transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
-        margin: 0 8px;
-        font-size: 1em;
-        text-decoration: none;
-      }
-      .footer-social-icon:hover {
-        background: #e3eafc;
-        box-shadow: 0 2px 8px #0001;
-        transform: scale(1.08);
-      }
-      .footer-social-icon svg {
-        display: block;
-      }
-    </style>
-  </footer>
+    }
+  </style>
+  <h1 style="color: #0b4a8a; border-bottom:2px solid #e3eafc; padding-bottom:10px; margin-bottom:22px;">İletişim</h1>
+
+
+  <p>
+    <strong>Firma adı:</strong> <span id="firma-adi-alani" style="display:inline-block; min-width:120px; min-height:24px;"></span><br>
+    <strong>Firma adresi:</strong> <span id="firma-adres-alani" style="display:inline-block; min-width:180px; min-height:24px;"></span><br>
+  </p>
+  <div id="telefon-buton-alani" style="text-align:center; min-height:48px;"></div>
   <script>
-    function updateContactInfo({ firmaAdi, adres, telefon }) {
-      if (firmaAdi) {
-        document.getElementById('firma-adi-alani').textContent = firmaAdi;
-      }
-      if (adres) {
-        document.getElementById('firma-adres-alani').textContent = adres;
-      }
-      if (telefon) {
-        let gosterim = telefon.replace(/[^0-9]/g, '');
-        if (gosterim.length === 10) gosterim = '0' + gosterim;
-        if (gosterim.length === 11) {
-          gosterim = gosterim.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
-        }
-
-        const buton = document.getElementById('telefon-buton');
-        if (buton) {
-          buton.textContent = 'Bizi Arayın: ' + gosterim;
-          buton.href = 'tel:' + telefon.replace(/\s+/g, '');
-          buton.setAttribute('aria-label', 'Telefon ile ara: ' + gosterim);
-        }
-     
-        const fab = document.getElementById('floating-phone-btn');
-        if (fab) {
-          fab.href = 'tel:' + telefon.replace(/\s+/g, '');
-          fab.setAttribute('aria-label', 'Telefon ile ara: ' + gosterim);
-        }
-
-        const navPhone = document.getElementById('navbar-phone-link');
-        if (navPhone) {
-          navPhone.href = 'tel:' + telefon.replace(/\s+/g, '');
-          navPhone.setAttribute('aria-label', 'Telefon ile ara: ' + gosterim);
-        }
-      }
-    }
-   
-    function setContactInfoUnknown() {
-      document.getElementById('firma-adi-alani').textContent = 'Bilinmiyor';
-      document.getElementById('firma-adres-alani').textContent = 'Bilinmiyor';
-      const buton = document.getElementById('telefon-buton');
-      if (buton) {
-        buton.textContent = 'Bizi Arayın: Bilinmiyor';
-        buton.href = '#';
-        buton.setAttribute('aria-label', 'Telefon ile ara: Bilinmiyor');
-      }
-      const fab = document.getElementById('floating-phone-btn');
-      if (fab) {
-        fab.href = '#';
-        fab.setAttribute('aria-label', 'Telefon ile ara: Bilinmiyor');
-      }
-      const navPhone = document.getElementById('navbar-phone-link');
-      if (navPhone) {
-        navPhone.href = '#';
-        navPhone.setAttribute('aria-label', 'Telefon ile ara: Bilinmiyor');
-      }
-    }
-    // İletişim bilgilerini config.json'dan dinamik olarak çek
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
-        updateContactInfo(config);
-      })
-      .catch(() => {
-        setContactInfoUnknown();
+        // Firma adı ve adresini doldur
+        if (config.firmaAdi) {
+          document.getElementById('firma-adi-alani').textContent = config.firmaAdi;
+        }
+        if (config.adres) {
+          document.getElementById('firma-adres-alani').textContent = config.adres;
+        }
+        // Telefon butonu
+        if (config.telefon) {
+          const telefon = config.telefon;
+          let gosterim = telefon.replace(/^\+?90?/, ''); 
+          gosterim = gosterim.replace(/[^0-9]/g, ''); 
+          if (gosterim.length === 10) gosterim = '0' + gosterim;
+          if (gosterim.length === 11) {
+            gosterim = gosterim.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3');
+          }
+          const buton = document.createElement('a');
+          buton.href = 'tel:' + telefon.replace(/\s+/g, '');
+          buton.textContent = gosterim;
+          buton.style.display = 'inline-block';
+          buton.style.padding = '12px 28px';
+          buton.style.background = '#1976d2';
+          buton.style.color = '#fff';
+          buton.style.borderRadius = '8px';
+          buton.style.textDecoration = 'none';
+          buton.style.fontWeight = '600';
+          buton.style.fontSize = '1.13em';
+          buton.style.margin = '10px auto 18px auto';
+          buton.style.boxShadow = '0 2px 12px rgba(25, 118, 210, 0.13)';
+          buton.onmouseover = function() {
+            buton.style.background = '#0b2a5a';
+          };
+          buton.onmouseout = function() {
+            buton.style.background = '#1976d2';
+          };
+          document.getElementById('telefon-buton-alani').appendChild(buton);
+        }
       });
-    document.getElementById('hamburger-menu').addEventListener('click', function() {
-      var navLinks = document.getElementById('main-nav-links');
-      navLinks.classList.toggle('open');
-    });
   </script>
-  <!-- Sağ alt köşe telefon simgesi -->
-  <a id="floating-phone-btn" href="#" aria-label="Telefon ile ara: 0555 111 22 33" style="display: flex; align-items: center; justify-content: center; position: fixed; right: 24px; bottom: 24px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 2000; font-size: 2.1em; transition: background 0.18s, box-shadow 0.18s; text-decoration: none;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
-  </a>
+</main>
+<section id="customer-comments-section">
+  <h2 class="comments-title">Müşteri Yorumları</h2>
+  <div id="comments-list">
+    <div class="comment-card">
+      <div class="comment-avatar">A</div>
+      <div class="comment-content">
+        <div class="comment-name">Ayşe K.</div>
+        <div class="comment-text">Servis çok hızlı ve güvenilirdi, teşekkürler!</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">M</div>
+      <div class="comment-content">
+        <div class="comment-name">Mehmet T.</div>
+        <div class="comment-text">Uygun fiyat ve kaliteli hizmet aldım.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">Z</div>
+      <div class="comment-content">
+        <div class="comment-name">Zeynep B.</div>
+        <div class="comment-text">Teknisyenler çok ilgili ve çözüm odaklıydı.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">A</div>
+      <div class="comment-content">
+        <div class="comment-name">Ali S.</div>
+        <div class="comment-text">Arızalı makinem aynı gün tamir edildi.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">E</div>
+      <div class="comment-content">
+        <div class="comment-name">Elif D.</div>
+        <div class="comment-text">Herkese tavsiye ederim, memnun kaldım.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">B</div>
+      <div class="comment-content">
+        <div class="comment-name">Burak Y.</div>
+        <div class="comment-text">Çok kısa sürede geldiler, sorunum çözüldü.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">S</div>
+      <div class="comment-content">
+        <div class="comment-name">Seda N.</div>
+        <div class="comment-text">Güler yüzlü ve profesyonel ekip, teşekkürler.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">K</div>
+      <div class="comment-content">
+        <div class="comment-name">Kemal R.</div>
+        <div class="comment-text">Fiyatlar makul, hizmet kaliteli.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">D</div>
+      <div class="comment-content">
+        <div class="comment-name">Derya U.</div>
+        <div class="comment-text">Sorunsuz bir servis deneyimi yaşadım.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">O</div>
+      <div class="comment-content">
+        <div class="comment-name">Onur C.</div>
+        <div class="comment-text">Teknik destek çok hızlıydı, memnun kaldım.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">F</div>
+      <div class="comment-content">
+        <div class="comment-name">Fatma L.</div>
+        <div class="comment-text">Cihazım ilk günkü gibi çalışıyor, teşekkürler.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">T</div>
+      <div class="comment-content">
+        <div class="comment-name">Tuncay P.</div>
+        <div class="comment-text">İşlerini titizlikle yapıyorlar, tavsiye ederim.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">G</div>
+      <div class="comment-content">
+        <div class="comment-name">Gizem S.</div>
+        <div class="comment-text">Randevu saatine tam zamanında geldiler.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">Y</div>
+      <div class="comment-content">
+        <div class="comment-name">Yusuf Z.</div>
+        <div class="comment-text">Her arızada ilk tercihim burası olacak.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">P</div>
+      <div class="comment-content">
+        <div class="comment-name">Pelin M.</div>
+        <div class="comment-text">Açıklayıcı bilgi verdiler, güven verdiler.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">C</div>
+      <div class="comment-content">
+        <div class="comment-name">Cemal E.</div>
+        <div class="comment-text">Yedek parça temini çok hızlıydı.</div>
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-avatar">N</div>
+      <div class="comment-content">
+        <div class="comment-name">Nurgül T.</div>
+        <div class="comment-text">İlgili ve çözüm odaklı bir ekip.</div>
+      </div>
+    </div>
+  </div>
   <style>
-    #floating-phone-btn:hover {
-      background: #128c4b;
+    #customer-comments-section {
+      max-width: 700px;
+      margin: 40px auto 0;
+      padding: 24px 16px 32px 16px;
+      background: #e3eafc;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .comments-title {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 1.6em;
+      color: #0a357a;
+    }
+    #comments-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      max-height: 520px;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+    .comment-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px #0001;
+      padding: 14px 16px;
+      animation: fadeIn 0.4s;
+    }
+    .comment-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #0a357a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
       color: #fff;
-      box-shadow: 0 8px 32px rgba(37, 211, 102, 0.22);
-      transform: scale(1.07);
+      font-size: 1.2em;
+      flex-shrink: 0;
+    }
+    .comment-content {
+      flex: 1;
+    }
+    .comment-name {
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 2px;
+    }
+    .comment-text {
+      color: #222;
+      margin-bottom: 0;
+      word-break: break-word;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</section>
+<footer class="site-footer">
+  <style>
+    .site-footer {
+      background: rgb(247, 247, 250);
+      color: #111;
+      padding: 24px 0 0 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin-top: 32px;
+      border-top: 1px solid rgb(224, 224, 224);
+    }
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+    }
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      width: 100%;
+    }
+    .footer-links a {
+      color: #0a357a;
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.2s;
+      opacity: 0.95;
+      padding: 2px 6px;
+    }
+    .footer-links a:hover {
+      color: #1976d2;
+      opacity: 1;
+    }
+    .footer-divider {
+      border-top: 1px solid rgb(224, 224, 224);
+      margin: 12px 0 0 0;
+      width: 100%;
+    }
+    .footer-info {
+      text-align: center;
+      font-size: 0.97em;
+      color: #444;
+      margin: 10px 0 0 0;
+      width: 100%;
+    }
+    .footer-info strong {
+      color: #0a357a;
+    }
+    .copyright {
+      margin-top: 4px;
+      font-size: 0.93em;
+      color: #444;
     }
     @media (max-width: 700px) {
-      #floating-phone-btn {
-        width: 48px;
-        height: 48px;
-        font-size: 1.5em;
-        right: 14px;
-        bottom: 14px;
+      .footer-content, .footer-top {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-links {
+        gap: 8px;
       }
     }
   </style>
+  <div class="footer-content">
+    <div class="footer-top">
+      <div class="footer-links">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+        <a href="iletisim.html">İletişim</a>
+        <a href="gizlilik.html">Gizlilik Politikası</a>
+        <a href="kvkk.html">KVKK</a>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-info">
+      <p><strong>Yetkili servis değiliz.</strong> Sadece garantisi bitmiş cihazlara hizmet sunmaktayız.</p>
+      <p class="copyright">&copy; 2025 Beyaz Eşya Servisi. Tüm hakları saklıdır.</p>
+    </div>
+  </div>
+  <section class="footer-socials-custom" style="margin: 10px 0; text-align: center;">
+    <a id="footer-facebook" href="#" aria-label="Facebook" target="_blank" class="footer-social-icon" style="color: #4267B2;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
+    </a>
+    <a id="footer-instagram" href="#" aria-label="Instagram" target="_blank" class="footer-social-icon" style="color: #E1306C;">
+      <svg width="28" height="28" viewBox="0 0 448 448" aria-hidden="true" focusable="false">
+          <defs>
+            <radialGradient id="ig-gradient" cx="30%" cy="107%" r="150%" fx="30%" fy="107%">
+              <stop offset="0%" stop-color="#fdf497"/>
+              <stop offset="5%" stop-color="#fdf497"/>
+              <stop offset="45%" stop-color="#fd5949"/>
+              <stop offset="60%" stop-color="#d6249f"/>
+              <stop offset="90%" stop-color="#285AEB"/>
+            </radialGradient>
+          </defs>
+          <rect width="448" height="448" rx="100" fill="url(#ig-gradient)"/>
+          <path d="M224 109.3c-63.3 0-114.7 51.4-114.7 114.7S160.7 338.7 224 338.7 338.7 287.3 338.7 224 287.3 109.3 224 109.3zm0 186.6c-39.7 0-71.9-32.2-71.9-71.9s32.2-71.9 71.9-71.9 71.9 32.2 71.9 71.9-32.2 71.9-71.9 71.9zm146.4-187.2c0 14.9-12.1 27-27 27s-27-12.1-27-27 12.1-27 27-27 27 12.1 27 27z" fill="#fff"/>
+          <circle cx="224" cy="224" r="58.7" fill="#fff"/>
+        </svg>
+    </a>
+    <a id="footer-twitter" href="#" aria-label="Twitter" target="_blank" class="footer-social-icon" style="color: #1DA1F2;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.916 4.916 0 0 0-8.38 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.857 3.17 0 2.188 1.115 4.117 2.823 5.254a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.21-.005-.423-.015-.633A9.936 9.936 0 0 0 24 4.557z"/></svg>
+    </a>
+  </section>
+  <style>
+    .footer-socials-custom {
+      margin: 10px 0;
+      text-align: center;
+    }
+    .footer-social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: transparent;
+      transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
+      margin: 0 8px;
+      font-size: 1em;
+      text-decoration: none;
+    }
+    .footer-social-icon:hover {
+      background: #e3eafc;
+      box-shadow: 0 2px 8px #0001;
+      transform: scale(1.08);
+    }
+    .footer-social-icon svg {
+      display: block;
+    }
+  </style>
+</footer>
+<script>
+  fetch('config.json')
+    .then(response => response.json())
+    .then(config => {
+      if (config.email) {
+        const username = config.email.split('@')[0];
+        document.getElementById('footer-facebook').href = 'https://facebook.com/' + username;
+        document.getElementById('footer-instagram').href = 'https://instagram.com/' + username;
+        document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
+      }
+      if (config.telefon) {
+        const phone = config.telefon.replace(/[^\d+]/g, '');
+        const link = document.getElementById('navbar-phone-link');
+        if (link) {
+          link.setAttribute('href', 'tel:' + phone);
+          link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+        }
+        const phoneFab = document.getElementById('floating-phone-btn');
+        if (phoneFab) {
+          phoneFab.setAttribute('href', 'tel:' + phone);
+          phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+        }
+      }
+    });
+</script>
+<script>
+document.getElementById('hamburger-menu').addEventListener('click', function() {
+var navLinks = document.getElementById('main-nav-links');
+navLinks.classList.toggle('open');
+});
+</script>
+<!-- Sağ alt köşe telefon simgesi -->
+<a id="floating-phone-btn" href="#" style="display: flex; align-items: center; justify-content: center; position: fixed; right: 24px; bottom: 24px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 2000; font-size: 2.1em; transition: background 0.18s, box-shadow 0.18s; text-decoration: none;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+</a>
+<style>
+  #floating-phone-btn:hover {
+    background: #128c4b;
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.22);
+    transform: scale(1.07);
+  }
+  @media (max-width: 700px) {
+    #floating-phone-btn {
+      width: 48px;
+      height: 48px;
+      font-size: 1.5em;
+      right: 14px;
+      bottom: 14px;
+    }
+  }
+</style>
 </body>
 </html>
