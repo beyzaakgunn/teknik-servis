@@ -335,7 +335,7 @@
           text-align: center;
         }
         .dropdown-content {
-          display: block !important;
+          display: none !important;
           opacity: 1 !important;
           pointer-events: auto !important;
           position: static !important;
@@ -347,6 +347,9 @@
           transform: none;
           border-top: 1.5px solid #e3eafc;
           transition: box-shadow 0.18s, background 0.18s;
+        }
+        .dropdown-content.open {
+          display: block !important;
         }
         .dropdown-content a {
           text-align: center;
@@ -427,6 +430,26 @@
       var navLinks = document.getElementById('main-nav-links');
       navLinks.classList.toggle('open');
     });
+    // Mobilde Hizmetlerimiz dropdown toggle
+    function isMobile() {
+      return window.innerWidth <= 800;
+    }
+    var hizmetlerimizLink = document.querySelector('.dropdown > a[href="hizmetlerimiz.html"]');
+    var dropdownContent = hizmetlerimizLink && hizmetlerimizLink.nextElementSibling;
+    if (hizmetlerimizLink && dropdownContent) {
+      hizmetlerimizLink.addEventListener('click', function(e) {
+        if (isMobile()) {
+          if (!dropdownContent.classList.contains('open')) {
+            e.preventDefault();
+            dropdownContent.classList.add('open');
+          } // else: ikinci tıklamada linke gitmesine izin veriyoruz
+        }
+      });
+      // Menü kapanınca dropdown'u da kapat
+      document.getElementById('hamburger-menu').addEventListener('click', function() {
+        if (isMobile()) dropdownContent.classList.remove('open');
+      });
+    }
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
