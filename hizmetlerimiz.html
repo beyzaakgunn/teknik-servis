@@ -973,15 +973,74 @@
         }
       });
   </script>
-  <a id="floating-phone-btn" href="#" style="display: flex; align-items: center; justify-content: center; position: fixed; right: 24px; bottom: 24px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 2000; font-size: 2.1em; transition: background 0.18s, box-shadow 0.18s; text-decoration: none;">
+  <a id="floating-phone-btn" href="#" style="display: flex; align-items: center; justify-content: center; position: fixed; right: 24px; bottom: 24px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 0 0 0 #25d36699; z-index: 2000; font-size: 2.1em; transition: background 0.18s, box-shadow 0.18s, transform 0.18s; text-decoration: none; animation: phone-wobble 2.2s infinite, phone-glow 2.2s infinite;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
   </a>
   <style>
+    #floating-phone-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 60px;
+      height: 60px;
+      background: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 0 0 0 #25d36699;
+      z-index: 2000;
+      font-size: 2.1em;
+      transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+      text-decoration: none;
+      animation: phone-wobble 2.2s infinite, phone-glow 2.2s infinite;
+      overflow: visible;
+    }
+    #floating-phone-btn svg {
+      filter: drop-shadow(0 0 8px #25d36688);
+      transition: filter 0.18s;
+    }
+    #floating-phone-btn::before {
+      content: '';
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, #25d36655 0%, #25d36600 70%);
+      opacity: 0.7;
+      z-index: -1;
+      animation: phone-pulse 2.2s infinite;
+      pointer-events: none;
+    }
     #floating-phone-btn:hover {
       background: #128c4b;
       color: #fff;
-      box-shadow: 0 8px 32px rgba(37, 211, 102, 0.22);
-      transform: scale(1.07);
+      box-shadow: 0 8px 32px rgba(37, 211, 102, 0.22), 0 0 0 12px #25d36644;
+      transform: scale(1.12) rotate(-3deg);
+    }
+    #floating-phone-btn:hover svg {
+      filter: drop-shadow(0 0 16px #25d366cc);
+    }
+    @keyframes phone-wobble {
+      0%, 100% { transform: rotate(0deg); }
+      10% { transform: rotate(-10deg); }
+      20% { transform: rotate(8deg); }
+      30% { transform: rotate(-6deg); }
+      40% { transform: rotate(4deg); }
+      50% { transform: rotate(0deg); }
+    }
+    @keyframes phone-glow {
+      0%, 100% { box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 0 0 0 #25d36699; }
+      50% { box-shadow: 0 8px 32px rgba(37, 211, 102, 0.22), 0 0 0 16px #25d36633; }
+    }
+    @keyframes phone-pulse {
+      0% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.2; transform: translate(-50%, -50%) scale(1.25); }
+      100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
     }
     @media (max-width: 700px) {
       #floating-phone-btn {
@@ -990,6 +1049,10 @@
         font-size: 1.5em;
         right: 14px;
         bottom: 14px;
+      }
+      #floating-phone-btn::before {
+        width: 70px;
+        height: 70px;
       }
     }
   </style>
