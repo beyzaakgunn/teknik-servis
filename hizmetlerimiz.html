@@ -872,31 +872,9 @@
     </style>
   </footer>
   <script>
-
-    fetch('iletisim.html')
-      .then(response => response.text())
-      .then(html => {
-        const match = html.match(/(?:\+90\s?)?0?5\d{2}[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}/);
-        if (match) {
-          const phone = match[0].replace(/\D/g, '');
-          const formatted = '+90' + phone.slice(-10);
-          const link = document.getElementById('navbar-phone-link');
-          if (link) {
-            link.setAttribute('href', 'tel:' + formatted);
-            link.setAttribute('aria-label', 'Telefon: ' + match[0]);
-          }
-        }
-      });
-
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
-        if (config.email) {
-          const username = config.email.split('@')[0];
-          document.getElementById('footer-facebook').href = 'https://facebook.com/' + username;
-          document.getElementById('footer-instagram').href = 'https://instagram.com/' + username;
-          document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
-        }
         if (config.telefon) {
           const phone = config.telefon.replace(/[^\d+]/g, '');
           const link = document.getElementById('navbar-phone-link');
@@ -904,14 +882,8 @@
             link.setAttribute('href', 'tel:' + phone);
             link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
           }
-          const mainBtn = document.getElementById('main-call-now-btn');
-          if (mainBtn) {
-            mainBtn.setAttribute('href', 'tel:' + phone);
-            mainBtn.setAttribute('aria-label', 'Telefon: ' + config.telefon);
-          }
         }
       });
-
     document.getElementById('hamburger-menu').addEventListener('click', function() {
       var navLinks = document.getElementById('main-nav-links');
       navLinks.classList.toggle('open');
