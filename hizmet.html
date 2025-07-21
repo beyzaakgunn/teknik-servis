@@ -395,7 +395,7 @@
           <div class="nav-links" id="main-nav-links">
             <a href="index.html">Ana Sayfa</a>
             <div class="dropdown">
-              <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
+              <a href="hizmetlerimiz.html" id="hizmetlerimiz-link">Hizmetlerimiz</a>
               <div class="dropdown-content">
                 <a href="hizmet.html?service=Beyaz+Eşya+Servisi">Beyaz Eşya Servisi</a>
                 <a href="hizmet.html?service=Buzdolabı">Buzdolabı</a>
@@ -424,7 +424,7 @@
     function isMobile() {
       return window.innerWidth <= 800;
     }
-    var hizmetlerimizLink = document.querySelector('.dropdown > a[href="hizmetlerimiz.html"]');
+    var hizmetlerimizLink = document.getElementById('hizmetlerimiz-link');
     var dropdownContent = hizmetlerimizLink && hizmetlerimizLink.nextElementSibling;
     if (hizmetlerimizLink && dropdownContent) {
       hizmetlerimizLink.addEventListener('click', function(e) {
