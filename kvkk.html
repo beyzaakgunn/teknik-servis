@@ -640,6 +640,13 @@
               <a href="hizmet.html?service=Televizyon">Televizyon</a>
             </div>
           </div>
+          <div class="footer-iletisim-group" id="footer-iletisim-group" style="display: flex; flex-direction: column; align-items: flex-start; min-width: 220px; gap: 4px;">
+            <div style="font-weight: bold; color: #0a357a; margin-bottom: 4px;">İletişim</div>
+            <div id="footer-firma-adi"></div>
+            <div id="footer-adres" style="font-size: 0.98em; color: #222;"></div>
+            <div id="footer-telefon" style="font-size: 0.98em; color: #222;"></div>
+            <div id="footer-email" style="font-size: 0.98em; color: #222;"></div>
+          </div>
         </div>
       </div>
       <div class="footer-divider"></div>
@@ -737,6 +744,24 @@
         margin-bottom: 4px;
         margin-top: 2px;
       }
+      .footer-iletisim-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: 220px;
+        gap: 4px;
+      }
+      .footer-iletisim-group div {
+        font-size: 0.98em;
+        color: #222;
+      }
+      .footer-iletisim-group a {
+        color: #0a357a;
+        text-decoration: none;
+      }
+      .footer-iletisim-group a:hover {
+        text-decoration: underline;
+      }
       .footer-divider {
         border-top: 1px solid rgb(224, 224, 224);
         margin: 12px 0 0 0;
@@ -793,7 +818,7 @@
           gap: 18px;
           align-items: stretch;
         }
-        .footer-links-sol, .footer-hizmetler-group {
+        .footer-links-sol, .footer-hizmetler-group, .footer-iletisim-group {
           min-width: unset;
           width: 100%;
           align-items: flex-start;
@@ -803,6 +828,10 @@
           text-align: left;
           width: 100%;
           padding-left: 0;
+        }
+        .footer-iletisim-group div {
+          text-align: left;
+          width: 100%;
         }
       }
     </style>
@@ -824,6 +853,25 @@
             phoneFab.setAttribute('href', 'tel:' + phone);
             phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
           }
+        }
+      });
+  </script>
+  <script>
+    // Footer iletişim bilgilerini doldur
+    fetch('config.json')
+      .then(response => response.json())
+      .then(config => {
+        if (config.firmaAdi) {
+          document.getElementById('footer-firma-adi').textContent = config.firmaAdi;
+        }
+        if (config.adres) {
+          document.getElementById('footer-adres').textContent = config.adres;
+        }
+        if (config.telefon) {
+          document.getElementById('footer-telefon').innerHTML = 'Tel: <a href="tel:' + config.telefon.replace(/\s+/g, '') + '" style="color:#0A357A;text-decoration:none;">' + config.telefon + '</a>';
+        }
+        if (config.email) {
+          document.getElementById('footer-email').innerHTML = 'E-posta: <a href="mailto:' + config.email + '" style="color:#0A357A;text-decoration:none;">' + config.email + '</a>';
         }
       });
   </script>
