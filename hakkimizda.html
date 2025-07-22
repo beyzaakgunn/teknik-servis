@@ -456,6 +456,7 @@
               buton.style.background = '#1976d2';
             };
             document.getElementById('telefon-buton-alani').appendChild(buton);
+            buton.setAttribute('aria-label', 'Telefon ile arayın');
           }
         });
     </script>
@@ -690,10 +691,10 @@
       </div>
     </div>
     <section class="footer-socials-custom">
-      <a id="footer-facebook" href="#" aria-label="Facebook" target="_blank" class="footer-social-icon" style="color: #4267B2;">
+      <a id="footer-facebook" href="#" aria-label="Facebook'ta bizi takip edin" target="_blank" class="footer-social-icon" style="color: #4267B2;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
       </a>
-      <a id="footer-instagram" href="#" aria-label="Instagram" target="_blank" class="footer-social-icon" style="color: #E1306C;">
+      <a id="footer-instagram" href="#" aria-label="Instagram hesabımızı ziyaret edin" target="_blank" class="footer-social-icon" style="color: #E1306C;">
         <svg width="28" height="28" viewBox="0 0 448 448" aria-hidden="true" focusable="false">
           <defs>
             <radialGradient id="ig-gradient" cx="30%" cy="107%" r="150%" fx="30%" fy="107%">
@@ -709,7 +710,7 @@
           <circle cx="224" cy="224" r="58.7" fill="#fff"/>
         </svg>
       </a>
-      <a id="footer-twitter" href="#" aria-label="Twitter" target="_blank" class="footer-social-icon" style="color: #1DA1F2;">
+      <a id="footer-twitter" href="#" aria-label="Twitter hesabımızı ziyaret edin" target="_blank" class="footer-social-icon" style="color: #1DA1F2;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.916 4.916 0 0 0-8.38 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.857 3.17 0 2.188 1.115 4.117 2.823 5.254a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.21-.005-.423-.015-.633A9.936 9.936 0 0 0 24 4.557z"/></svg>
       </a>
     </section>
@@ -926,7 +927,7 @@ if (hizmetlerimizLink && dropdownContent) {
 }
 </script>
   <!-- Sağ alt köşe telefon simgesi -->
-  <a id="floating-phone-btn" href="#" style="display: flex; align-items: center; justify-content: center; position: fixed; right: 24px; bottom: 24px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 0 0 0 #25d36699; z-index: 2000; font-size: 2.1em; transition: background 0.18s, box-shadow 0.18s, transform 0.18s; text-decoration: none; animation: phone-wobble 2.2s infinite, phone-glow 2.2s infinite;">
+  <a id="floating-phone-btn" href="#" aria-label="Telefon ile arayın" style="display: flex; align-items: center; justify-content: center; position: fixed; right: 24px; bottom: 24px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 0 0 0 #25d36699; z-index: 2000; font-size: 2.1em; transition: background 0.18s, box-shadow 0.18s, transform 0.18s; text-decoration: none; animation: phone-wobble 2.2s infinite, phone-glow 2.2s infinite;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
   </a>
   <style>
