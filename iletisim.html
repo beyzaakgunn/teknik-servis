@@ -401,6 +401,8 @@
       }
     </style>
     <h1 style="color: #0b4a8a; border-bottom:2px solid #e3eafc; padding-bottom:10px; margin-bottom:22px;">İletişim</h1>
+
+
     <p>
       <strong>Firma adı:</strong> <span id="firma-adi-alani" style="display:inline-block; min-width:120px; min-height:24px;"></span><br>
       <strong>Firma adresi:</strong> <span id="firma-adres-alani" style="display:inline-block; min-width:180px; min-height:24px;"></span><br>
@@ -414,12 +416,14 @@
       fetch('config.json')
         .then(response => response.json())
         .then(config => {
+          // Firma adı ve adresini doldur
           if (config.firmaAdi) {
             document.getElementById('firma-adi-alani').textContent = config.firmaAdi;
           }
           if (config.adres) {
             document.getElementById('firma-adres-alani').textContent = config.adres;
           }
+          // E-posta
           if (config.email) {
             const emailSpan = document.getElementById('firma-email-alani');
             const mailLink = document.createElement('a');
@@ -432,6 +436,7 @@
             mailLink.onmouseout = function() { mailLink.style.color = '#1976d2'; };
             emailSpan.appendChild(mailLink);
           }
+          // Telefon butonu
           if (config.telefon) {
             const telefon = config.telefon;
             let gosterim = telefon.replace(/^\+?90?/, ''); 
@@ -875,6 +880,7 @@
     </style>
   </footer>
   <script>
+    // Footer iletişim bilgilerini doldur
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
@@ -893,10 +899,12 @@
       });
   </script>
   <script>
+// Hamburger menüsü aç/kapat
 document.getElementById('hamburger-menu').addEventListener('click', function() {
   var navLinks = document.getElementById('main-nav-links');
   navLinks.classList.toggle('open');
 });
+// Mobilde Hizmetlerimiz dropdown toggle
 function isMobile() {
   return window.innerWidth <= 800;
 }
@@ -908,15 +916,16 @@ if (hizmetlerimizLink && dropdownContent) {
       if (!dropdownContent.classList.contains('open')) {
         e.preventDefault();
         dropdownContent.classList.add('open');
-      } 
+      } // else: ikinci tıklamada linke gitmesine izin veriyoruz
     }
   });
-
+  // Menü kapanınca dropdown'u da kapat
   document.getElementById('hamburger-menu').addEventListener('click', function() {
     if (isMobile()) dropdownContent.classList.remove('open');
   });
 }
 </script>
+  <!-- Sağ alt köşe telefon simgesi -->
   <a id="floating-phone-btn" href="#" style="display: flex; align-items: center; justify-content: center; position: fixed; right: 24px; bottom: 24px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 0 0 0 #25d36699; z-index: 2000; font-size: 2.1em; transition: background 0.18s, box-shadow 0.18s, transform 0.18s; text-decoration: none; animation: phone-wobble 2.2s infinite, phone-glow 2.2s infinite;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
   </a>

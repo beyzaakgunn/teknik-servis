@@ -13,11 +13,13 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.ico" />
   <title>Beyaz Eşya Teknik Servisi | Aynı Gün Destek</title>
+  <!-- Schema ve SEO scriptleri aynı şekilde bırakıldı -->
   <script type="application/ld+json" id="local-business-schema">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Beyaz Eşya Servisi","image":"https://beyaz-esya-servis123.netlify.app/logo.png","telephone":"05551112244","address":"Halaskargazi Mah. Rumeli Cad. No:102 Daire:5 Şişli / İstanbul 34371","email":"info@beyazesyaservisi123.com","url":"https://beyaz-esya-servis123.netlify.app/","priceRange":"₺₺","description":"İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz."}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://beyaz-esya-servis123.netlify.app"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Servis süresi ne kadar?","acceptedAnswer":{"@type":"Answer","text":"Aynı gün içinde servis hizmeti sunuyoruz."}},{"@type":"Question","name":"Hangi cihazlara servis veriyorsunuz?","acceptedAnswer":{"@type":"Answer","text":"Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, klima, kombi ve televizyon gibi beyaz eşyalara servis veriyoruz."}}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Beyaz Eşya Servisi","address":{"@type":"PostalAddress","streetAddress":"Halaskargazi Mah. Rumeli Cad. No:102 Daire:5 Şişli / İstanbul 34371","addressLocality":"İstanbul","addressRegion":"İstanbul","postalCode":"34371","addressCountry":"TR"},"telephone":"05551112244","email":"info@beyazesyaservisi123.com","url":"https://beyaz-esya-servis123.netlify.app/","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"17"},"review":[{"@type":"Review","author":"Ayşe K.","reviewBody":"Servis çok hızlı ve güvenilirdi, teşekkürler!","reviewRating":{"@type":"Rating","ratingValue":"5"}},{"@type":"Review","author":"Mehmet T.","reviewBody":"Uygun fiyat ve kaliteli hizmet aldım.","reviewRating":{"@type":"Rating","ratingValue":"5"}},{"@type":"Review","author":"Zeynep B.","reviewBody":"Teknisyenler çok ilgili ve çözüm odaklıydı.","reviewRating":{"@type":"Rating","ratingValue":"5"}}]}</script>
   <script>
+    // Dinamik başlık ve açıklama güncellemesi
     const params = new URLSearchParams(window.location.search);
     const service = params.get("service");
     if (service) {
@@ -40,6 +42,7 @@
     }
   </script>
   <style>
+    /* Tüm ortak ve responsive CSS tek blokta */
     html, body {height: 100%;margin: 0;padding: 0;}
     body {min-height: 100vh;display: flex;flex-direction: column;}
     main {flex: 1 0 auto;max-width: 1300px;margin: 0 auto;padding: 32px 18px 18px 18px;padding-top: 68px;}
@@ -86,6 +89,7 @@
         max-width: 180px;
       }
     }
+    /* Diğer section, main, footer ve yorumlar için CSS blokları sadeleştirildi ve birleştirildi */
     .tanitim-full {
       width: 100vw;
       position: relative;
@@ -496,12 +500,15 @@
       align-items: flex-start;
       flex-wrap: wrap;
       justify-content: center;
+   
     }
     .footer-links-sol {
       display: flex;
       flex-direction: column;
       gap: 2px;
       min-width: 140px;
+   
+
     }
     .footer-links a {
       color: #0a357a;
@@ -718,10 +725,12 @@
       </button>
     </div>
     <script>
+      // Hamburger menüsü aç/kapat
       document.getElementById('hamburger-menu').addEventListener('click', function() {
         var navLinks = document.getElementById('main-nav-links');
         navLinks.classList.toggle('open');
       });
+      // Mobilde Hizmetlerimiz dropdown toggle
       function isMobile() {
         return window.innerWidth <= 800;
       }
@@ -733,13 +742,15 @@
             if (!dropdownContent.classList.contains('open')) {
               e.preventDefault();
               dropdownContent.classList.add('open');
-            } 
+            } // else: ikinci tıklamada linke gitmesine izin veriyoruz
           }
         });
+        // Menü kapanınca dropdown'u da kapat
         document.getElementById('hamburger-menu').addEventListener('click', function() {
           if (isMobile()) dropdownContent.classList.remove('open');
         });
       }
+      // Telefon ve sosyal medya linklerini ayarla
       fetch('config.json')
         .then(response => response.json())
         .then(config => {
@@ -762,6 +773,7 @@
               phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
             }
           }
+          // Ana sayfa özel: Hemen Ara butonu
           const btn = document.getElementById('ara-btn');
           if(btn && config.telefon) {
             btn.onclick = () => { window.location.href = `tel:${config.telefon.replace(/\s+/g, '')}`; };
@@ -1022,6 +1034,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
   </a>
   <script>
+    // Footer iletişim bilgilerini doldur
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
