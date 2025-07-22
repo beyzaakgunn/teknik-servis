@@ -816,7 +816,6 @@
     </style>
   </footer>
   <script>
-    // Footer iletişim bilgilerini doldur
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
@@ -918,12 +917,10 @@
     }
   </style>
   <script>
-// Hamburger menüsü aç/kapat
 document.getElementById('hamburger-menu').addEventListener('click', function() {
   var navLinks = document.getElementById('main-nav-links');
   navLinks.classList.toggle('open');
 });
-// Mobilde Hizmetlerimiz dropdown toggle
 function isMobile() {
   return window.innerWidth <= 800;
 }
@@ -935,10 +932,9 @@ if (hizmetlerimizLink && dropdownContent) {
       if (!dropdownContent.classList.contains('open')) {
         e.preventDefault();
         dropdownContent.classList.add('open');
-      } // else: ikinci tıklamada linke gitmesine izin veriyoruz
+      } 
     }
   });
-  // Menü kapanınca dropdown'u da kapat
   document.getElementById('hamburger-menu').addEventListener('click', function() {
     if (isMobile()) dropdownContent.classList.remove('open');
   });
