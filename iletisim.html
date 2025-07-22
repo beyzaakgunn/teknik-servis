@@ -966,6 +966,34 @@ if (hizmetlerimizLink && dropdownContent) {
   document.getElementById('hamburger-menu').addEventListener('click', function() {
     if (isMobile()) dropdownContent.classList.remove('open');
   });
+  document.addEventListener('DOMContentLoaded', function() {
+  var hamburger = document.getElementById('hamburger-menu');
+  var navLinks = document.getElementById('main-nav-links');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', function() {
+      navLinks.classList.toggle('open');
+    });
+  }
+
+  function isMobile() {
+    return window.innerWidth <= 800;
+  }
+  var hizmetlerimizLink = document.getElementById('hizmetlerimiz-link');
+  var dropdownContent = hizmetlerimizLink && hizmetlerimizLink.nextElementSibling;
+  if (hizmetlerimizLink && dropdownContent) {
+    hizmetlerimizLink.addEventListener('click', function(e) {
+      if (isMobile()) {
+        if (!dropdownContent.classList.contains('open')) {
+          e.preventDefault();
+          dropdownContent.classList.add('open');
+        }
+      }
+    });
+    hamburger.addEventListener('click', function() {
+      if (isMobile()) dropdownContent.classList.remove('open');
+    });
+  }
+});
 }
 </script>
 
