@@ -229,6 +229,119 @@
       }
     }
   </style>
+  <style>
+    .csb-action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 18px auto 0 auto;
+      padding: 14px 32px;
+      font-size: 1.08em;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(90deg, #38f9d7 0%, #1976d2 100%);
+      border: none;
+      border-radius: 24px;
+      box-shadow: 0 2px 10px rgba(25, 118, 210, 0.10);
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
+      position: relative;
+      overflow: hidden;
+    }
+    .csb-action-btn::after {
+      display: none;
+    }
+    .csb-action-btn:hover {
+      background: linear-gradient(90deg, #1976d2 0%, #38f9d7 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px #1976d255;
+      transform: scale(1.03);
+    }
+    .csb-action-btn:active {
+      background: linear-gradient(90deg, #38f9d7 0%, #1976d2 100%);
+      box-shadow: 0 1px 4px #1976d2aa;
+      transform: scale(0.98);
+    }
+    .csb-action-btn .csb-btn-icon {
+      font-size: 1.2em;
+      margin-right: 4px;
+      display: inline-block;
+    }
+    @media (max-width: 700px) {
+      .csb-action-btn {
+        font-size: 0.98em;
+        padding: 9px 0;
+        border-radius: 14px;
+        width: 95vw;
+        max-width: 98vw;
+      }
+    }
+  </style>
+  <style>
+    .custom-service-box {
+      padding: 28px 18px;
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(25, 118, 210, 0.07);
+      background: #fff;
+      margin-bottom: 24px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .csb-title {
+      font-size: 1.35em;
+      font-weight: 800;
+      color: #1976d2;
+      margin-bottom: 12px;
+      letter-spacing: 0.2px;
+      line-height: 1.18;
+      text-align: center;
+    }
+    .csb-desc {
+      font-size: 1.08em;
+      color: #222;
+      margin-bottom: 14px;
+      line-height: 1.6;
+      text-align: center;
+      font-weight: 500;
+    }
+    .csb-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .csb-feature {
+      font-size: 0.98em;
+      background: #e3eafc;
+      color: #0a357a;
+      border-radius: 7px;
+      padding: 7px 14px;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+      box-shadow: 0 1px 4px rgba(25, 118, 210, 0.04);
+    }
+    @media (max-width: 700px) {
+      .custom-service-box {
+        padding: 12px 2vw;
+        max-width: 99vw;
+      }
+      .csb-title {
+        font-size: 1.08em;
+      }
+      .csb-desc {
+        font-size: 0.98em;
+      }
+      .csb-feature {
+        font-size: 0.93em;
+        padding: 6px 8px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -1299,90 +1412,122 @@ fetch('config.json')
   const serviceInfoData = {
     "Buzdolabı": `
       <div class="custom-service-box">
-        <div class="csb-title">Buzdolabı Tamiri</div>
-        <div class="csb-desc">Soğutma sorunları, motor arızaları, gaz dolumu ve kapak problemleri için uzman çözümler.</div>
-        <div class="csb-features">
-          <span class="csb-feature">Aynı Gün Servis</span>
-          <span class="csb-feature">Uzman Ekip</span>
-          <span class="csb-feature">1 Yıl Parça Garantisi</span>
+        <div class="csb-title">❄️ Buzdolabı Tamiri – Soğutma Sorunlarına Son!</div>
+        <div class="csb-desc">
+          Buzdolabınız eskisi gibi soğutmuyor mu? Uzman ekibimizle aynı gün yerinde çözüm sunuyoruz.<br>
+          <strong>Ücretsiz arıza tespiti, hızlı ve garantili tamir!</strong>
         </div>
+        <div class="csb-features">
+          <span class="csb-feature">🚀 Aynı Gün Servis</span>
+          <span class="csb-feature">👨‍🔧 Uzman Ekip</span>
+          <span class="csb-feature">🛡️ 1 Yıl Parça Garantisi</span>
+        </div>
+        <button class="csb-action-btn" onclick="window.location.href='tel:05555555555'"><span class="csb-btn-icon">📞</span>Hemen Servis Al</button>
       </div>
     `,
     "Çamaşır Makinesi": `
       <div class="custom-service-box">
-        <div class="csb-title">Çamaşır Makinesi Tamiri</div>
-        <div class="csb-desc">Su boşaltmama, titreşim, arıza kodları ve bakım için hızlı çözüm.</div>
-        <div class="csb-features">
-          <span class="csb-feature">Hızlı Müdahale</span>
-          <span class="csb-feature">Uzman Ekip</span>
-          <span class="csb-feature">1 Yıl Parça Garantisi</span>
+        <div class="csb-title">🧺 Çamaşır Makinesi Tamiri – Tertemiz Çözüm!</div>
+        <div class="csb-desc">
+          Makineniz su boşaltmıyor veya arıza mı verdi? Hızlı ve güvenilir servisle yanınızdayız.<br>
+          <strong>Şimdi arayın, aynı gün tamir edelim!</strong>
         </div>
+        <div class="csb-features">
+          <span class="csb-feature">⚡ Hızlı Müdahale</span>
+          <span class="csb-feature">👨‍🔧 Uzman Ekip</span>
+          <span class="csb-feature">🛡️ 1 Yıl Parça Garantisi</span>
+        </div>
+        <button class="csb-action-btn" onclick="window.location.href='tel:05555555555'"><span class="csb-btn-icon">📞</span>Hemen Servis Al</button>
       </div>
     `,
     "Bulaşık Makinesi": `
       <div class="custom-service-box">
-        <div class="csb-title">Bulaşık Makinesi Tamiri</div>
-        <div class="csb-desc">Tablet erimeme, su almama ve temizlik sorunlarına profesyonel destek.</div>
-        <div class="csb-features">
-          <span class="csb-feature">Hızlı Servis</span>
-          <span class="csb-feature">Uzman Ekip</span>
-          <span class="csb-feature">1 Yıl Parça Garantisi</span>
+        <div class="csb-title">🍽️ Bulaşık Makinesi Tamiri – Tertemiz Sonuçlar!</div>
+        <div class="csb-desc">
+          Bulaşıklarınız temiz çıkmıyor mu? Profesyonel ekibimizle hızlı çözüm.<br>
+          <strong>Ücretsiz arıza tespiti, hemen servis!</strong>
         </div>
+        <div class="csb-features">
+          <span class="csb-feature">⚡ Hızlı Servis</span>
+          <span class="csb-feature">👨‍🔧 Uzman Ekip</span>
+          <span class="csb-feature">🛡️ 1 Yıl Parça Garantisi</span>
+        </div>
+        <button class="csb-action-btn" onclick="window.location.href='tel:05555555555'"><span class="csb-btn-icon">📞</span>Hemen Servis Al</button>
       </div>
     `,
     "Fırın": `
       <div class="custom-service-box">
-        <div class="csb-title">Fırın Tamiri</div>
-        <div class="csb-desc">Isıtmama, cam temizliği ve yanık kokusu gibi sorunlara hızlı çözüm.</div>
-        <div class="csb-features">
-          <span class="csb-feature">Hızlı Servis</span>
-          <span class="csb-feature">Uzman Ekip</span>
-          <span class="csb-feature">1 Yıl Parça Garantisi</span>
+        <div class="csb-title">🔥 Fırın Tamiri – Lezzetli Yemekler İçin!</div>
+        <div class="csb-desc">
+          Fırınınız ısınmıyor veya yanık kokusu mu var? Hemen arayın, sorunu çözelim.<br>
+          <strong>Garantili ve hızlı servis!</strong>
         </div>
+        <div class="csb-features">
+          <span class="csb-feature">⚡ Hızlı Servis</span>
+          <span class="csb-feature">👨‍🔧 Uzman Ekip</span>
+          <span class="csb-feature">🛡️ 1 Yıl Parça Garantisi</span>
+        </div>
+        <button class="csb-action-btn" onclick="window.location.href='tel:05555555555'"><span class="csb-btn-icon">📞</span>Hemen Servis Al</button>
       </div>
     `,
     "Klima": `
       <div class="custom-service-box">
-        <div class="csb-title">Klima Servisi</div>
-        <div class="csb-desc">Soğutmama, bakım ve enerji tasarrufu için uzman servis.</div>
-        <div class="csb-features">
-          <span class="csb-feature">Hızlı Servis</span>
-          <span class="csb-feature">Uzman Ekip</span>
-          <span class="csb-feature">1 Yıl Parça Garantisi</span>
+        <div class="csb-title">🌬️ Klima Servisi – Serinliğin Keyfini Çıkarın!</div>
+        <div class="csb-desc">
+          Klimanız soğutmuyor mu? Enerji tasarruflu ve hızlı servis için hemen arayın.<br>
+          <strong>Bakım ve onarımda uzman ekibimizle hizmetinizdeyiz!</strong>
         </div>
+        <div class="csb-features">
+          <span class="csb-feature">⚡ Hızlı Servis</span>
+          <span class="csb-feature">👨‍🔧 Uzman Ekip</span>
+          <span class="csb-feature">🛡️ 1 Yıl Parça Garantisi</span>
+        </div>
+        <button class="csb-action-btn" onclick="window.location.href='tel:05555555555'"><span class="csb-btn-icon">📞</span>Hemen Servis Al</button>
       </div>
     `,
     "Kombi": `
       <div class="custom-service-box">
-        <div class="csb-title">Kombi Servisi</div>
-        <div class="csb-desc">Sıcak su, basınç ve bakım sorunlarına hızlı ve güvenli çözüm.</div>
-        <div class="csb-features">
-          <span class="csb-feature">Hızlı Servis</span>
-          <span class="csb-feature">Uzman Ekip</span>
-          <span class="csb-feature">1 Yıl Parça Garantisi</span>
+        <div class="csb-title">🔥 Kombi Servisi – Sıcak Su ve Konfor!</div>
+        <div class="csb-desc">
+          Kombiniz arızalı mı? Sıcak su ve ısınma sorunlarını aynı gün çözüyoruz.<br>
+          <strong>Güvenli ve hızlı servis için hemen arayın!</strong>
         </div>
+        <div class="csb-features">
+          <span class="csb-feature">⚡ Hızlı Servis</span>
+          <span class="csb-feature">👨‍🔧 Uzman Ekip</span>
+          <span class="csb-feature">🛡️ 1 Yıl Parça Garantisi</span>
+        </div>
+        <button class="csb-action-btn" onclick="window.location.href='tel:05555555555'"><span class="csb-btn-icon">📞</span>Hemen Servis Al</button>
       </div>
     `,
     "Televizyon": `
       <div class="custom-service-box">
-        <div class="csb-title">Televizyon Tamiri</div>
-        <div class="csb-desc">Görüntü, ses ve bağlantı sorunları için hızlı servis.</div>
-        <div class="csb-features">
-          <span class="csb-feature">Hızlı Servis</span>
-          <span class="csb-feature">Uzman Ekip</span>
-          <span class="csb-feature">1 Yıl Parça Garantisi</span>
+        <div class="csb-title">📺 Televizyon Tamiri – Kesintisiz Eğlence!</div>
+        <div class="csb-desc">
+          Görüntü veya ses sorunu mu var? Televizyonunuz için hızlı ve garantili servis.<br>
+          <strong>Şimdi arayın, hemen müdahale edelim!</strong>
         </div>
+        <div class="csb-features">
+          <span class="csb-feature">⚡ Hızlı Servis</span>
+          <span class="csb-feature">👨‍🔧 Uzman Ekip</span>
+          <span class="csb-feature">🛡️ 1 Yıl Parça Garantisi</span>
+        </div>
+        <button class="csb-action-btn" onclick="window.location.href='tel:05555555555'"><span class="csb-btn-icon">📞</span>Hemen Servis Al</button>
       </div>
     `,
     "Beyaz Eşya Servisi": `
       <div class="custom-service-box">
-        <div class="csb-title">Beyaz Eşya Servisi</div>
-        <div class="csb-desc">Tüm beyaz eşyalarınız için aynı gün hızlı ve güvenli servis.</div>
-        <div class="csb-features">
-          <span class="csb-feature">Aynı Gün Servis</span>
-          <span class="csb-feature">Uzman Ekip</span>
-          <span class="csb-feature">1 Yıl Parça Garantisi</span>
+        <div class="csb-title">🏠 Beyaz Eşya Servisi – Tüm Markalara Hızlı Çözüm!</div>
+        <div class="csb-desc">
+          Tüm beyaz eşyalarınız için aynı gün hızlı ve güvenli servis.<br>
+          <strong>Hemen arayın, ücretsiz arıza tespiti fırsatını kaçırmayın!</strong>
         </div>
+        <div class="csb-features">
+          <span class="csb-feature">🚀 Aynı Gün Servis</span>
+          <span class="csb-feature">👨‍🔧 Uzman Ekip</span>
+          <span class="csb-feature">🛡️ 1 Yıl Parça Garantisi</span>
+        </div>
+        <button class="csb-action-btn" onclick="window.location.href='tel:05555555555'"><span class="csb-btn-icon">📞</span>Hemen Servis Al</button>
       </div>
     `
   };
