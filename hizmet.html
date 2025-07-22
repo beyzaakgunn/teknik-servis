@@ -420,7 +420,6 @@
       var navLinks = document.getElementById('main-nav-links');
       navLinks.classList.toggle('open');
     });
-    // Mobilde Hizmetlerimiz dropdown toggle
     function isMobile() {
       return window.innerWidth <= 800;
     }
@@ -431,15 +430,13 @@
         if (isMobile()) {
           if (!dropdownContent.classList.contains('open')) {
             e.preventDefault();
-            // Diğer açık dropdownları kapat (isteğe bağlı)
             document.querySelectorAll('.dropdown-content.open').forEach(function(el) {
               el.classList.remove('open');
             });
             dropdownContent.classList.add('open');
-          } // else: ikinci tıklamada linke gitmesine izin veriyoruz
+          } 
         }
       });
-      // Menü kapanınca dropdown'u da kapat
       document.getElementById('hamburger-menu').addEventListener('click', function() {
         if (isMobile()) dropdownContent.classList.remove('open');
       });
@@ -1216,7 +1213,6 @@
       });
   </script>
   <script>
-    // Footer iletişim bilgilerini doldur
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
