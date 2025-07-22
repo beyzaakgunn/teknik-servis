@@ -441,49 +441,7 @@
         if (isMobile()) dropdownContent.classList.remove('open');
       });
     }
-    fetch('config.json')
-      .then(response => response.json())
-      .then(config => {
-        window.configData = config;
-        if (config.email) {
-          const username = config.email.split('@')[0];
-          const fb = document.getElementById('footer-facebook');
-          const ig = document.getElementById('footer-instagram');
-          const tw = document.getElementById('footer-twitter');
-          if (fb) fb.href = 'https://facebook.com/' + username;
-          if (ig) ig.href = 'https://instagram.com/' + username;
-          if (tw) tw.href = 'https://twitter.com/' + username;
-        }
-        if (config.telefon) {
-          const phone = config.telefon.replace(/[^\d+]/g, '');
-          const phoneFab = document.getElementById('floating-phone-btn');
-          if (phoneFab) {
-            phoneFab.setAttribute('href', 'tel:' + phone);
-            phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
-          }
-          const link = document.getElementById('navbar-phone-link');
-          if (link) {
-            link.setAttribute('href', 'tel:' + phone);
-            link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
-          }
-        }
-        if (config.firmaAdi) {
-          const el = document.getElementById('footer-firma-adi');
-          if (el) el.textContent = config.firmaAdi;
-        }
-        if (config.adres) {
-          const el = document.getElementById('footer-adres');
-          if (el) el.textContent = config.adres;
-        }
-        if (config.telefon) {
-          const el = document.getElementById('footer-telefon');
-          if (el) el.innerHTML = 'Tel: <a href="tel:' + config.telefon.replace(/\s+/g, '') + '" style="color:#0A357A;text-decoration:none;">' + config.telefon + '</a>';
-        }
-        if (config.email) {
-          const el = document.getElementById('footer-email');
-          if (el) el.innerHTML = 'E-posta: <a href="mailto:' + config.email + '" style="color:#0A357A;text-decoration:none;">' + config.email + '</a>';
-        }
-      });
+   
   </script>
   <main>
     <style>
@@ -1202,26 +1160,7 @@
       }
     }
   </script>
-  <script>
-    fetch('config.json')
-      .then(response => response.json())
-      .then(config => {
-        if (config.email) {
-          const username = config.email.split('@')[0];
-          document.getElementById('footer-facebook').href = 'https://facebook.com/' + username;
-          document.getElementById('footer-instagram').href = 'https://instagram.com/' + username;
-          document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
-        }
-        if (config.telefon) {
-          const phone = config.telefon.replace(/[^\d+]/g, '');
-          const link = document.getElementById('navbar-phone-link');
-          if (link) {
-            link.setAttribute('href', 'tel:' + phone);
-            link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
-          }
-        }
-      });
-  </script>
+  
   <script>
     fetch('config.json')
       .then(response => response.json())
@@ -1240,5 +1179,53 @@
         }
       });
   </script>
+  <script>
+fetch('config.json')
+  .then(response => response.json())
+  .then(config => {
+    window.configData = config;
+    // Sosyal medya linkleri
+    if (config.email) {
+      const username = config.email.split('@')[0];
+      const fb = document.getElementById('footer-facebook');
+      const ig = document.getElementById('footer-instagram');
+      const tw = document.getElementById('footer-twitter');
+      if (fb) fb.href = 'https://facebook.com/' + username;
+      if (ig) ig.href = 'https://instagram.com/' + username;
+      if (tw) tw.href = 'https://twitter.com/' + username;
+    }
+    // Telefon linkleri
+    if (config.telefon) {
+      const phone = config.telefon.replace(/[^\d+]/g, '');
+      const phoneFab = document.getElementById('floating-phone-btn');
+      if (phoneFab) {
+        phoneFab.setAttribute('href', 'tel:' + phone);
+        phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+      }
+      const link = document.getElementById('navbar-phone-link');
+      if (link) {
+        link.setAttribute('href', 'tel:' + phone);
+        link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+      }
+    }
+    // Footer iletişim bilgileri
+    if (config.firmaAdi) {
+      const el = document.getElementById('footer-firma-adi');
+      if (el) el.textContent = config.firmaAdi;
+    }
+    if (config.adres) {
+      const el = document.getElementById('footer-adres');
+      if (el) el.textContent = config.adres;
+    }
+    if (config.telefon) {
+      const el = document.getElementById('footer-telefon');
+      if (el) el.innerHTML = 'Tel: <a href=\"tel:' + config.telefon.replace(/\\s+/g, '') + '\" style=\"color:#0A357A;text-decoration:none;\">' + config.telefon + '</a>';
+    }
+    if (config.email) {
+      const el = document.getElementById('footer-email');
+      if (el) el.innerHTML = 'E-posta: <a href=\"mailto:' + config.email + '\" style=\"color:#0A357A;text-decoration:none;\">' + config.email + '</a>';
+    }
+  });
+</script>
 </body>
 </html>
