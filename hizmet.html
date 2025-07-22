@@ -1160,25 +1160,7 @@
       }
     }
   </script>
-  
-  <script>
-    fetch('config.json')
-      .then(response => response.json())
-      .then(config => {
-        if (config.firmaAdi) {
-          document.getElementById('footer-firma-adi').textContent = config.firmaAdi;
-        }
-        if (config.adres) {
-          document.getElementById('footer-adres').textContent = config.adres;
-        }
-        if (config.telefon) {
-          document.getElementById('footer-telefon').innerHTML = 'Tel: <a href="tel:' + config.telefon.replace(/\s+/g, '') + '" style="color:#0A357A;text-decoration:none;">' + config.telefon + '</a>';
-        }
-        if (config.email) {
-          document.getElementById('footer-email').innerHTML = 'E-posta: <a href="mailto:' + config.email + '" style="color:#0A357A;text-decoration:none;">' + config.email + '</a>';
-        }
-      });
-  </script>
+
   <script>
 fetch('config.json')
   .then(response => response.json())
