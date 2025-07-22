@@ -411,59 +411,6 @@
       Yetkili servis değiliz. Sadece garantisi bitmiş cihazlara hizmet sunmaktayız.
     </p>
     <div id="telefon-buton-alani" style="text-align:center; min-height:48px;"></div>
-    <script>
-      fetch('config.json')
-        .then(response => response.json())
-        .then(config => {
-          if (config.firmaAdi) {
-            document.getElementById('firma-adi-alani').textContent = config.firmaAdi;
-          }
-          if (config.adres) {
-            document.getElementById('firma-adres-alani').textContent = config.adres;
-          }
-          if (config.email) {
-            const emailSpan = document.getElementById('firma-email-alani');
-            const mailLink = document.createElement('a');
-            mailLink.href = 'mailto:' + config.email;
-            mailLink.textContent = config.email;
-            mailLink.style.color = '#1976d2';
-            mailLink.style.textDecoration = 'underline';
-            mailLink.style.fontWeight = '500';
-            mailLink.onmouseover = function() { mailLink.style.color = '#0b2a5a'; };
-            mailLink.onmouseout = function() { mailLink.style.color = '#1976d2'; };
-            emailSpan.appendChild(mailLink);
-          }
-          if (config.telefon) {
-            const telefon = config.telefon;
-            let gosterim = telefon.replace(/^\+?90?/, ''); 
-            gosterim = gosterim.replace(/[^0-9]/g, ''); 
-            if (gosterim.length === 10) gosterim = '0' + gosterim;
-            if (gosterim.length === 11) {
-              gosterim = gosterim.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3');
-            }
-            const buton = document.createElement('a');
-            buton.href = 'tel:' + telefon.replace(/\s+/g, '');
-            buton.textContent = gosterim;
-            buton.style.display = 'inline-block';
-            buton.style.padding = '12px 28px';
-            buton.style.background = '#1976d2';
-            buton.style.color = '#fff';
-            buton.style.borderRadius = '8px';
-            buton.style.textDecoration = 'none';
-            buton.style.fontWeight = '600';
-            buton.style.fontSize = '1.13em';
-            buton.style.margin = '10px auto 18px auto';
-            buton.style.boxShadow = '0 2px 12px rgba(25, 118, 210, 0.13)';
-            buton.onmouseover = function() {
-              buton.style.background = '#0b2a5a';
-            };
-            buton.onmouseout = function() {
-              buton.style.background = '#1976d2';
-            };
-            document.getElementById('telefon-buton-alani').appendChild(buton);
-          }
-        });
-    </script>
   </main>
   <section id="customer-comments-section">
     <h2 class="comments-title">Müşteri Yorumları</h2>
@@ -881,20 +828,116 @@
     </style>
   </footer>
   <script>
+    document.getElementById('hamburger-menu').addEventListener('click', function() {
+      var navLinks = document.getElementById('main-nav-links');
+      navLinks.classList.toggle('open');
+    });
+    function isMobile() {
+      return window.innerWidth <= 800;
+    }
+    var hizmetlerimizLink = document.getElementById('hizmetlerimiz-link');
+    var dropdownContent = hizmetlerimizLink && hizmetlerimizLink.nextElementSibling;
+    if (hizmetlerimizLink && dropdownContent) {
+      hizmetlerimizLink.addEventListener('click', function(e) {
+        if (isMobile()) {
+          if (!dropdownContent.classList.contains('open')) {
+            e.preventDefault();
+            dropdownContent.classList.add('open');
+          } 
+        }
+      });
+      document.getElementById('hamburger-menu').addEventListener('click', function() {
+        if (isMobile()) dropdownContent.classList.remove('open');
+      });
+    }
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
+   
+        if (config.email) {
+          const username = config.email.split('@')[0];
+          document.getElementById('footer-facebook').href = 'https://facebook.com/' + username;
+          document.getElementById('footer-instagram').href = 'https://instagram.com/' + username;
+          document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
+        }
+  
+        if (config.telefon) {
+          const phone = config.telefon.replace(/[^\d+]/g, '');
+          const link = document.getElementById('navbar-phone-link');
+          if (link) {
+            link.setAttribute('href', 'tel:' + phone);
+            link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+          }
+          const phoneFab = document.getElementById('floating-phone-btn');
+          if (phoneFab) {
+            phoneFab.setAttribute('href', 'tel:' + phone);
+            phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+          }
+          // Telefon butonunu ana içerikte de göster
+          let gosterim = config.telefon.replace(/^\+?90?/, ''); 
+          gosterim = gosterim.replace(/[^0-9]/g, ''); 
+          if (gosterim.length === 10) gosterim = '0' + gosterim;
+          if (gosterim.length === 11) {
+            gosterim = gosterim.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3');
+          }
+          const buton = document.createElement('a');
+          buton.href = 'tel:' + config.telefon.replace(/\s+/g, '');
+          buton.textContent = gosterim;
+          buton.style.display = 'inline-block';
+          buton.style.padding = '12px 28px';
+          buton.style.background = '#1976d2';
+          buton.style.color = '#fff';
+          buton.style.borderRadius = '8px';
+          buton.style.textDecoration = 'none';
+          buton.style.fontWeight = '600';
+          buton.style.fontSize = '1.13em';
+          buton.style.margin = '10px auto 18px auto';
+          buton.style.boxShadow = '0 2px 12px rgba(25, 118, 210, 0.13)';
+          buton.onmouseover = function() {
+            buton.style.background = '#0b2a5a';
+          };
+          buton.onmouseout = function() {
+            buton.style.background = '#1976d2';
+          };
+          const telAlani = document.getElementById('telefon-buton-alani');
+          if (telAlani) {
+            telAlani.innerHTML = '';
+            telAlani.appendChild(buton);
+            buton.setAttribute('aria-label', 'Telefon ile arayın');
+          }
+        }
+
         if (config.firmaAdi) {
           document.getElementById('footer-firma-adi').textContent = config.firmaAdi;
+          // Ana içerikteki firma adı alanını da doldur
+          const anaFirmaAdi = document.getElementById('firma-adi-alani');
+          if (anaFirmaAdi) anaFirmaAdi.textContent = config.firmaAdi;
         }
         if (config.adres) {
           document.getElementById('footer-adres').textContent = config.adres;
-        }
-        if (config.telefon) {
-          document.getElementById('footer-telefon').innerHTML = 'Tel: <a href="tel:' + config.telefon.replace(/\s+/g, '') + '" style="color:#0A357A;text-decoration:none;">' + config.telefon + '</a>';
+          // Ana içerikteki firma adresi alanını da doldur
+          const anaAdres = document.getElementById('firma-adres-alani');
+          if (anaAdres) anaAdres.textContent = config.adres;
         }
         if (config.email) {
           document.getElementById('footer-email').innerHTML = 'E-posta: <a href="mailto:' + config.email + '" style="color:#0A357A;text-decoration:none;">' + config.email + '</a>';
+          // Ana içerikteki firma email alanını da doldur
+          const anaEmail = document.getElementById('firma-email-alani');
+          if (anaEmail) {
+            anaEmail.innerHTML = '';
+            const mailLink = document.createElement('a');
+            mailLink.href = 'mailto:' + config.email;
+            mailLink.textContent = config.email;
+            mailLink.style.color = '#1976d2';
+            mailLink.style.textDecoration = 'underline';
+            mailLink.style.fontWeight = '500';
+            mailLink.onmouseover = function() { mailLink.style.color = '#0b2a5a'; };
+            mailLink.onmouseout = function() { mailLink.style.color = '#1976d2'; };
+            anaEmail.appendChild(mailLink);
+          }
+        }
+        if (config.telefon) {
+          document.getElementById('footer-telefon').innerHTML = 'Tel: <a href="tel:' + config.telefon.replace(/\s+/g, '') + '" style="color:#0A357A;text-decoration:none;">' + config.telefon + '</a>';
         }
       });
   </script>

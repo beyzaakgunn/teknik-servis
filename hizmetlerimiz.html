@@ -1094,11 +1094,6 @@
           }
         }
  
-        const btn = document.getElementById('ara-btn');
-        if(btn && config.telefon) {
-          btn.onclick = () => { window.location.href = `tel:${config.telefon.replace(/\s+/g, '')}`; };
-        }
-
         if (config.firmaAdi) {
           document.getElementById('footer-firma-adi').textContent = config.firmaAdi;
         }

@@ -816,30 +816,52 @@
     </style>
   </footer>
   <script>
+    document.getElementById('hamburger-menu').addEventListener('click', function() {
+      var navLinks = document.getElementById('main-nav-links');
+      navLinks.classList.toggle('open');
+    });
+    function isMobile() {
+      return window.innerWidth <= 800;
+    }
+    var hizmetlerimizLink = document.getElementById('hizmetlerimiz-link');
+    var dropdownContent = hizmetlerimizLink && hizmetlerimizLink.nextElementSibling;
+    if (hizmetlerimizLink && dropdownContent) {
+      hizmetlerimizLink.addEventListener('click', function(e) {
+        if (isMobile()) {
+          if (!dropdownContent.classList.contains('open')) {
+            e.preventDefault();
+            dropdownContent.classList.add('open');
+          } 
+        }
+      });
+      document.getElementById('hamburger-menu').addEventListener('click', function() {
+        if (isMobile()) dropdownContent.classList.remove('open');
+      });
+    }
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
+   
         if (config.email) {
           const username = config.email.split('@')[0];
           document.getElementById('footer-facebook').href = 'https://facebook.com/' + username;
           document.getElementById('footer-instagram').href = 'https://instagram.com/' + username;
           document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
         }
+  
         if (config.telefon) {
           const phone = config.telefon.replace(/[^\d+]/g, '');
+          const link = document.getElementById('navbar-phone-link');
+          if (link) {
+            link.setAttribute('href', 'tel:' + phone);
+            link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+          }
           const phoneFab = document.getElementById('floating-phone-btn');
           if (phoneFab) {
             phoneFab.setAttribute('href', 'tel:' + phone);
             phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
           }
         }
-      });
-  </script>
-  <script>
-
-    fetch('config.json')
-      .then(response => response.json())
-      .then(config => {
         if (config.firmaAdi) {
           document.getElementById('footer-firma-adi').textContent = config.firmaAdi;
         }
