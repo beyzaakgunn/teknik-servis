@@ -444,19 +444,44 @@
     fetch('config.json')
       .then(response => response.json())
       .then(config => {
+        window.configData = config;
         if (config.email) {
           const username = config.email.split('@')[0];
-          document.getElementById('footer-facebook').href = 'https://facebook.com/' + username;
-          document.getElementById('footer-instagram').href = 'https://instagram.com/' + username;
-          document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
+          const fb = document.getElementById('footer-facebook');
+          const ig = document.getElementById('footer-instagram');
+          const tw = document.getElementById('footer-twitter');
+          if (fb) fb.href = 'https://facebook.com/' + username;
+          if (ig) ig.href = 'https://instagram.com/' + username;
+          if (tw) tw.href = 'https://twitter.com/' + username;
         }
         if (config.telefon) {
           const phone = config.telefon.replace(/[^\d+]/g, '');
+          const phoneFab = document.getElementById('floating-phone-btn');
+          if (phoneFab) {
+            phoneFab.setAttribute('href', 'tel:' + phone);
+            phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+          }
           const link = document.getElementById('navbar-phone-link');
           if (link) {
             link.setAttribute('href', 'tel:' + phone);
             link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
           }
+        }
+        if (config.firmaAdi) {
+          const el = document.getElementById('footer-firma-adi');
+          if (el) el.textContent = config.firmaAdi;
+        }
+        if (config.adres) {
+          const el = document.getElementById('footer-adres');
+          if (el) el.textContent = config.adres;
+        }
+        if (config.telefon) {
+          const el = document.getElementById('footer-telefon');
+          if (el) el.innerHTML = 'Tel: <a href="tel:' + config.telefon.replace(/\s+/g, '') + '" style="color:#0A357A;text-decoration:none;">' + config.telefon + '</a>';
+        }
+        if (config.email) {
+          const el = document.getElementById('footer-email');
+          if (el) el.innerHTML = 'E-posta: <a href="mailto:' + config.email + '" style="color:#0A357A;text-decoration:none;">' + config.email + '</a>';
         }
       });
   </script>
@@ -1122,26 +1147,6 @@
       }
     </style>
   </footer>
-  <script>
-    fetch('config.json')
-      .then(response => response.json())
-      .then(config => {
-        if (config.email) {
-          const username = config.email.split('@')[0];
-          document.getElementById('footer-facebook').href = 'https://facebook.com/' + username;
-          document.getElementById('footer-instagram').href = 'https://instagram.com/' + username;
-          document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
-        }
-        if (config.telefon) {
-          const phone = config.telefon.replace(/[^\d+]/g, '');
-          const phoneFab = document.getElementById('floating-phone-btn');
-          if (phoneFab) {
-            phoneFab.setAttribute('href', 'tel:' + phone);
-            phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
-          }
-        }
-      });
-  </script>
   <a id="floating-phone-btn" href="#" style="display: flex; align-items: center; justify-content: center; position: fixed; right: 24px; bottom: 24px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 0 0 0 #25d36699; z-index: 2000; font-size: 2.1em; transition: background 0.18s, box-shadow 0.18s, transform 0.18s; text-decoration: none; animation: phone-wobble 2.2s infinite, phone-glow 2.2s infinite; overflow: visible;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
   </a>
