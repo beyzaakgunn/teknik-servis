@@ -1034,7 +1034,7 @@
     "priceRange": "₺₺"
   };
   document.getElementById('localbusiness-schema').textContent = JSON.stringify(localBusinessData);
-  // Review Snippet (first review as example)
+  // Review Snippet 
   const reviewData = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -1054,16 +1054,32 @@
     }
   };
   document.getElementById('review-schema').textContent = JSON.stringify(reviewData);
-  // QAPage (first FAQ as example)
+  // QAPage
   const qaData = {
     "@context": "https://schema.org",
     "@type": "QAPage",
     "mainEntity": {
       "@type": "Question",
       "name": "Servis süresi ne kadar?",
+      "text": "Servis süresi ne kadar?",
+      "answerCount": 1,
+      "datePublished": "2024-01-01",
+      "author": {
+        "@type": "Organization",
+        "name": "Beyaz Eşya Servisi"
+      },
+      "url": window.location.href + '#q1',
+      "upvoteCount": 5,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Aynı gün içinde servis hizmeti sunuyoruz."
+        "text": "Aynı gün içinde servis hizmeti sunuyoruz.",
+        "datePublished": "2024-01-01",
+        "author": {
+          "@type": "Organization",
+          "name": "Beyaz Eşya Servisi"
+        },
+        "url": window.location.href + '#a1',
+        "upvoteCount": 5
       }
     }
   };
