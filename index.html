@@ -752,90 +752,80 @@
   <a id="floating-phone-btn" href="#">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="38" height="38" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
   </a>
-  <script src="config.js" defer></script>
-<script defer>
-  document.getElementById('hamburger-menu').addEventListener('click', function() {
-    var navLinks = document.getElementById('main-nav-links');
-    navLinks.classList.toggle('open');
-  });
-
-  function isMobile() {
-    return window.innerWidth <= 800;
-  }
-
-  var hizmetlerimizLink = document.getElementById('hizmetlerimiz-link');
-  var dropdownContent = hizmetlerimizLink && hizmetlerimizLink.nextElementSibling;
-
-  if (hizmetlerimizLink && dropdownContent) {
-    hizmetlerimizLink.addEventListener('click', function(e) {
-      if (isMobile() && !dropdownContent.classList.contains('open')) {
-        e.preventDefault();
-        dropdownContent.classList.add('open');
-      }
-    });
-
+  <script>
     document.getElementById('hamburger-menu').addEventListener('click', function() {
-      if (isMobile()) dropdownContent.classList.remove('open');
+      var navLinks = document.getElementById('main-nav-links');
+      navLinks.classList.toggle('open');
     });
-  }
-
-  // Wait for siteConfig to be ready
-  function waitForConfig(cb) {
-    if (window.siteConfig) {
-      cb(window.siteConfig);
-    } else {
-      setTimeout(() => waitForConfig(cb), 50);
+    function isMobile() {
+      return window.innerWidth <= 800;
     }
-  }
-
-  waitForConfig(function(config) {
-    // Sosyal medya bağlantıları
-    if (config.social) {
-      if (config.social.facebook)
-        document.getElementById('footer-facebook').href = config.social.facebook;
-      if (config.social.instagram)
-        document.getElementById('footer-instagram').href = config.social.instagram;
-      if (config.social.twitter)
-        document.getElementById('footer-twitter').href = config.social.twitter;
+    var hizmetlerimizLink = document.getElementById('hizmetlerimiz-link');
+    var dropdownContent = hizmetlerimizLink && hizmetlerimizLink.nextElementSibling;
+    if (hizmetlerimizLink && dropdownContent) {
+      hizmetlerimizLink.addEventListener('click', function(e) {
+        if (isMobile()) {
+          if (!dropdownContent.classList.contains('open')) {
+            e.preventDefault();
+            dropdownContent.classList.add('open');
+          } 
+        }
+      });
+      document.getElementById('hamburger-menu').addEventListener('click', function() {
+        if (isMobile()) dropdownContent.classList.remove('open');
+      });
     }
+    const config = window.siteConfig;
+    if (config) {
+      // Sosyal medya bağlantıları
+      if (config.social) {
+        if (config.social.facebook)
+          document.getElementById('footer-facebook').href = config.social.facebook;
 
-    // Telefon bağlantıları
-    if (config.telefon) {
-      const phone = config.telefon.replace(/[^\d+]/g, '');
-      const link = document.getElementById('navbar-phone-link');
-      if (link) {
-        link.setAttribute('href', 'tel:' + phone);
-        link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+        if (config.social.instagram)
+          document.getElementById('footer-instagram').href = config.social.instagram;
+
+        if (config.social.twitter)
+          document.getElementById('footer-twitter').href = config.social.twitter;
       }
-      const phoneFab = document.getElementById('floating-phone-btn');
-      if (phoneFab) {
-        phoneFab.setAttribute('href', 'tel:' + phone);
-        phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
-      }
-      const btn = document.getElementById('ara-btn');
-      if(btn) {
-        btn.onclick = () => { window.location.href = `tel:${config.telefon.replace(/\s+/g, '')}`; };
-      }
-    }
 
-    // Diğer footer bilgileri
-    if (config.firmaAdi) {
-      document.getElementById('footer-firma-adi').textContent = config.firmaAdi;
+      // Telefon bağlantıları
+      if (config.telefon) {
+        const phone = config.telefon.replace(/[^\d+]/g, '');
+        const link = document.getElementById('navbar-phone-link');
+        if (link) {
+          link.setAttribute('href', 'tel:' + phone);
+          link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+        }
+        const phoneFab = document.getElementById('floating-phone-btn');
+        if (phoneFab) {
+          phoneFab.setAttribute('href', 'tel:' + phone);
+          phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
+        }
+        const btn = document.getElementById('ara-btn');
+        if(btn && config.telefon) {
+          btn.onclick = () => { window.location.href = `tel:${config.telefon.replace(/\s+/g, '')}`; };
+        }
+      }
+
+      // Diğer footer bilgileri
+      if (config.firmaAdı) {
+        document.getElementById('footer-firma-adi').textContent = config.firmaAdı;
+      }
+      if (config.adres) {
+        document.getElementById('footer-adres').textContent = config.adres;
+      }
+      if (config.telefon) {
+        document.getElementById('footer-telefon').innerHTML =
+          'Tel: <a href="tel:' + config.telefon.replace(/\s+/g, '') +
+          '" style="color:#0A357A;text-decoration:none;">' + config.telefon + '</a>';
+      }
+      if (config.email) {
+        document.getElementById('footer-email').innerHTML =
+          'E-posta: <a href="mailto:' + config.email +
+          '" style="color:#0A357A;text-decoration:none;">' + config.email + '</a>';
+      }
     }
-    if (config.adres) {
-      document.getElementById('footer-adres').textContent = config.adres;
-    }
-    if (config.telefon) {
-      document.getElementById('footer-telefon').innerHTML =
-        'Tel: <a href="tel:' + config.telefon.replace(/\s+/g, '') +
-        '" style="color:#0A357A;text-decoration:none;">' + config.telefon + '</a>';
-    }
-    if (config.email) {
-      document.getElementById('footer-email').innerHTML =
-        'E-posta: <a href="mailto:' + config.email +
-        '" style="color:#0A357A;text-decoration:none;">' + config.email + '</a>';
-    }
-  });
-</script>
+  </script>
 </body>
 </html>
