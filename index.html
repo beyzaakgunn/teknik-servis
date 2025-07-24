@@ -459,6 +459,7 @@
   </style>
 </head>
 <body>
+  <script src="config.js"></script>
   <header>
     <nav>
       <div class="header-inner">
@@ -774,9 +775,8 @@
         if (isMobile()) dropdownContent.classList.remove('open');
       });
     }
-    fetch('config.json')
-    .then(response => response.json())
-    .then(config => {
+    const config = window.siteConfig;
+    if (config) {
       // Sosyal medya bağlantıları
       if (config.social) {
         if (config.social.facebook)
@@ -802,16 +802,15 @@
           phoneFab.setAttribute('href', 'tel:' + phone);
           phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
         }
-      }
-
-      const btn = document.getElementById('ara-btn');
-      if(btn && config.telefon) {
-        btn.onclick = () => { window.location.href = `tel:${config.telefon.replace(/\s+/g, '')}`; };
+        const btn = document.getElementById('ara-btn');
+        if(btn && config.telefon) {
+          btn.onclick = () => { window.location.href = `tel:${config.telefon.replace(/\s+/g, '')}`; };
+        }
       }
 
       // Diğer footer bilgileri
-      if (config.firmaAdi) {
-        document.getElementById('footer-firma-adi').textContent = config.firmaAdi;
+      if (config.firmaAdı) {
+        document.getElementById('footer-firma-adi').textContent = config.firmaAdı;
       }
       if (config.adres) {
         document.getElementById('footer-adres').textContent = config.adres;
@@ -826,7 +825,7 @@
           'E-posta: <a href="mailto:' + config.email +
           '" style="color:#0A357A;text-decoration:none;">' + config.email + '</a>';
       }
-    });
+    }
   </script>
 </body>
 </html>
