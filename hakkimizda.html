@@ -3,85 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="20 yıllık tecrübe ile beyaz eşya servisi." />
+  <meta name="description" content="İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz." />
   <meta property="og:title" content="Beyaz Eşya Servisi" />
   <meta property="og:description" content="Garantisi bitmiş beyaz eşyalar için yerinde teknik servis, hızlı müdahale, uzman ekip ve güvenilir çözümler sunuyoruz. Aynı gün içinde kaliteli servis hizmetiyle tanışın." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://beyaz-esya-servis123.netlify.app/hakkimizda" />
-  <title>Hakkımızda | Beyaz Eşya Servisi</title>
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const service = params.get("service");
-  
-    if (service) {
-      const titleText = `${service} Servisi | Aynı Gün Teknik Destek`;
-      const descText = `${service} için garantisiz cihazlara yerinde tamir, bakım ve arıza servis hizmeti. Hemen servis al, uzman çözümle tanış.`;
-  
-      document.title = titleText;
-  
-      const descTag = document.querySelector('meta[name="description"]');
-      if (descTag) descTag.setAttribute("content", descText);
-  
-      const ogTitle = document.querySelector('meta[property="og:title"]');
-      const ogDesc = document.querySelector('meta[property="og:description"]');
-      if (ogTitle) ogTitle.setAttribute("content", titleText);
-      if (ogDesc) ogDesc.setAttribute("content", descText);
-    }
-  </script>
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://beyazesyaservisi.com/hakkimizda.html" />
-  <meta property="og:image" content="https://beyazesyaservisi.com/logo.webp" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.ico" />
+  <title>Beyaz Eşya Servisi | Hakkımızda</title>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Beyaz Eşya Servisi",
-    "image": "https://beyaz-esya-servis123.netlify.app/logo.webp",
-    "telephone": "05551112244",
-    "email": "info@beyazesyaservisi123.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Halaskargazi Mah. Rumeli Cad. No:102 Daire:5 Şişli / İstanbul 34371",
-      "addressLocality": "İstanbul",
-      "addressRegion": "İstanbul",
-      "postalCode": "34371",
-      "addressCountry": "TR"
-    },
-    "url": "https://beyaz-esya-servis123.netlify.app/",
-    "priceRange": "₺₺",
-    "description": "İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunuyoruz."
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Ana Sayfa",
-        "item": "https://beyaz-esya-servis123.netlify.app/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Hakkımızda",
-        "item": "https://beyaz-esya-servis123.netlify.app/hakkimizda"
-      }
-    ]
-  }
-  </script>
   <style>
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: rgb(0, 0, 0);
     }
     body {
       min-height: 100vh;
@@ -89,234 +26,337 @@
       flex-direction: column;
     }
     main {
-      flex: 1 0 auto;
+      padding-top: 70px;
+    }
+    nav {
+      width: 100%;
+      background: rgb(255, 255, 255);
+      padding: 0;
+      margin: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      border-bottom: rgb(242, 242, 242) solid;
+    }
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    nav a {
+      text-decoration: none;
+      padding: 10px 25px;
+      display: inline-block;
+      border-radius: 16px;
+      color: rgb(0, 0, 0);
+    }
+    nav a:hover, .dropdown-content a:hover {
+      background: rgb(242, 242, 242);
+    }
+    nav a.active {
+      background: rgb(242, 242, 242);
+    }
+    .header-inner {
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 80px 0 32px;
+      height: 70px;
+      width: 100%;
+    }
+    .company-name {
+      margin-top: 12px;
+      font-size: 1.5em;
+      font-weight: 600;
+      color: rgb(0, 0, 0);
+    }
+    .company-name:hover {
+      background-color: rgb(255, 255, 255);
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: rgb(255, 255, 255);
+      width: 200px;
+      border-radius: 10px;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown-content a {
+      display: block;
+      border-radius: 0;
+    }
+    .phone-link {
+      background: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
+      font-weight: 600;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+    }
+    .phone-link:hover, .ara-btn:hover{
+      background: rgb(242, 242, 242);
+      color: rgb(0, 0, 0);
+    }
+    .hakkimizda-full {
+      background-color: rgb(250, 250, 250);
+      padding: 40px 0 30px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hakkimizda-bilgi{
+      margin: 20px 250px 20px 250px;
+      background-color: rgb(238, 238, 238);
+      padding: 20px 25px;
+      border-radius: 7px;
+    }
+    .ara-btn {
+      margin-top: 30px;
+      margin-bottom: 30px; 
+      background-color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
+      font-size: 1.25em;
+      font-weight: 800;
+      border: none;
+      border-radius: 16px;
+      padding: 10px 40px;
+      cursor: pointer;
+      justify-content: center;
+    }
+    #customer-comments-section {
+      max-width: 1000px;
+      margin: 40px auto 40px auto;
+      padding: 25px 15px 25px 15px;
+      background: rgb(250, 250, 250);
+      border-radius: 12px;
+    }
+    .comments-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.6em;
+    }
+    #comments-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .comment-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgb(244, 244, 244);
+      padding: 14px 14px;
+    }
+    .comment-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: grey;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2em;
+    }
+    .comment-name {
+      font-weight: 600;
+      margin-bottom: 2px;
     }
     .site-footer {
-      flex-shrink: 0;
+      background: rgb(247, 247, 250);
+      padding: 24px 0 0 0;
+      margin-top: 100px;
+      border-top: 1px solid rgb(224, 224, 224);
+    }
+    .footer-links {
+      display: flex;
+      gap: 100px;
+      justify-content: center;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .footer-links-sol {
+      display: flex;
+      flex-direction: column;
+    }
+    .footer-links a {
+      color: rgb(10, 53, 122);
+      text-decoration: none;
+      font-size: 1em;
+    }
+    .footer-links a:hover {
+      color: rgb(25, 118, 210);
+    }
+    .footer-hizmetler-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-left: 0;
+      margin-bottom: 4px;
+      margin-top: 2px;
+    }
+    .footer-divider {
+      border-top: 1px solid rgb(224, 224, 224);
+      margin: 12px 0 0 0;
+      width: 100%;
+    }
+    .footer-info {
+      text-align: center;
+      margin: 10px 0 0 0;
+      width: 100%;
+    }
+    .footer-info strong {
+      color: rgb(10, 53, 122);
+    }
+    .copyright {
+      margin-top: 4px;
+      color: rgb(82, 82, 82);
+    }
+    .footer-socials-custom {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .footer-social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+    }
+    .footer-social-icon:hover {
+      background: rgb(233, 233, 233);
+    }
+    #floating-phone-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      animation: phone-wobble 2s infinite, phone-glow 2s infinite;
+      right: 30px;
+      bottom: 30px;
+      width: 80px;
+      height: 80px;
+      background: rgb(1, 223, 45);
+      color: rgb(255, 255, 255);
+      border-radius: 50%;;
+    }
+    @keyframes phone-wobble {
+      0%, 100% { transform: rotate(0deg); }
+      10% { transform: rotate(-10deg); }
+      20% { transform: rotate(8deg); }
+      30% { transform: rotate(-6deg); }
+      40% { transform: rotate(4deg); }
+      50% { transform: rotate(0deg); }
+    }
+    @keyframes phone-glow {
+      50% { box-shadow: 0 8px 32px rgba(37, 211, 102, 0.22), 0 0 0 16px #25d36633;}
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: none;
+      border: none;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1000;
+    }
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 4px;
+      margin: 4px 0;
+      background: rgb(91, 91, 91);
+      border-radius: 2px;
+    }
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgb(255, 255, 255);
+        flex-direction: column;
+        border-radius: 0 0 12px 12px;
+        padding: 12px 0;
+        align-items: center;
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .dropdown {
+        text-align: center;
+      }
+      .dropdown-content {
+        display: none ;
+        position: static;
+        background: rgb(255, 255, 255);
+        border-radius: 0 0 14px 14px;
+        margin-top: 2px;
+        padding: 6px 0 10px 0;
+      }
+      .dropdown-content a {
+        text-align: center;
+        padding: 11px 0;
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid rgb(218, 218, 218);
+      }
+      .dropdown-content a:first-child {
+        border-top: 1px solid rgb(139, 139, 139);
+      }
+      .ara-btn {
+        margin-top: 60px;
+      }
+      .hakkimizda-bilgi {
+        margin: -15px 5px;
+      }
+      #customer-comments-section {
+        border-radius: 0%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      .site-footer {
+        margin-top: 0px;
+      }
+      .footer-links {
+        flex-direction: column;
+        gap: 18px;
+        align-items: stretch;
+      }
+      .footer-links a, .footer-hizmetler-list a {
+        text-align: center ;
+        width: 100% ;
+        padding-left: 0 ;
+        display: block;
+      }
+      .footer-iletisim-group div, .footer-iletisim-group a {
+        text-align: center ;
+        width: 100% ;
+        padding-left: 0 ;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <style>
-      nav {
-        width: 100%;
-        background: #fff;
-        border-bottom: 1.5px solid #e3eafc;
-        padding: 0;
-        margin: 0;
-        font-family: 'Segoe UI', Arial, sans-serif;
-        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.04);
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-      }
-      .header-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 32px 0 8px;
-        height: 68px;
-        width: 100%;
-      }
-      .nav-links {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-      }
-      nav a, .dropdown-content a, .phone-link {
-        text-decoration: none;
-        color: #111; 
-        padding: 10px 16px;
-        transition: background 0.18s, color 0.18s, box-shadow 0.18s;
-        display: inline-block;
-        font-weight: 500;
-        border-radius: 6px;
-        position: relative;
-      }
-      nav a.active, .footer-links a.active {
-        background: #e3eafc;
-        color: #0b2a5a; 
-        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
-      }
-      nav a:hover,
-      .dropdown-content a:hover,
-      .phone-link:hover {
-        background: #e3eafc;
-        color: #0b2a5a;
-        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
-      }
-      .logo {
-        display: flex;
-        align-items: center;
-        font-weight: 700;
-        font-size: 1.25em;
-        color: #0b2a5a;
-        text-decoration: none;
-        gap: 10px;
-        letter-spacing: 0.5px;
-      }
-      .logo-img {
-        height: 32px;
-        width: auto;
-      }
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background: #fff;
-        min-width: 210px;
-        box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);
-        z-index: 100;
-        border-radius: 8px;
-        opacity: 0;
-        transform: translateY(8px);
-        pointer-events: none;
-        transition: opacity 0.18s, transform 0.18s;
-      }
-      .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-      .dropdown-content a {
-        display: block;
-        color: #111; 
-        font-weight: 400;
-        padding: 10px 18px;
-        border-radius: 0;
-        font-size: 1.04em;
-      }
-      .dropdown-content a:hover {
-        background: #e3eafc;
-        color: #0b2a5a;
-      }
-      .phone-link {
-        margin-left: 28px;
-        background: #1976d2;
-        color: #fff !important;
-        font-weight: 600;
-        border-radius: 8px;
-        padding: 12px 22px;
-        box-shadow: 0 2px 12px rgba(25, 118, 210, 0.13);
-        font-size: 1.08em;
-        letter-spacing: 0.5px;
-        transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.12s;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .phone-link svg {
-        width: 20px;
-        height: 20px;
-        fill: #fff;
-        margin-right: 4px;
-        transition: fill 0.18s;
-      }
-      .phone-link:hover {
-        background: #0b2a5a;
-        color: #fff !important;
-        box-shadow: 0 4px 18px rgba(25, 118, 210, 0.18);
-        transform: translateY(-2px) scale(1.04);
-      }
-      .phone-link:hover svg {
-        fill: #fff;
-      }
-      .hamburger {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 44px;
-        height: 44px;
-        cursor: pointer;
-        background: none;
-        border: none;
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        z-index: 1100;
-      }
-      .hamburger span {
-        display: block;
-        width: 28px;
-        height: 4px;
-        margin: 4px 0;
-        background: #1976d2;
-        border-radius: 2px;
-        transition: 0.3s;
-      }
-      @media (max-width: 800px) {
-        .header-inner {
-          flex-direction: row;
-        }
-        .nav-links {
-          display: none;
-          position: fixed;
-          top: 68px;
-          left: 0;
-          right: 0;
-          background: #fff;
-          flex-direction: column;
-          width: 100vw;
-          max-height: calc(100vh - 68px);
-          overflow-y: auto;
-          box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);
-          border-radius: 0 0 12px 12px;
-          padding: 12px 0;
-          z-index: 1099;
-          align-items: center;
-          padding-bottom: 96px;
-        }
-        .nav-links.open {
-          display: flex;
-        }
-        .hamburger {
-          display: flex;
-        }
-        .dropdown {
-          width: 100%;
-          text-align: center;
-        }
-        .dropdown-content {display: none !important;opacity: 1 !important;pointer-events: auto !important;position: static !important;background: #fff;box-shadow: 0 4px 16px rgba(25, 118, 210, 0.07);border-radius: 0 0 14px 14px;margin-top: 2px;padding: 6px 0 10px 0;transform: none;border-top: 1.5px solid #e3eafc;transition: box-shadow 0.18s, background 0.18s;}
-        .dropdown-content.open {display: block !important;}
-        .dropdown-content a {text-align: center;padding: 11px 0;width: 100%;display: block;font-size: 0.97em;color: #0b2a5a;border-bottom: 1px solid #f0f4fa;transition: background 0.18s, color 0.18s;}
-        .dropdown-content a:last-child {border-bottom: none;}
-        .dropdown-content a:hover {background: #e3eafc;color: #1976d2;}
-        .call-now-navbar {
-          margin: 12px auto 8px auto !important;
-          display: block !important;
-          text-align: center !important;
-          width: 70% !important;
-          max-width: 180px;
-          font-size: 1em !important;
-          padding: 10px 0 !important;
-          align-self: center !important;
-        }
-        .call-now-navbar, .phone-link {
-          margin-bottom: 48px !important;
-          margin-left: 0 !important;
-          margin-right: 0 !important;
-          display: block !important;
-          text-align: center !important;
-          align-self: center !important;
-          width: 70% !important;
-          max-width: 180px;
-        }
-
-      }
-    </style>
     <nav>
       <div class="header-inner">
-        <a href="index.html" class="logo">
-          <img src="logo.webp" alt="logo" class="logo-img" width="100" height="100">
+        <a href="index.html" class="company-name">
           Beyaz Eşya Servisi
         </a>
         <button class="hamburger" id="hamburger-menu" aria-label="Menüyü Aç/Kapat">
@@ -349,72 +389,14 @@
     </nav>
   </header>
   <main>
-    <style>
-      main {
-        max-width: 1300px;
-        margin: 0 auto;
-        padding: 32px 18px 18px 18px;
-        background: #f8fafd;
-        border-radius: 14px;
-        box-shadow: 0 2px 12px rgba(25, 118, 210, 0.04);
-        padding-top: 68px;
-      }
-      main h1 {
-        font-size: 2.2em;
-        font-weight: 800;
-        color: #1976d2;
-        margin-bottom: 22px;
-        letter-spacing: 0.5px;
-        text-align: center;
-        text-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
-      }
-      main p {
-        font-size: 1.18em;
-        line-height: 1.7;
-        color: #2a2a2a;
-        background: #fff;
-        border-left: 4px solid #e3eafc;
-        border-radius: 7px;
-        padding: 16px 18px;
-        margin-bottom: 18px;
-        box-shadow: 0 1px 6px rgba(25, 118, 210, 0.04);
-        transition: box-shadow 0.2s;
-      }
-      main p strong {
-        color: #000000;
-      }
-      main p:hover {
-        box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
-      }
-      @media (max-width: 800px) {
-        main {
-          padding: 14px 2vw 10px 2vw;
-        }
-        main h1 {
-          margin-top: 70px;
-          font-size: 1.3em;
-        }
-        main p {
-          font-size: 1em;
-          padding: 12px 8px;
-        }
-      }
-    </style>
-    <h1 style="color: #0b4a8a; border-bottom:2px solid #e3eafc; padding-bottom:10px; margin-bottom:22px;">Hakkımızda</h1>
-
-
-    <p>
-      <strong>Firma adı:</strong> <span id="firma-adi-alani" style="display:inline-block; min-width:120px; min-height:24px;"></span><br>
-      <strong>Firma adresi:</strong> <span id="firma-adres-alani" style="display:inline-block; min-width:180px; min-height:24px;"></span><br>
-      <strong>Hakkımızda:</strong> Beyaz Eşya Teknik Servisi, garantisi bitmiş beyaz eşya cihazları için yerinde, hızlı ve güvenilir teknik destek sunmak amacıyla kurulmuştur. Müşteri memnuniyetini ön planda tutan hizmet anlayışımızla, yıllardır yüzlerce haneye çözümler sunduk.
-      Uzman teknisyen kadromuz, buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, klima, kombi ve televizyon gibi evlerde en sık kullanılan cihazların bakım ve onarımı konusunda deneyimlidir. Arıza tespiti, parça değişimi, temizlik ve periyodik bakım gibi işlemler profesyonel ekiplerimiz tarafından titizlikle gerçekleştirilir.<br>
-      Her biri alanında eğitimli ekip arkadaşlarımız, teknolojiyi ve yenilikleri yakından takip eder. Amacımız, cihazlarınızı en kısa sürede sorunsuz şekilde çalışır hale getirirken, sizin konforunuzu ve zamanınızı da korumaktır. Beyaz eşyalarınızda yaşadığınız her sorunda yanınızda olmak için buradayız.
-      Güvenilir hizmet, uygun fiyat politikası ve kalıcı çözümler ile sizi yormadan işlerimizi tamamlıyoruz. Hedefimiz, sadece arızayı gidermek değil, aynı zamanda güvenilir bir teknik servis partneri olarak uzun vadeli memnuniyet sağlamaktır.<br><br>    
-    </p>
-    <p class="iletisim-uyari" style="background:#fffbdd; color:#222; border-left:4px solid #ffe082; border-radius:7px; padding:12px 18px; margin-bottom:18px; font-weight:500;">
-      Yetkili servis değiliz. Sadece garantisi bitmiş cihazlara hizmet sunmaktayız.
-    </p>
-    <div id="telefon-buton-alani" style="text-align:center; min-height:48px;"></div>
+    <div class="hakkimizda-full">
+      <div class="hakkimizda-bilgi" id="hakkimizda-bilgi">
+        <div id="hakkimizda-firma-bilgileri"></div>
+        <strong>Hakkımızda:</strong>Firmamız, uzun yıllardır İstanbul genelinde garantisi bitmiş beyaz eşyalar için aynı gün teknik servis hizmeti sunmaktadır. Deneyimli ve uzman ekibimizle, müşteri memnuniyetini ön planda tutarak hızlı, güvenilir ve kaliteli çözümler sağlıyoruz. Sektördeki tecrübemiz ve profesyonel yaklaşımımız ile her zaman yanınızdayız.
+      </div>
+      <button class="ara-btn" id="ara-btn">
+      </button>
+    </div>
   </main>
   <section id="customer-comments-section">
     <h2 class="comments-title">Müşteri Yorumları</h2>
@@ -539,118 +521,50 @@
         </div>
       </div>
     </div>
-    <style>
-      #customer-comments-section {
-        max-width: 700px;
-        margin: 40px auto 0;
-        padding: 24px 16px 32px 16px;
-        background: #e3eafc;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-        font-family: 'Segoe UI', Arial, sans-serif;
-      }
-      .comments-title {
-        text-align: center;
-        margin-bottom: 24px;
-        font-size: 1.6em;
-        color: #0a357a;
-      }
-      #comments-list {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        max-height: 520px;
-        overflow-y: auto;
-        padding-right: 8px;
-      }
-      .comment-card {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 1px 4px #0001;
-        padding: 14px 16px;
-        animation: fadeIn 0.4s;
-      }
-      .comment-avatar {
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        background: #0a357a;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        color: #fff;
-        font-size: 1.2em;
-        flex-shrink: 0;
-      }
-      .comment-content {
-        flex: 1;
-      }
-      .comment-name {
-        font-weight: 600;
-        color: #111;
-        margin-bottom: 2px;
-      }
-      .comment-text {
-        color: #222;
-        margin-bottom: 0;
-        word-break: break-word;
-      }
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-    </style>
   </section>
   <footer class="site-footer">
-    <div class="footer-content">
-      <div class="footer-top">
-        <div class="footer-links" style="display: flex; gap: 48px; align-items: flex-start; flex-wrap: wrap;">
-          <div class="footer-links-sol" style="display: flex; flex-direction: column; gap: 2px; min-width: 140px;">
-            <a href="index.html">Ana Sayfa</a>
-            <a href="hakkimizda.html">Hakkımızda</a>
-            <a href="iletisim.html">İletişim</a>
-            <a href="gizlilik.html">Gizlilik Politikası</a>
-            <a href="kvkk.html">KVKK</a>
-          </div>
-          <div class="footer-hizmetler-group" style="display: flex; flex-direction: column; align-items: flex-start; min-width: 180px;">
-            <a href="hizmetlerimiz.html">Hizmetlerimiz</a>
-            <div style="width: 100%; border-bottom: 1px solid #e3eafc; margin: 4px 0 6px 0;"></div>
-            <div class="footer-hizmetler-list" style="display: flex; flex-direction: column; gap: 2px; margin-left: 0; margin-bottom: 4px; margin-top: 2px;">
-              <a href="hizmet.html?service=Beyaz+Eşya+Servisi">Beyaz Eşya Servisi</a>
-              <a href="hizmet.html?service=Buzdolabı">Buzdolabı</a>
-              <a href="hizmet.html?service=Çamaşır+Makinesi">Çamaşır Makinesi</a>
-              <a href="hizmet.html?service=Bulaşık+Makinesi">Bulaşık Makinesi</a>
-              <a href="hizmet.html?service=Fırın">Fırın</a>
-              <a href="hizmet.html?service=Klima">Klima</a>
-              <a href="hizmet.html?service=Kombi">Kombi</a>
-              <a href="hizmet.html?service=Televizyon">Televizyon</a>
-            </div>
-          </div>
-          <div class="footer-iletisim-group" id="footer-iletisim-group" style="display: flex; flex-direction: column; align-items: flex-start; min-width: 220px; gap: 4px;">
-            <div style="font-weight: bold; color: #0a357a; margin-bottom: 4px;">İletişim</div>
-            <div id="footer-firma-adi"></div>
-            <div id="footer-adres" style="font-size: 0.98em; color: #222;"></div>
-            <div id="footer-telefon" style="font-size: 0.98em; color: #222;"></div>
-            <div id="footer-email" style="font-size: 0.98em; color: #222;"></div>
+      <div class="footer-links">
+        <div class="footer-links-sol">
+          <a href="index.html">Ana Sayfa</a>
+          <a href="hakkimizda.html">Hakkımızda</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="gizlilik.html">Gizlilik Politikası</a>
+          <a href="kvkk.html">KVKK</a>
+        </div>
+        <div class="footer-hizmetler-group">
+          <a href="hizmetlerimiz.html" style="font-weight: bold;">Hizmetlerimiz</a>
+          <div class="footer-hizmetler-list">
+            <a href="hizmet.html?service=Beyaz+Eşya+Servisi">Beyaz Eşya Servisi</a>
+            <a href="hizmet.html?service=Buzdolabı">Buzdolabı</a>
+            <a href="hizmet.html?service=Çamaşır+Makinesi">Çamaşır Makinesi</a>
+            <a href="hizmet.html?service=Bulaşık+Makinesi">Bulaşık Makinesi</a>
+            <a href="hizmet.html?service=Fırın">Fırın</a>
+            <a href="hizmet.html?service=Klima">Klima</a>
+            <a href="hizmet.html?service=Kombi">Kombi</a>
+            <a href="hizmet.html?service=Televizyon">Televizyon</a>
           </div>
         </div>
-      </div>
-      <div class="footer-divider"></div>
-      <div class="footer-info">
-        <p><strong>Yetkili servis değiliz.</strong> Sadece garantisi bitmiş cihazlara hizmet sunmaktayız.</p>
-        <p class="copyright">&copy; 2025 Beyaz Eşya Servisi. Tüm hakları saklıdır.</p>
+        <div class="footer-iletisim-group" id="footer-iletisim-group">
+          <a href="iletisim.html" style="font-weight: bold;">İletişim</a>
+          <div id="footer-firma-adi"></div>
+          <div id="footer-adres"></div>
+          <div id="footer-telefon"></div>
+          <div id="footer-email"></div>
+        </div>
       </div>
     </div>
-    <section class="footer-socials-custom">
-      <a id="footer-facebook" href="#" aria-label="Facebook'ta bizi takip edin" target="_blank" class="footer-social-icon" style="color: #4267B2;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
-      </a>
-      <a id="footer-instagram" href="#" aria-label="Instagram hesabımızı ziyaret edin" target="_blank" class="footer-social-icon" style="color: #E1306C;">
-        <svg width="28" height="28" viewBox="0 0 448 448" aria-hidden="true" focusable="false">
+    <div class="footer-divider"></div>
+    <div class="footer-info">
+      <p><strong>Yetkili servis değiliz.</strong> Sadece garantisi bitmiş cihazlara hizmet sunmaktayız.</p>
+      <p class="copyright">&copy; 2025 Beyaz Eşya Servisi. Tüm hakları saklıdır.</p>
+    </div>
+  </div>
+  <section class="footer-socials-custom">
+    <a id="footer-facebook" href="#" aria-label="Facebook" target="_blank" class="footer-social-icon" style="color: #4267B2;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
+    </a>
+    <a id="footer-instagram" href="#" aria-label="Instagram" target="_blank" class="footer-social-icon" style="color: #E1306C;">
+      <svg width="28" height="28" viewBox="0 0 448 448" aria-hidden="true" focusable="false">
           <defs>
             <radialGradient id="ig-gradient" cx="30%" cy="107%" r="150%" fx="30%" fy="107%">
               <stop offset="0%" stop-color="#fdf497"/>
@@ -664,177 +578,15 @@
           <path d="M224 109.3c-63.3 0-114.7 51.4-114.7 114.7S160.7 338.7 224 338.7 338.7 287.3 338.7 224 287.3 109.3 224 109.3zm0 186.6c-39.7 0-71.9-32.2-71.9-71.9s32.2-71.9 71.9-71.9 71.9 32.2 71.9 71.9-32.2 71.9-71.9 71.9zm146.4-187.2c0 14.9-12.1 27-27 27s-27-12.1-27-27 12.1-27 27-27 27 12.1 27 27z" fill="#fff"/>
           <circle cx="224" cy="224" r="58.7" fill="#fff"/>
         </svg>
-      </a>
-      <a id="footer-twitter" href="#" aria-label="Twitter hesabımızı ziyaret edin" target="_blank" class="footer-social-icon" style="color: #1DA1F2;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.916 4.916 0 0 0-8.38 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.857 3.17 0 2.188 1.115 4.117 2.823 5.254a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.21-.005-.423-.015-.633A9.936 9.936 0 0 0 24 4.557z"/></svg>
-      </a>
-    </section>
-    <style>
-      .site-footer {
-        background: rgb(247, 247, 250);
-        color: #111;
-        padding: 24px 0 0 0;
-        font-family: 'Segoe UI', Arial, sans-serif;
-        margin-top: 32px;
-        border-top: 1px solid rgb(224, 224, 224);
-      }
-      .footer-content {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        align-items: center;
-      }
-      .footer-top {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 14px;
-        width: 100%;
-      }
-      .footer-links {
-        display: flex;
-        gap: 48px;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .footer-links-sol {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        min-width: 140px;
-      }
-      .footer-links a {
-        color: #0a357a;
-        text-decoration: none;
-        font-size: 1em;
-        transition: color 0.2s;
-        opacity: 0.95;
-        padding: 2px 6px;
-      }
-      .footer-links a:hover {
-        color: #1976d2;
-        opacity: 1;
-      }
-      .footer-hizmetler-group {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        min-width: 180px;
-      }
-      .footer-hizmetler-list {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        margin-left: 0;
-        margin-bottom: 4px;
-        margin-top: 2px;
-      }
-      .footer-iletisim-group {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        min-width: 220px;
-        gap: 4px;
-      }
-      .footer-iletisim-group div {
-        width: 100%;
-        text-align: left;
-      }
-      .footer-iletisim-group a {
-        color: #0a357a;
-        text-decoration: none;
-        font-size: 0.98em;
-        transition: color 0.2s;
-        opacity: 0.95;
-      }
-      .footer-iletisim-group a:hover {
-        color: #1976d2;
-        opacity: 1;
-      }
-      .footer-divider {
-        border-top: 1px solid rgb(224, 224, 224);
-        margin: 12px 0 0 0;
-        width: 100%;
-      }
-      .footer-info {
-        text-align: center;
-        font-size: 0.97em;
-        color: #444;
-        margin: 10px 0 0 0;
-        width: 100%;
-      }
-      .footer-info strong {
-        color: #0a357a;
-      }
-      .copyright {
-        margin-top: 4px;
-        font-size: 0.93em;
-        color: #444;
-      }
-      .footer-socials-custom {
-        margin: 10px 0;
-        text-align: center;
-      }
-      .footer-social-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background: transparent;
-        transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
-        margin: 0 8px;
-        font-size: 1em;
-        text-decoration: none;
-      }
-      .footer-social-icon:hover {
-        background: #e3eafc;
-        box-shadow: 0 2px 8px #0001;
-        transform: scale(1.08);
-      }
-      .footer-social-icon svg {
-        display: block;
-      }
-      @media (max-width: 700px) {
-        .footer-content, .footer-top {
-          flex-direction: column;
-          align-items: center;
-          gap: 10px;
-        }
-        .footer-links {
-          flex-direction: column;
-          gap: 18px;
-          align-items: stretch;
-        }
-        .footer-links-sol, .footer-hizmetler-group, .footer-iletisim-group {
-          min-width: unset;
-          width: 100%;
-          align-items: center !important;
-          margin-bottom: 16px;
-        }
-        .footer-links a, .footer-hizmetler-list a {
-          text-align: center !important;
-          width: 100% !important;
-          padding-left: 0 !important;
-        }
-        .footer-info, .copyright {
-          text-align: center !important;
-          width: 100% !important;
-        }
-        .footer-iletisim-group div, .footer-iletisim-group a {
-          text-align: center !important;
-          width: 100% !important;
-          padding-left: 0 !important;
-        }
-      }
-    </style>
-  </footer>
+    </a>
+    <a id="footer-twitter" href="#" aria-label="Twitter" target="_blank" class="footer-social-icon" style="color: #1DA1F2;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.916 4.916 0 0 0-8.38 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.857 3.17 0 2.188 1.115 4.117 2.823 5.254a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.21-.005-.423-.015-.633A9.936 9.936 0 0 0 24 4.557z"/></svg>
+    </a>
+  </section>
+</footer>
+  <a id="floating-phone-btn" href="#">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="38" height="38" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+  </a>
   <script>
     document.getElementById('hamburger-menu').addEventListener('click', function() {
       var navLinks = document.getElementById('main-nav-links');
@@ -859,221 +611,66 @@
       });
     }
     fetch('config.json')
-      .then(response => response.json())
-      .then(config => {
-   
-        if (config.email) {
-          const username = config.email.split('@')[0];
-          document.getElementById('footer-facebook').href = 'https://facebook.com/' + username;
-          document.getElementById('footer-instagram').href = 'https://instagram.com/' + username;
-          document.getElementById('footer-twitter').href = 'https://twitter.com/' + username;
-        }
-  
-        if (config.telefon) {
-          const phone = config.telefon.replace(/[^\d+]/g, '');
-          const link = document.getElementById('navbar-phone-link');
-          if (link) {
-            link.setAttribute('href', 'tel:' + phone);
-            link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
-          }
-          const phoneFab = document.getElementById('floating-phone-btn');
-          if (phoneFab) {
-            phoneFab.setAttribute('href', 'tel:' + phone);
-            phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
-          }
-          // Telefon butonunu ana içerikte de göster
-          let gosterim = config.telefon.replace(/^\+?90?/, ''); 
-          gosterim = gosterim.replace(/[^0-9]/g, ''); 
-          if (gosterim.length === 10) gosterim = '0' + gosterim;
-          if (gosterim.length === 11) {
-            gosterim = gosterim.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3');
-          }
-          const buton = document.createElement('a');
-          buton.href = 'tel:' + config.telefon.replace(/\s+/g, '');
-          buton.textContent = gosterim;
-          buton.style.display = 'inline-block';
-          buton.style.padding = '12px 28px';
-          buton.style.background = '#1976d2';
-          buton.style.color = '#fff';
-          buton.style.borderRadius = '8px';
-          buton.style.textDecoration = 'none';
-          buton.style.fontWeight = '600';
-          buton.style.fontSize = '1.13em';
-          buton.style.margin = '10px auto 18px auto';
-          buton.style.boxShadow = '0 2px 12px rgba(25, 118, 210, 0.13)';
-          buton.onmouseover = function() {
-            buton.style.background = '#0b2a5a';
-          };
-          buton.onmouseout = function() {
-            buton.style.background = '#1976d2';
-          };
-          const telAlani = document.getElementById('telefon-buton-alani');
-          if (telAlani) {
-            telAlani.innerHTML = '';
-            telAlani.appendChild(buton);
-            buton.setAttribute('aria-label', 'Telefon ile arayın');
-          }
-        }
- 
-        const btn = document.getElementById('ara-btn');
-        if(btn && config.telefon) {
-          btn.onclick = () => { window.location.href = `tel:${config.telefon.replace(/\s+/g, '')}`; };
-        }
+    .then(response => response.json())
+    .then(config => {
+      if (config.social) {
+        if (config.social.facebook)
+          document.getElementById('footer-facebook').href = config.social.facebook;
 
-        if (config.firmaAdi) {
-          document.getElementById('footer-firma-adi').textContent = config.firmaAdi;
-          // Ana içerikteki firma adı alanını da doldur
-          const anaFirmaAdi = document.getElementById('firma-adi-alani');
-          if (anaFirmaAdi) anaFirmaAdi.textContent = config.firmaAdi;
+        if (config.social.instagram)
+          document.getElementById('footer-instagram').href = config.social.instagram;
+
+        if (config.social.twitter)
+          document.getElementById('footer-twitter').href = config.social.twitter;
+      }
+
+      if (config.telefon) {
+        const phone = config.telefon.replace(/[^\d+]/g, '');
+        const link = document.getElementById('navbar-phone-link');
+        if (link) {
+          link.setAttribute('href', 'tel:' + phone);
+          link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
         }
-        if (config.adres) {
-          document.getElementById('footer-adres').textContent = config.adres;
-          // Ana içerikteki firma adresi alanını da doldur
-          const anaAdres = document.getElementById('firma-adres-alani');
-          if (anaAdres) anaAdres.textContent = config.adres;
+        const phoneFab = document.getElementById('floating-phone-btn');
+        if (phoneFab) {
+          phoneFab.setAttribute('href', 'tel:' + phone);
+          phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
         }
-        if (config.telefon) {
-          document.getElementById('footer-telefon').innerHTML = 'Tel: <a href="tel:' + config.telefon.replace(/\s+/g, '') + '" style="color:#0A357A;text-decoration:none;">' + config.telefon + '</a>';
+      }
+
+      const btn = document.getElementById('ara-btn');
+      if(btn && config.telefon) {
+        let rawPhone = config.telefon.replace(/\D/g, '');
+        if (rawPhone.length === 11) {
+          btn.textContent = rawPhone.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3');
+        } else if (rawPhone.length === 10) {
+          btn.textContent = rawPhone.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
+        } else {
+          btn.textContent = config.telefon;
         }
-        if (config.email) {
-          document.getElementById('footer-email').innerHTML = 'E-posta: <a href="mailto:' + config.email + '" style="color:#0A357A;text-decoration:none;">' + config.email + '</a>';
-        }
-      });
+        btn.onclick = () => { window.location.href = `tel:${config.telefon.replace(/\s+/g, '')}`; };
+      }
+      if (config.firmaAdi) {
+        document.getElementById('footer-firma-adi').textContent = config.firmaAdi;
+      }
+      if (config.adres) {
+        document.getElementById('footer-adres').textContent = config.adres;
+      }
+      const hakkimizdaFirmaDiv = document.getElementById('hakkimizda-firma-bilgileri');
+      if (hakkimizdaFirmaDiv && config.firmaAdi && config.adres) {
+        hakkimizdaFirmaDiv.innerHTML = `<strong>Firma adı:</strong> ${config.firmaAdi}<br><strong>Adres:</strong> ${config.adres}`;
+      }
+      if (config.telefon) {
+        document.getElementById('footer-telefon').innerHTML =
+          'Tel: <a href="tel:' + config.telefon.replace(/\s+/g, '') +
+          '" style="color:#0A357A;text-decoration:none;">' + config.telefon + '</a>';
+      }
+      if (config.email) {
+        document.getElementById('footer-email').innerHTML =
+          'E-posta: <a href="mailto:' + config.email +
+          '" style="color:#0A357A;text-decoration:none;">' + config.email + '</a>';
+      }
+    });
   </script>
-  <script>
-document.getElementById('hamburger-menu').addEventListener('click', function() {
-  var navLinks = document.getElementById('main-nav-links');
-  navLinks.classList.toggle('open');
-});
-function isMobile() {
-  return window.innerWidth <= 800;
-}
-var hizmetlerimizLink = document.getElementById('hizmetlerimiz-link');
-var dropdownContent = hizmetlerimizLink && hizmetlerimizLink.nextElementSibling;
-if (hizmetlerimizLink && dropdownContent) {
-  hizmetlerimizLink.addEventListener('click', function(e) {
-    if (isMobile()) {
-      if (!dropdownContent.classList.contains('open')) {
-        e.preventDefault();
-        dropdownContent.classList.add('open');
-      } 
-    }
-  });
-  document.getElementById('hamburger-menu').addEventListener('click', function() {
-    if (isMobile()) dropdownContent.classList.remove('open');
-  });
-  document.addEventListener('DOMContentLoaded', function() {
-  var hamburger = document.getElementById('hamburger-menu');
-  var navLinks = document.getElementById('main-nav-links');
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', function() {
-      navLinks.classList.toggle('open');
-    });
-  }
-
-  function isMobile() {
-    return window.innerWidth <= 800;
-  }
-  var hizmetlerimizLink = document.getElementById('hizmetlerimiz-link');
-  var dropdownContent = hizmetlerimizLink && hizmetlerimizLink.nextElementSibling;
-  if (hizmetlerimizLink && dropdownContent) {
-    hizmetlerimizLink.addEventListener('click', function(e) {
-      if (isMobile()) {
-        if (!dropdownContent.classList.contains('open')) {
-          e.preventDefault();
-          dropdownContent.classList.add('open');
-        }
-      }
-    });
-    hamburger.addEventListener('click', function() {
-      if (isMobile()) dropdownContent.classList.remove('open');
-    });
-  }
-});
-}
-</script>
-  <a id="floating-phone-btn" href="#" aria-label="Telefon ile arayın" style="display: flex; align-items: center; justify-content: center; position: fixed; right: 24px; bottom: 24px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 0 0 0 #25d36699; z-index: 2000; font-size: 2.1em; transition: background 0.18s, box-shadow 0.18s, transform 0.18s; text-decoration: none; animation: phone-wobble 2.2s infinite, phone-glow 2.2s infinite;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
-  </a>
-  <style>
-    #floating-phone-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      width: 60px;
-      height: 60px;
-      background: #25d366;
-      color: #fff;
-      border-radius: 50%;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 0 0 0 #25d36699;
-      z-index: 2000;
-      font-size: 2.1em;
-      transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
-      text-decoration: none;
-      animation: phone-wobble 2.2s infinite, phone-glow 2.2s infinite;
-      overflow: visible;
-    }
-    #floating-phone-btn svg {
-      filter: drop-shadow(0 0 8px #25d36688);
-      transition: filter 0.18s;
-    }
-    #floating-phone-btn::before {
-      content: '';
-      position: absolute;
-      width: 90px;
-      height: 90px;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      background: radial-gradient(circle, #25d36655 0%, #25d36600 70%);
-      opacity: 0.7;
-      z-index: -1;
-      animation: phone-pulse 2.2s infinite;
-      pointer-events: none;
-    }
-    #floating-phone-btn:hover {
-      background: #128c4b;
-      color: #fff;
-      box-shadow: 0 8px 32px rgba(37, 211, 102, 0.22), 0 0 0 12px #25d36644;
-      transform: scale(1.12) rotate(-3deg);
-    }
-    #floating-phone-btn:hover svg {
-      filter: drop-shadow(0 0 16px #25d366cc);
-    }
-    @keyframes phone-wobble {
-      0%, 100% { transform: rotate(0deg); }
-      10% { transform: rotate(-10deg); }
-      20% { transform: rotate(8deg); }
-      30% { transform: rotate(-6deg); }
-      40% { transform: rotate(4deg); }
-      50% { transform: rotate(0deg); }
-    }
-    @keyframes phone-glow {
-      0%, 100% { box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 0 0 0 #25d36699; }
-      50% { box-shadow: 0 8px 32px rgba(37, 211, 102, 0.22), 0 0 0 16px #25d36633; }
-    }
-    @keyframes phone-pulse {
-      0% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
-      50% { opacity: 0.2; transform: translate(-50%, -50%) scale(1.25); }
-      100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
-    }
-    @media (max-width: 700px) {
-      #floating-phone-btn {
-        width: 48px;
-        height: 48px;
-        font-size: 1.5em;
-        right: 14px;
-        bottom: 14px;
-      }
-      #floating-phone-btn::before {
-        width: 70px;
-        height: 70px;
-      }
-    }
-  </style>
 </body>
 </html>
