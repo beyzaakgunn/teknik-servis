@@ -459,7 +459,6 @@
   </style>
 </head>
 <body>
-  <script src="config.js"></script>
   <header>
     <nav>
       <div class="header-inner">
@@ -775,9 +774,9 @@
         if (isMobile()) dropdownContent.classList.remove('open');
       });
     }
-    const config = window.siteConfig;
-    if (config) {
-      // Sosyal medya bağlantıları
+    fetch('config.json')
+    .then(response => response.json())
+    .then(config => {
       if (config.social) {
         if (config.social.facebook)
           document.getElementById('footer-facebook').href = config.social.facebook;
@@ -789,7 +788,6 @@
           document.getElementById('footer-twitter').href = config.social.twitter;
       }
 
-      // Telefon bağlantıları
       if (config.telefon) {
         const phone = config.telefon.replace(/[^\d+]/g, '');
         const link = document.getElementById('navbar-phone-link');
@@ -802,18 +800,21 @@
           phoneFab.setAttribute('href', 'tel:' + phone);
           phoneFab.setAttribute('aria-label', 'Telefon: ' + config.telefon);
         }
-        const btn = document.getElementById('ara-btn');
-        if(btn && config.telefon) {
-          btn.onclick = () => { window.location.href = `tel:${config.telefon.replace(/\s+/g, '')}`; };
-        }
       }
 
-      // Diğer footer bilgileri
-      if (config.firmaAdı) {
-        document.getElementById('footer-firma-adi').textContent = config.firmaAdı;
+      const btn = document.getElementById('ara-btn');
+      if(btn && config.telefon) {
+        btn.onclick = () => { window.location.href = `tel:${config.telefon.replace(/\s+/g, '')}`; };
+      }
+      if (config.firmaAdi) {
+        document.getElementById('footer-firma-adi').textContent = config.firmaAdi;
       }
       if (config.adres) {
         document.getElementById('footer-adres').textContent = config.adres;
+      }
+      const hakkimizdaFirmaDiv = document.getElementById('hakkimizda-firma-bilgileri');
+      if (hakkimizdaFirmaDiv && config.firmaAdi && config.adres) {
+        hakkimizdaFirmaDiv.innerHTML = `<strong>Firma adı:</strong> ${config.firmaAdi}<br><strong>Adres:</strong> ${config.adres}`;
       }
       if (config.telefon) {
         document.getElementById('footer-telefon').innerHTML =
@@ -825,7 +826,7 @@
           'E-posta: <a href="mailto:' + config.email +
           '" style="color:#0A357A;text-decoration:none;">' + config.email + '</a>';
       }
-    }
+    });
   </script>
 </body>
 </html>
