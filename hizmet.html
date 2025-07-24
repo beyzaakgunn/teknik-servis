@@ -91,14 +91,7 @@
       display: block;
       border-radius: 0;
     }
-    .phone-link {
-      background: rgb(0, 0, 0);
-      color: rgb(255, 255, 255);
-      font-weight: 600;
-      border-radius: 8px;
-      letter-spacing: 0.5px;
-    }
-    .phone-link:hover, .ara-btn:hover{
+    .ara-btn:hover{
       background: rgb(242, 242, 242);
       color: rgb(0, 0, 0);
     }
@@ -426,7 +419,6 @@
             </div>
             <a href="hakkimizda.html">Hakkımızda</a>
             <a href="iletisim.html">İletişim</a>
-            <a href="#" id="navbar-phone-link" class="phone-link call-now-navbar">Bizi Arayın</a>
           </div>
         </div>
       </div>
@@ -908,11 +900,6 @@
       // Telefon bağlantıları
       if (config.telefon) {
         const phone = config.telefon.replace(/[^\d+]/g, '');
-        const link = document.getElementById('navbar-phone-link');
-        if (link) {
-          link.setAttribute('href', 'tel:' + phone);
-          link.setAttribute('aria-label', 'Telefon: ' + config.telefon);
-        }
         const phoneFab = document.getElementById('floating-phone-btn');
         if (phoneFab) {
           phoneFab.setAttribute('href', 'tel:' + phone);
