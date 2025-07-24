@@ -664,20 +664,7 @@
       }
       const iletisimFirmaDiv = document.getElementById('iletisim-firma-bilgileri');
       if (iletisimFirmaDiv && config.firmaAdi && config.adres) {
-        let formattedPhone = config.telefon.replace(/\D/g, '');
-        if (formattedPhone.length === 11) {
-          formattedPhone = formattedPhone.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3');
-        } else if (formattedPhone.length === 10) {
-          formattedPhone = formattedPhone.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
-        } else {
-          formattedPhone = config.telefon;
-        }
-        if (config.email) {
-        document.getElementById('footer-email').innerHTML =
-          'E-posta: <a href="mailto:' + config.email +
-          '" style="color:#0A357A;text-decoration:none;">' + config.email + '</a>';
-      }
-        iletisimFirmaDiv.innerHTML = `<strong>Firma adı:</strong> ${config.firmaAdi}<br><strong>Telefon:</strong> ${formattedPhone}<br><strong>E-posta:</strong> ${config.email}<br><strong>Adres:</strong> ${config.adres}`;
+        iletisimFirmaDiv.innerHTML = `<strong>Firma adı:</strong> ${config.firmaAdi}<br><strong>Adres:</strong> ${config.adres}`;
       }
       if (config.telefon) {
         document.getElementById('footer-telefon').innerHTML =
