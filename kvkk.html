@@ -118,6 +118,8 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
+      height: 350px;
+      overflow-y: auto;
     }
     .comment-card {
       display: flex;
@@ -127,17 +129,6 @@
       border-radius: 8px;
       box-shadow: 0 1px 4px rgb(244, 244, 244);
       padding: 14px 14px;
-    }
-    .comment-avatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: grey;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.2em;
     }
     .comment-name {
       font-weight: 600;
@@ -321,6 +312,9 @@
         width: 100% ;
         padding-left: 0 ;
       }
+      #comments-list {
+        height: 220px;
+      }
     }
   </style>
 
@@ -397,119 +391,102 @@
     <h2 class="comments-title">Müşteri Yorumları</h2>
     <div id="comments-list">
       <div class="comment-card">
-        <div class="comment-avatar">A</div>
         <div class="comment-content">
           <div class="comment-name">Ayşe K.</div>
           <div class="comment-text">Servis çok hızlı ve güvenilirdi, teşekkürler!</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">M</div>
         <div class="comment-content">
           <div class="comment-name">Mehmet T.</div>
           <div class="comment-text">Uygun fiyat ve kaliteli hizmet aldım.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">Z</div>
         <div class="comment-content">
           <div class="comment-name">Zeynep B.</div>
           <div class="comment-text">Teknisyenler çok ilgili ve çözüm odaklıydı.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">A</div>
         <div class="comment-content">
           <div class="comment-name">Ali S.</div>
           <div class="comment-text">Arızalı makinem aynı gün tamir edildi.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">E</div>
         <div class="comment-content">
           <div class="comment-name">Elif D.</div>
           <div class="comment-text">Herkese tavsiye ederim, memnun kaldım.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">B</div>
         <div class="comment-content">
           <div class="comment-name">Burak Y.</div>
           <div class="comment-text">Çok kısa sürede geldiler, sorunum çözüldü.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">S</div>
         <div class="comment-content">
           <div class="comment-name">Seda N.</div>
           <div class="comment-text">Güler yüzlü ve profesyonel ekip, teşekkürler.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">K</div>
         <div class="comment-content">
           <div class="comment-name">Kemal R.</div>
           <div class="comment-text">Fiyatlar makul, hizmet kaliteli.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">D</div>
         <div class="comment-content">
           <div class="comment-name">Derya U.</div>
           <div class="comment-text">Sorunsuz bir servis deneyimi yaşadım.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">O</div>
         <div class="comment-content">
           <div class="comment-name">Onur C.</div>
           <div class="comment-text">Teknik destek çok hızlıydı, memnun kaldım.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">F</div>
         <div class="comment-content">
           <div class="comment-name">Fatma L.</div>
           <div class="comment-text">Cihazım ilk günkü gibi çalışıyor, teşekkürler.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">T</div>
         <div class="comment-content">
           <div class="comment-name">Tuncay P.</div>
           <div class="comment-text">İşlerini titizlikle yapıyorlar, tavsiye ederim.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">G</div>
         <div class="comment-content">
           <div class="comment-name">Gizem S.</div>
           <div class="comment-text">Randevu saatine tam zamanında geldiler.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">Y</div>
         <div class="comment-content">
           <div class="comment-name">Yusuf Z.</div>
           <div class="comment-text">Her arızada ilk tercihim burası olacak.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">P</div>
         <div class="comment-content">
           <div class="comment-name">Pelin M.</div>
           <div class="comment-text">Açıklayıcı bilgi verdiler, güven verdiler.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">C</div>
         <div class="comment-content">
           <div class="comment-name">Cemal E.</div>
           <div class="comment-text">Yedek parça temini çok hızlıydı.</div>
         </div>
       </div>
       <div class="comment-card">
-        <div class="comment-avatar">N</div>
         <div class="comment-content">
           <div class="comment-name">Nurgül T.</div>
           <div class="comment-text">İlgili ve çözüm odaklı bir ekip.</div>
